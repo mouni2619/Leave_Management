@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Constants
-import { ContentType, Header, MethodType } from "./HttpConstants";
+import { HttpContentTypes, HttpHeaders, HttpMethods } from "../../constants/HttpConstants";
 
 //
 // Private Utilities
@@ -32,17 +32,17 @@ class HttpClient {
   }
 
   // Methods :: GET
-  get = async (url, params = {}, contentType = ContentType.APP_JSON) => {
+  get = async (url, params = {}, contentType = HttpContentTypes.APP_JSON) => {
     // headers
     const headers = {
-      [Header.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
-      [Header.Accept]: ContentType.APP_JSON,
-      [Header.ContentType]: contentType,
+      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
+      [HttpHeaders.ContentType]: contentType,
     };
 
     // invoke axios
     const response = await axios({
-      method: MethodType.GET,
+      method: HttpMethods.GET,
       url,
       params,
       headers,
@@ -53,17 +53,17 @@ class HttpClient {
   };
 
   // Method :: POST
-  post = async (url, params = {}, data = {}, contentType = ContentType.APP_JSON) => {
+  post = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
     // headers
     const headers = {
-      [Header.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
-      [Header.Accept]: ContentType.APP_JSON,
-      [Header.ContentType]: contentType,
+      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
+      [HttpHeaders.ContentType]: contentType,
     };
 
     // invoke axios
     const response = await axios({
-      method: MethodType.POST,
+      method: HttpMethods.POST,
       url,
       params,
       data,
@@ -74,17 +74,17 @@ class HttpClient {
   };
 
   // Methods :: PUT
-  put = async (url, params = {}, data = {}, contentType = ContentType.APP_JSON) => {
+  put = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
     // headers
     const headers = {
-      [Header.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
-      [Header.Accept]: ContentType.APP_JSON,
-      [Header.ContentType]: contentType,
+      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
+      [HttpHeaders.ContentType]: contentType,
     };
 
     // invoke axios
     const response = await axios({
-      method: MethodType.PUT,
+      method: HttpMethods.PUT,
       url,
       params,
       data,
@@ -95,17 +95,17 @@ class HttpClient {
   };
 
   // Methods :: DELETE
-  delete = async (url, params = {}, data = {}, contentType = ContentType.APP_JSON) => {
+  delete = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
     // headers
     const headers = {
-      [Header.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
-      [Header.Accept]: ContentType.APP_JSON,
-      [Header.ContentType]: contentType,
+      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
+      [HttpHeaders.ContentType]: contentType,
     };
 
     // invoke axios
     const response = await axios({
-      method: MethodType.DELETE,
+      method: HttpMethods.DELETE,
       url,
       params,
       data,
@@ -120,13 +120,13 @@ class HttpClient {
     // headers
     const reqHeaders = {
       ...headers,
-      [Header.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
     };
 
     // invoke axios
     const response = await axios({
       url,
-      method: MethodType.GET,
+      method: HttpMethods.GET,
       params,
       reqHeaders,
       responseType,
@@ -136,4 +136,7 @@ class HttpClient {
   };
 }
 
+/**
+ * Default export
+ */
 export default HttpClient;

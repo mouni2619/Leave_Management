@@ -61,7 +61,7 @@ class HttpClientFactory {
 }
 
 // Create an Instance (Singleton)
-const HCF = new HttpClientFactory();
+const HttpInstance = new HttpClientFactory();
 
-// Export
-export default HCF;
+// Default Export
+export default HttpInstance;

@@ -1,7 +1,7 @@
 import React from "react";
 
 // Css
-import "./Auth.css";
+import "./LoginPage.scss";
 
 /**
  * Login Page

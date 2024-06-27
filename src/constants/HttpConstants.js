@@ -1,9 +1,8 @@
 //
-// Constants
+// HTTP Constants
 // ----------------------------------------------------------------------------
-
-// Http :: Method
-export const MethodType = {
+// Http :: Methods
+export const HttpMethods = {
   // Crud
   GET: "GET",
   POST: "POST",
@@ -15,7 +14,7 @@ export const MethodType = {
 };
 
 // Http :: Headers
-export const Header = {
+export const HttpHeaders = {
   // Auth
   Authorization: "Authorization",
 
@@ -24,8 +23,8 @@ export const Header = {
   ContentType: "Content-Type",
 };
 
-// Http :: Content-Type
-export const ContentType = {
+// Http :: Content-Types
+export const HttpContentTypes = {
   APP_JSON: "application/json",
 
   // Form

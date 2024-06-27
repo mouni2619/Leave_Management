@@ -1,4 +1,4 @@
-// Boostrap Overrides
+// Bootstrap Overrides
 
 // Colors :: Gray
 $white: #fff !default;
@@ -41,6 +41,10 @@ $box-shadow-lg: 0 0 2rem 0.5rem rgba($gray-500, 0.175);
 $box-shadow: 0 0 1rem 0.25rem rgba($gray-500, 0.15);
 $box-shadow-sm: 0 0 0.5rem 0.125rem rgba($gray-500, 0.075);
 
+// Scrollbar
+$scrollbar-box-shadow: rgba(0, 0, 0, 0.3);
+$scrollbar-bg: #f5f5f5;
+
 // Form :: input
 $input-btn-padding-x: 2rem;
 $input-btn-padding-x-sm: 1.25rem;
@@ -57,4 +61,4 @@ $body-bg-alt: #f3f7ff;
 $topbar-height: 4rem;
 $topbar-zindex: 2000;
 $sidebar-width: 16rem;
-$sidebar-width-collpase: 88px;
+$sidebar-width-collapse: 88px;

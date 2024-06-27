@@ -69,9 +69,10 @@ input[type="number"] {
   }
 }
 
-// Utilities
+// Utilities ::
+//"text-truncate" is default for  1-line
+// for truncate after 2-lines
 .text-truncate-2 {
-  // for truncate after 2-lines
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -79,8 +80,8 @@ input[type="number"] {
   overflow: hidden;
 }
 
+// for truncate after 3-lines
 .text-truncate-3 {
-  // for truncate after 3-lines
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   display: -webkit-box;

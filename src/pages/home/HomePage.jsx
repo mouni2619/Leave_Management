@@ -1,5 +1,5 @@
 // Css
-import "./Home.css";
+import "./HomePage.scss";
 
 /**
  * Home Page
