@@ -1,5 +1,5 @@
 // Utils
-import AuthUtils from "../authUtils";
+import AuthUtils from "./authUtils";
 
 // Http Client
 import HttpClient from "./HttpClient";

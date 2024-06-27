@@ -1,24 +1,46 @@
 import axios from "axios";
 
 // Constants
-import { HttpContentTypes, HttpHeaders, HttpMethods } from "../../constants/HttpConstants";
+import { HttpContentTypes, HttpHeaders, HttpMethods } from "../constants/HttpConstants";
 
-//
+// convert False To String
+function convertFalseToString(params, key) {
+  if (params[key] === false) {
+    params[key] = "false";
+  }
+}
+
+// convert String To False
+function convertStringToFalse(params, key) {
+  if (params[key] === "false") {
+    params[key] = false;
+  }
+}
+
 // Private Utilities
 // ----------------------------------------------------------------------------
 function serializeParams(params) {
+  // options
   let options = "";
+
   for (const key in params) {
+    // converting false to string
+    convertFalseToString(params, key);
     if (typeof params[key] !== "object" && params[key]) {
+      // converting string to false
+      convertStringToFalse(params, key);
+
+      // update options
       options += `${key}=${params[key]}&`;
     } else if (typeof params[key] === "object" && params[key] && params[key].length) {
       params[key].forEach((el) => (options += `${key}=${el}&`));
     }
   }
+
+  // final return
   return options ? options.slice(0, -1) : options;
 }
 
-//
 // HttpClient
 // ----------------------------------------------------------------------------
 class HttpClient {
