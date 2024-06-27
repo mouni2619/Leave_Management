@@ -1,5 +1,8 @@
 import { useSearchParams } from "react-router-dom";
 
+/**
+ * useUpdateQueryParams
+ */
 export function useUpdateQueryParams() {
   //Search params
   const [searchParams, setSearchParams] = useSearchParams();

@@ -1,5 +1,5 @@
 // Utils
-import AuthUtil from "../utils/AuthUtil";
+import AuthUtils from "../authUtils";
 
 // Http Client
 import HttpClient from "./HttpClient";
@@ -26,7 +26,7 @@ class HttpClientFactory {
    */
   reload = () => {
     // Auth Token
-    const authToken = AuthUtil.getToken();
+    const authToken = AuthUtils.getToken();
 
     // Update the HTTP Client Instance
     this.httpClient = new HttpClient(authToken);
