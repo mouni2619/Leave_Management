@@ -1,0 +1,89 @@
+html,
+body {
+  font-family: $font-family-base;
+  font-weight: $font-weight-normal;
+}
+
+// Table
+table {
+  $table-border: 1px solid
+    darken(
+      $color: $body-bg-alt,
+      $amount: 5%,
+    ) !important;
+
+  thead {
+    border: $table-border;
+  }
+
+  tr {
+    border-left: $table-border;
+    border-right: $table-border;
+
+    &:last-child {
+      border-bottom: $table-border;
+    }
+  }
+
+  th {
+    background-color: $body-bg-alt !important;
+    font-weight: 600 !important;
+  }
+
+  td {
+    border-top: $table-border;
+  }
+
+  .sub-text {
+    font-size: 0.75rem;
+    color: $gray-600;
+    display: block;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-readonly {
+  input,
+  select,
+  textarea {
+    border: 1px solid transparent;
+    background-color: transparent;
+    padding-left: 0;
+  }
+
+  input[disabled],
+  select[disabled],
+  textarea[disabled] {
+    background-color: transparent;
+  }
+}
+
+// Utilities
+.text-truncate-2 {
+  // for truncate after 2-lines
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-truncate-3 {
+  // for truncate after 3-lines
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
