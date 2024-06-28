@@ -19,7 +19,7 @@ function* login() {
     // todo:: remove when integrate with api
     const authInfo = {
       name: 'AdMavin',
-      org: 'Admavin Pvt Ltd.',
+      projectName: 'ReactJS Seed Project',
     };
 
     // dispatching action
