@@ -18,7 +18,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "react-env": "cp env/.env.${npm_config_env} .env",
+    "build:dev": "npm run react-env --env=dev && npm run build",
+    "build:staging": "npm run react-env --env=staging && npm run build",
+    "build:prod": "npm run react-env --env=prod && npm run build",
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "dev": "npm run react-env --env=dev && run-p server start",
+    "prod": "npm run build:prod && npm run server"
   },
   "eslintConfig": {
     "extends": [
@@ -46,7 +53,8 @@
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
-    "pino-colada": "^2.2.2"
+    "pino-colada": "^2.2.2",
+    "path": "^0.12.7"
   },
   "engines": {
     "node": ">=16"
