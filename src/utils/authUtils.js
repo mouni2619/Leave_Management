@@ -1,7 +1,7 @@
 /**
  * Authentication and Authorization related Utilities
  */
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 // Utilities
 // ----------------------------------------------------------------------------
@@ -24,21 +24,21 @@ function isTokenExpired(authToken) {
  * Set Token
  */
 const setToken = (token) => {
-  localStorage.setItem("token", token);
+  localStorage.setItem('token', token);
 };
 
 /**
  * Get Token
  */
 const getToken = () => {
-  return localStorage.getItem("token");
+  return localStorage.getItem('token');
 };
 
 /**
  * Remove Token
  */
 const removeToken = () => {
-  localStorage.removeItem("token");
+  localStorage.removeItem('token');
 };
 
 const AuthUtils = {
