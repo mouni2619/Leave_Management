@@ -25,6 +25,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "react-env": "cp .env.${npm_config_env} .env",
+    "build:dev": "npm run react-env --env=dev && npm run build",
+    "build:staging": "npm run react-env --env=staging && npm run build",
+    "build:prod": "npm run react-env --env=prod && npm run build",
+    "server": "node-env-run server --exec nodemon | pino-colada",
+    "dev": "npm run react-env --env=dev && run-p server start",
+    "prod": "npm run build:prod && npm run server",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
     "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc.json"
@@ -66,7 +73,11 @@
     "nodemon": "^2.0.22",
     "npm-run-all": "^4.1.5",
     "pino-colada": "^2.2.2",
+<<<<<<< HEAD
+    "path": "^0.12.7"
+=======
     "prettier": "^3.3.2"
+>>>>>>> develop
   },
   "engines": {
     "node": ">=16"
