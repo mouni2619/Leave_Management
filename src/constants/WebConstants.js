@@ -7,9 +7,9 @@ export const DefaultPagination = {
 
 // QueryParamsKeys
 export const QueryParamsKeys = {
-  pageNumber: "pn",
-  pageSize: "ps",
-  orgType: "orgType",
-  type: "type",
-  searchText: "search",
+  pageNumber: 'pn',
+  pageSize: 'ps',
+  orgType: 'orgType',
+  type: 'type',
+  searchText: 'search',
 };

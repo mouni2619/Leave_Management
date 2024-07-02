@@ -3,6 +3,7 @@
  * Get all the input values from form as JSON
  */
 function getFormDataAsJSON(event) {
+  // if no event, just return null
   if (!event) {
     return null;
   }
@@ -22,9 +23,10 @@ function getFormDataAsJSON(event) {
  */
 function replaceEmptyStringsToNull(data = {}) {
   const clonedData = { ...data };
+  const isDataPresent = Boolean(Object.keys(clonedData).length);
 
-  // if no keys, return {}
-  if (Object.keys(clonedData) === 0) {
+  // if no keys (no data), just return {}
+  if (!isDataPresent) {
     return {};
   }
 
@@ -34,14 +36,17 @@ function replaceEmptyStringsToNull(data = {}) {
   // nested objects
   for (const key in clonedData) {
     if (clonedData[key] === '') {
-      results[key] = null; // updating with "null"
+      // updating with "null"
+      results[key] = null;
     } else if (
       typeof clonedData[key] === 'object' &&
       clonedData[key] !== null
     ) {
-      results[key] = replaceEmptyStringsToNull(clonedData[key]); // recursive for nested objects
+      // recursive for nested objects
+      results[key] = replaceEmptyStringsToNull(clonedData[key]);
     } else {
-      results[key] = clonedData[key]; // return same
+      // return same
+      results[key] = clonedData[key];
     }
   }
 

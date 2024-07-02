@@ -1,10 +1,10 @@
 /**
  * -------------------------------------------------------------------
- * saveFile
+ * saveExcelFile
  * @param {*} filename : save file
  * @param {*} data : file data
  */
-function saveFile(filename, data) {
+function saveExcelFile(filename, data) {
   const link = document.createElement('a');
   link.target = '_blank';
   link.download = filename;
@@ -86,7 +86,7 @@ function convertBinaryToBase64String(binaryString) {
 
 // -------------------------------------------------------------------------
 const FileUtils = {
-  saveFile,
+  saveExcelFile,
   saveImageFile,
   selectFile,
   convertBinaryToBase64String,
