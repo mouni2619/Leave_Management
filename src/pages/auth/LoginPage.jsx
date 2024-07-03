@@ -1,18 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 
 // Actions
-import { AuthActions } from "../../redux-slice/AuthSlice";
-
-// Urls
-import { PageURL } from "../../urls/PageURL";
+import { AuthActions } from '../../store/redux-slices/authSlice';
 
 // Components
+import Logo from '../../components/Logo';
 
 // Images
-import URL_IMG_LOGO from "../../assests/imgs/branding/logo.png";
-import Logo from "../../app/layout/Logo";
+import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
 
 // Page Components
 // ----------------------------------------------------------------------------
@@ -33,17 +30,6 @@ function LoginError({ loginError }) {
   );
 }
 
-function ForgotPasswordSection() {
-  return (
-    <div className="mt-4 text-center">
-      <Link to={PageURL.ForgotPasswordPageUrl} className="text-muted text-decoration-none">
-        <i className="fa-solid fa-lock me-2"></i>
-        Forgot your password?
-      </Link>
-    </div>
-  );
-}
-
 function LoginCard() {
   // Hooks
   const dispatch = useDispatch();
@@ -53,7 +39,7 @@ function LoginCard() {
   const [formData, setFormData] = useState({});
 
   // Selector State
-  const loginLoading = useSelector((state) => state.auth.loginLoading) || false;
+  // const loginLoading = useSelector((state) => state.auth.loginLoading) || false;
   const loginError = useSelector((state) => state.auth.loginError) || false;
 
   // Input onChange
@@ -81,18 +67,33 @@ function LoginCard() {
       <div className="card-body position-relative">
         {/* Logo Component */}
         <div className="img-cont d-flex justify-content-center">
-          <Logo redirect={false} containerClassName="image" imageHeight={140} imageURL={URL_IMG_LOGO} />
+          <Logo
+            redirect={false}
+            containerClassName="image"
+            imageHeight={140}
+            imageURL={URL_IMG_LOGO}
+          />
         </div>
 
         <div className="p-2 pt-5">
           <form className="form-horizontal pb-5" onSubmit={handleFormSubmit}>
             <div className="form-group mb-4">
               <label className="form-label">Username</label>
-              <input className="form-control" type="email" name="username" onChange={handleInputChange} />
+              <input
+                className="form-control"
+                type="email"
+                name="username"
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
               <label className="form-label">Password</label>
-              <input className="form-control" type="password" name="password" onChange={handleInputChange} />
+              <input
+                className="form-control"
+                type="password"
+                name="password"
+                onChange={handleInputChange}
+              />
             </div>
 
             {/* Login Error */}
@@ -103,22 +104,9 @@ function LoginCard() {
                 Login
               </button>
             </div>
-
-            {/* Forgot Password Section */}
-            {/* 
-            <ForgotPasswordSection />
-            */}
           </form>
         </div>
       </div>
-    </div>
-  );
-}
-
-function LoginCardFooter() {
-  return (
-    <div className="mt-5 text-center">
-      <p></p>
     </div>
   );
 }
@@ -133,9 +121,6 @@ export default function LoginPage() {
         <div className="col-md-8 col-lg-6 col-xl-5">
           {/* Login Card */}
           <LoginCard />
-
-          {/* Login Footer */}
-          <LoginCardFooter />
         </div>
       </div>
     </div>

@@ -1,23 +1,23 @@
-import { Link, useParams } from "react-router-dom";
-
-//Urls
-import { PageURL } from "../../urls/PageURL";
+import { Link, useParams } from 'react-router-dom';
 
 // Images
-import error404Image from "../../assests/imgs/error/404.svg";
-import error500Image from "../../assests/imgs/error/500.svg";
+import error404Image from '../../assets/images/error-page/error-img.png';
+import error500Image from '../../assets/images/error-page/error-img.png';
+
+// Constants
+import PageURL from '../../urls/pageUrls';
 
 //Page Constants
 const errorsInfo = {
   404: {
     imageUrl: error404Image,
-    errorCode: "404",
-    errorMessage: "Oops! The page your looking for does not exist",
+    errorCode: '404',
+    errorMessage: 'Oops! The page your looking for does not exist',
   },
   500: {
     imageUrl: error500Image,
-    errorCode: "500",
-    errorMessage: "Oops! Something went wrong",
+    errorCode: '500',
+    errorMessage: 'Oops! Something went wrong',
   },
 };
 
@@ -41,7 +41,10 @@ export default function ErrorPage() {
         </h1>
         <h4 className="text-uppercase">{errorMessage}</h4>
         <div className="mt-5 text-center">
-          <Link to={PageURL.DashboardPageUrl} className="btn btn-primary waves-effect waves-light">
+          <Link
+            to={PageURL.DashboardPage}
+            className="btn btn-primary waves-effect waves-light"
+          >
             Back to Dashboard
           </Link>
         </div>

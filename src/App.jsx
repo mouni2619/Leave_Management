@@ -1,59 +1,26 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-// Constants
-import { PageURL } from './urls/PageURL';
-
 // CSS and JS
 import './App.scss';
 import 'bootstrap/dist/js/bootstrap.js';
 
-// App Setup
-import ErrorHandler from './app/error/ErrorHandler';
-import Layout from './app/layout/Layout';
-import ProtectedRoute from './app/ProtectedRoute';
+// Pages
+import LoginPage from './pages/auth/LoginPage';
 
-// Pages :: Error
-import ErrorPage from './pages/error/ErrorPage';
+// Constants
+import PageURL from './urls/pageUrls';
 
-import DashboardPage from './pages/dashboard/DashboardPage';
+// Routes
+import { MainPageRoutes } from './routes/MainRoutes';
 
-// Pages :: Dev
-import devRoutes from './dev/DevRoutes';
-
-// Auth Routes..
-import { AuthRoutes } from './app/routes/AuthRoutes';
-
-// Error Routes
-import { ErrorRoutes } from './app/routes/ErrorRoutes';
-
-// Page Components
+//Page Components
 const router = createBrowserRouter([
-  //Error Pages
-  ErrorRoutes,
+  MainPageRoutes,
 
-  // Auth Routes
-  AuthRoutes,
-
-  // Protected Pages
   {
-    path: PageURL.DashboardPage,
-    element: (
-      <ErrorHandler>
-        <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
-      </ErrorHandler>
-    ),
-    children: [
-      {
-        path: PageURL.DashboardPage,
-        element: <DashboardPage />,
-      },
-    ],
+    path: PageURL.LoginPage,
+    element: <LoginPage />,
   },
-
-  // Dev Pages
-  ...devRoutes,
 ]);
 
 function App() {

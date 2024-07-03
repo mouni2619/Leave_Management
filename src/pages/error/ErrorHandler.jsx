@@ -1,0 +1,121 @@
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+// TODO: @HariBukke please create a ticket to use the other toaster library you have mentioned
+import { toast } from 'react-toastify';
+
+// Actions
+import { ErrorActions } from '../../store/redux-slices/errorSlice';
+
+// constants
+import PageUrls from '../../urls/pageUrls';
+
+// Utils
+import UrlUtils from '../../utils/urlUtils';
+
+// Constants
+const ServerErrorCodes = [500, 502, 503];
+const PageErrorCodes = [401, 404];
+
+// Util Functions
+// ----------------------------------------------------------------------------
+
+function getErrorAndStatusCode(error) {
+  // default error object
+  const defaultErrorObject = {
+    errorMessage: '',
+    statusCode: false,
+  };
+
+  // from Error.response
+  if (error.response) {
+    // status code
+    const statusCode = error.response?.status;
+
+    // error message
+    const { message: errorMessage } = error.response?.data || {};
+
+    // return
+    return { errorMessage, statusCode };
+  }
+
+  return defaultErrorObject;
+}
+
+/**
+ * ERROR PAGES WRAPPER COMPONENT
+ * @param {*} children : pages
+ */
+export default function ErrorHandler({ children }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // Location
+  const { pathname } = useLocation();
+
+  // Navigate
+  const navigate = useNavigate();
+
+  // Selector States
+  const apiError = useSelector((state) => state.error.errorInfo);
+  const showToaster = useSelector((state) => state.error.showToaster);
+  const showPageError = useSelector((state) => state.error.showPageError);
+
+  // useEffect
+  useEffect(() => {
+    // Clear the Error Details
+    dispatch(ErrorActions.clearError());
+  }, [dispatch, showPageError, showToaster, pathname]);
+
+  // errorMessage and statusCode from api error
+  const { errorMessage, statusCode: errorStatusCode } =
+    getErrorAndStatusCode(apiError);
+
+  // If NO-Error Status Code (means no error)
+  if (!errorStatusCode) {
+    return <>{children}</>;
+  }
+
+  // 500 and 502 and 503 Error Status Handle
+  // ---------------------------------------
+  if (ServerErrorCodes.includes(errorStatusCode)) {
+    // Redirecting url
+    const errorPageUrl = UrlUtils.format(PageUrls.ErrorPage, {
+      errorStatusCode,
+    });
+
+    navigate(errorPageUrl);
+
+    return null;
+  }
+
+  // show Page Error
+  // -------------------------------------
+  if (showPageError) {
+    return <>{children}</>;
+  }
+
+  // showing toaster only
+  // -----------------------------------------
+  if (showToaster) {
+    toast.error(`${errorStatusCode} ${errorMessage}`);
+    return <>{children}</>;
+  }
+
+  //  Rendering of Error Pages
+  // ----------------------------------------
+
+  if (PageErrorCodes.includes(errorStatusCode)) {
+    // Redirecting url
+    const errorPageUrl = UrlUtils.format(PageUrls.ErrorPage, {
+      errorStatusCode,
+    });
+
+    navigate(errorPageUrl);
+
+    return null;
+  }
+
+  return <>{children}</>;
+}
