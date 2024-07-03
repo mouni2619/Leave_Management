@@ -1,6 +1,7 @@
 // Components
 import Sidebar from './Sidebar.jsx';
 import MainContent from './MainContent.jsx';
+import SidebarChildren from './SidebarChildren.jsx';
 
 /**
  * Three Columns Layout
@@ -9,7 +10,9 @@ export default function ThreeColumnsLayout() {
   return (
     <div className="page">
       {/* Left sidebar */}
-      <Sidebar width="w-25" sidebarHeading="Left Sidebar" />
+      <Sidebar>
+        <SidebarChildren />
+      </Sidebar>
 
       {/* Main content */}
       <MainContent columnLayout={3}>
@@ -19,11 +22,9 @@ export default function ThreeColumnsLayout() {
       </MainContent>
 
       {/* Right sidebar */}
-      <Sidebar
-        width="w-25"
-        sidebarPosition="right"
-        sidebarHeading="Right Sidebar"
-      />
+      <Sidebar sidebarPosition="right">
+        <SidebarChildren />
+      </Sidebar>
     </div>
   );
 }

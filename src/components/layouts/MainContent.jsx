@@ -13,8 +13,8 @@ export default function MainContent({ columnLayout = 1, children }) {
   const mainContentWidth = MAIN_CONTENT_WIDTH[columnLayout];
 
   return (
-    <main className={`main-content ${mainContentWidth}`}>
+    <div className={`main-content ${mainContentWidth}`}>
       <div className="content-wrapper">{children}</div>
-    </main>
+    </div>
   );
 }
