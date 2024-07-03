@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { AuthActions } from '../../store/redux-slices/authSlice';
 
 // Components
-import Logo from '../../components/Logo';
+import Logo from '../../components/logo/Logo';
 
 // Images
 import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
