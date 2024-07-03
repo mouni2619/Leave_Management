@@ -20,6 +20,8 @@ function LoginError({ loginError }) {
     return null;
   }
 
+  // TODO: If needed please use the loginError to display customised error messages..
+
   return (
     <div className="card bg-secondary-subtle">
       <div className="card-body text-center text-danger">
@@ -38,9 +40,9 @@ function LoginCard() {
   // Page State
   const [formData, setFormData] = useState({});
 
-  // Selector State
-  // const loginLoading = useSelector((state) => state.auth.loginLoading) || false;
-  const loginError = useSelector((state) => state.auth.loginError) || false;
+  // Selector State (TODO: Use this state while integration)
+  // const loginLoading = useSelector((state) => state.auth.loginLoading);
+  const loginError = useSelector((state) => state.auth.loginError);
 
   // Input onChange
   const handleInputChange = function ({ target }) {
@@ -66,7 +68,7 @@ function LoginCard() {
     <div className="card shadow mt-5">
       <div className="card-body position-relative">
         {/* Logo Component */}
-        <div className="img-cont d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
           <Logo
             redirect={false}
             containerClassName="image"

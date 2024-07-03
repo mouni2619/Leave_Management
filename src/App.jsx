@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.js';
 import LoginPage from './pages/auth/LoginPage';
 
 // Constants
-import PageURL from './urls/pageUrls';
+import PageUrls from './constants/pageUrls';
 
 // Routes
 import { MainPageRoutes } from './routes/MainRoutes';
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   MainPageRoutes,
 
   {
-    path: PageURL.LoginPage,
+    path: PageUrls.LoginPage,
     element: <LoginPage />,
   },
 ]);

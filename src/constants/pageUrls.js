@@ -5,7 +5,7 @@ const PagePath = {
 };
 
 // URLs
-const PageURL = {
+const PageUrls = {
   // Auth Prefix
   // Login Page
   LoginPage: `${PagePath.Auth}/login`,
@@ -18,4 +18,4 @@ const PageURL = {
   ErrorPage: `${PagePath.Error}/:errorStatusCode`,
 };
 
-export default PageURL;
+export default PageUrls;

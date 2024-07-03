@@ -13,11 +13,17 @@ const remove = (key) => {
   localStorage.removeItem(key);
 };
 
+//clear LocalStorage
+const clear = () => {
+  localStorage.clear();
+};
+
 // --------------------------------------------------------
 const LocalStorage = {
   set,
   get,
   remove,
+  clear,
 };
 
 // Default Export

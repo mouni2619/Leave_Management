@@ -5,11 +5,11 @@ import { all, put, takeLatest } from 'redux-saga/effects';
 import { AuthActions } from '../redux-slices/authSlice';
 
 // Api
-import LoginService from '../../services/auth/loginService';
+import AuthService from '../../services/auth/authService';
 
 // Constants
 import { LocalStorageKeys } from '../../constants/generalConstants';
-import PageURL from '../../urls/pageUrls';
+import PageUrls from '../../constants/pageUrls';
 
 // Utils
 import HttpClientFactory from '../../utils/httpClientFactory';
@@ -24,7 +24,7 @@ function* login(action) {
 
     // Call API
     // ------------------------------------
-    const loggedInData = LoginService.login(username, password);
+    const loggedInData = AuthService.login(username, password);
 
     const { org: orgDetails = {}, privileges = [], token } = loggedInData;
 
@@ -60,13 +60,13 @@ function* logOut(action) {
     const { navigate } = action.payload;
 
     // Clear LocalStorage
-    yield localStorage.clear();
+    yield LocalStorage.clear();
 
     // Reset HttpClientFactory
     yield HttpClientFactory.reset();
 
     // Redirect to login page
-    navigate(PageURL.LoginPage);
+    navigate(PageUrls.LoginPage);
   } catch (error) {
     // TODO :: Handle error
     console.log(error);
@@ -79,6 +79,6 @@ function* logOut(action) {
 export default function* root() {
   yield all([
     takeLatest(AuthActions.login.type, login),
-    takeLatest(AuthActions.resetLogin.type, logOut),
+    takeLatest(AuthActions.logout.type, logOut),
   ]);
 }

@@ -5,14 +5,14 @@ import ErrorHandler from '../pages/error/ErrorHandler';
 import ProtectedRoute from '../routes/ProtectedRoute';
 
 // Constants
-import PageURL from '../urls/pageUrls';
+import PageUrls from '../constants/pageUrls';
 
 // Pages :: Dashboard
 import DashboardPage from '../pages/dashboard/DashboardPage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
-  path: PageURL.DashboardPage,
+  path: PageUrls.DashboardPage,
   element: (
     // ErrorHandler
     <ErrorHandler>
@@ -22,7 +22,7 @@ export const MainPageRoutes = {
   ),
   children: [
     {
-      path: PageURL.DashboardPage,
+      path: PageUrls.DashboardPage,
       element: <DashboardPage />,
     },
   ],

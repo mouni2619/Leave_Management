@@ -9,39 +9,15 @@ import { toast } from 'react-toastify';
 import { ErrorActions } from '../../store/redux-slices/errorSlice';
 
 // constants
-import PageUrls from '../../urls/pageUrls';
+import PageUrls from '../../constants/pageUrls';
 
 // Utils
 import UrlUtils from '../../utils/urlUtils';
+import ErrorUtils from '../../utils/errorUtils';
 
 // Constants
 const ServerErrorCodes = [500, 502, 503];
 const PageErrorCodes = [401, 404];
-
-// Util Functions
-// ----------------------------------------------------------------------------
-
-function getErrorAndStatusCode(error) {
-  // default error object
-  const defaultErrorObject = {
-    errorMessage: '',
-    statusCode: false,
-  };
-
-  // from Error.response
-  if (error.response) {
-    // status code
-    const statusCode = error.response?.status;
-
-    // error message
-    const { message: errorMessage } = error.response?.data || {};
-
-    // return
-    return { errorMessage, statusCode };
-  }
-
-  return defaultErrorObject;
-}
 
 /**
  * ERROR PAGES WRAPPER COMPONENT
@@ -70,7 +46,7 @@ export default function ErrorHandler({ children }) {
 
   // errorMessage and statusCode from api error
   const { errorMessage, statusCode: errorStatusCode } =
-    getErrorAndStatusCode(apiError);
+    ErrorUtils.getErrorAndStatusCode(apiError);
 
   // If NO-Error Status Code (means no error)
   if (!errorStatusCode) {

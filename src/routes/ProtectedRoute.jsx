@@ -7,7 +7,7 @@ import LocalStorage from '../utils/localStorageUtils';
 
 // constants
 import { LocalStorageKeys } from '../constants/generalConstants';
-import PageURL from '../urls/pageUrls';
+import PageUrls from '../constants/pageUrls';
 
 // Private Methods
 // --------------------------------------------------------------------------
@@ -16,7 +16,7 @@ function isUserAuthenticated() {
   const token = LocalStorage.get(LocalStorageKeys.TOKEN);
   const userPrivileges = LocalStorage.get(LocalStorageKeys.PERMISSIONS);
 
-  // TODO : For Now userPriviliges.length >= 0 because its empty.
+  // TODO : For Now userPrivileges.length >= 0 because its empty.
   const isUserAuthenticated =
     token && userPrivileges.length >= 0 && !AuthUtils.isTokenExpired(token);
   return isUserAuthenticated;
@@ -25,7 +25,7 @@ function isUserAuthenticated() {
 /**
  * Routes which needs the USER Authenticated.
  */
-function ProtectedRoute({ children, loginPageUrl = PageURL.LoginPage }) {
+function ProtectedRoute({ children, loginPageUrl = PageUrls.LoginPage }) {
   //If user is not authenticated
   if (!isUserAuthenticated()) {
     localStorage.clear();
