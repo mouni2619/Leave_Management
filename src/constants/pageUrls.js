@@ -16,6 +16,9 @@ const PageUrls = {
 
   // Error Page
   ErrorPage: `${PagePath.Error}/:errorStatusCode`,
+
+  // Custom Error Page Urls..
+  CustomErrorPage: `${PagePath.Error}`,
 };
 
 export default PageUrls;

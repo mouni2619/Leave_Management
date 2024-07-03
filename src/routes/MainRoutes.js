@@ -1,8 +1,8 @@
 // Error Handler
-import ErrorHandler from '../pages/error/ErrorHandler';
+import ErrorHandler from '../hoc/ErrorHandler';
 
 // Routes
-import ProtectedRoute from '../routes/ProtectedRoute';
+import ProtectedRoute from '../hoc/ProtectedRoute';
 
 // Constants
 import PageUrls from '../constants/pageUrls';

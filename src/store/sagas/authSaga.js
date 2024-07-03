@@ -24,7 +24,7 @@ function* login(action) {
 
     // Call API
     // ------------------------------------
-    const loggedInData = AuthService.login(username, password);
+    const loggedInData = yield AuthService.login(username, password);
 
     const { org: orgDetails = {}, privileges = [], token } = loggedInData;
 

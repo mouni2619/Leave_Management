@@ -5,6 +5,7 @@ const initialState = {
   errorInfo: {},
   showToaster: false,
   showPageError: false,
+  errorPageUrl: '',
 };
 
 const errorSlice = createSlice({
@@ -13,10 +14,12 @@ const errorSlice = createSlice({
   reducers: {
     //----Action to Set Error Details-----//
     setError: (state, action) => {
-      const { errorInfo, showToaster, showPageError } = action.payload;
+      const { errorInfo, showToaster, showPageError, errorPageUrl } =
+        action.payload;
       state.errorInfo = errorInfo;
       state.showToaster = showToaster;
       state.showPageError = showPageError;
+      state.errorPageUrl = errorPageUrl;
     },
 
     //---- clear Error Details -----//

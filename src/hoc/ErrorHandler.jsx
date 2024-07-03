@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 // Actions
-import { ErrorActions } from '../../store/redux-slices/errorSlice';
+import { ErrorActions } from '../store/redux-slices/errorSlice';
 
 // constants
-import PageUrls from '../../constants/pageUrls';
+import PageUrls from '../constants/pageUrls';
 
 // Utils
-import UrlUtils from '../../utils/urlUtils';
-import ErrorUtils from '../../utils/errorUtils';
+import UrlUtils from '../utils/urlUtils';
+import ErrorUtils from '../utils/errorUtils';
 
 // Constants
 const ServerErrorCodes = [500, 502, 503];
@@ -37,6 +37,7 @@ export default function ErrorHandler({ children }) {
   const apiError = useSelector((state) => state.error.errorInfo);
   const showToaster = useSelector((state) => state.error.showToaster);
   const showPageError = useSelector((state) => state.error.showPageError);
+  const errorPageUrl = useSelector((state) => state.error.errorPageUrl);
 
   // useEffect
   useEffect(() => {
@@ -47,11 +48,6 @@ export default function ErrorHandler({ children }) {
   // errorMessage and statusCode from api error
   const { errorMessage, statusCode: errorStatusCode } =
     ErrorUtils.getErrorAndStatusCode(apiError);
-
-  // If NO-Error Status Code (means no error)
-  if (!errorStatusCode) {
-    return <>{children}</>;
-  }
 
   // 500 and 502 and 503 Error Status Handle
   // ---------------------------------------
@@ -69,7 +65,11 @@ export default function ErrorHandler({ children }) {
   // show Page Error
   // -------------------------------------
   if (showPageError) {
-    return <>{children}</>;
+    // TODO: We need to define the generic Error Page..
+    // TODO: Define a custom Error Page where this Component will render it
+    //TODO: By taking the redirect ErrorPage Url from the redux store..
+    navigate(errorPageUrl);
+    return null;
   }
 
   // showing toaster only
