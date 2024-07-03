@@ -22,7 +22,10 @@
   "plugins": ["react", "react-hooks"],
   "rules": {
     // add customize rules here as per our project's needs
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/click-events-have-key-events": "off"
   },
 
   "settings": {

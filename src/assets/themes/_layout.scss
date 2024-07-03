@@ -11,7 +11,8 @@ html.scroll-smooth {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
+  height: 6px;
   background-color: $scrollbar-bg;
 }
 
@@ -73,37 +74,74 @@ html.scroll-smooth {
     }
   }
 
+  // Sidebar  -----------------------------------------------------------------
   .sidebar {
     position: fixed;
     z-index: $topbar-zindex - 1;
     top: 0;
     left: 0;
-    width: $sidebar-width;
     height: 100%;
-
     transition: all 0.5s ease;
-
     border-right: 1px solid $gray-300;
+    overflow-y: auto;
+    padding: 1.5rem;
+
+    // for Right Sidebar ( default css have "left: 0" )
+    &.right {
+      left: auto !important;
+      right: 0 !important;
+      border-left: 1px solid $gray-300 !important;
+      border-right: 0 !important;
+    }
 
     &.close {
       width: $sidebar-width-collapse;
     }
+
+    // ul li
+    ul.nav {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li.nav-item {
+        padding: 0.5rem 0;
+        position: relative;
+        white-space: nowrap;
+        display: block;
+        cursor: pointer;
+
+        &.active {
+          color: $blue;
+          font-weight: bold;
+        }
+      }
+    }
   }
 
-  .content-wrapper {
-    position: relative;
-    padding: #{$grid-gutter-width / 2};
-    margin-top: $topbar-height;
-    margin-left: $sidebar-width;
-    transition: all 0.5s ease;
-    height: 100%;
+  // Main Content Styles -------------------------------------------------------
+  .main-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow-y: auto;
 
-    &.map-content {
-      overflow: hidden;
+    &.transform {
+      transform: translate(-50%, 0);
     }
 
-    &.collapsed {
-      margin-left: $sidebar-width-collapse;
+    // Content wrapper
+    .content-wrapper {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      transition: all 0.5s ease;
+      height: 100%;
+
+      &.collapsed {
+        margin-left: $sidebar-width-collapse;
+      }
     }
   }
 
