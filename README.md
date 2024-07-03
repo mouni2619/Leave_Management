@@ -22,35 +22,40 @@ This is a ReactJS based project's Seed codebase frontend. The project uses npm f
 
 ![VS Code](https://img.shields.io/badge/Vscode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 
-  <br>
-  
 **List of major frameworks and libraries used in project :**
-* React
-* React Router ``Routing``
-* Ant Design ``Components``
-* Bootstrap ``Styling``
-* React Redux ``State Management``
-* Redux Saga ``Handle Api Calls``
-* Axios ``Api Calls``
+
+- React
+- React Router `Routing`
+- Ant Design `Components`
+- Bootstrap `Styling`
+- React Redux `State Management`
+- Redux Saga `Handle Api Calls`
+- Axios `Api Calls`
+
+## Prerequisites
+
+Make sure you have installed following on your development machine:
+
+- Node `v18.16.0`
 
 ## Getting Started
 
 To get started with this project, follow these steps:
 
-1. Fork this repository.
-2. Clone this repository to your local machine:
-   ```sh
-   git clone git@github.com:AdMAVIN/reactjs-project-seed.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Start the frontend application:
-   ```sh
-   npm start
-   ```
-5. Access the application in your web browser at http://localhost:3000
+- Fork this repository.
+- Clone this repository to your local machine:
+  ```sh
+  git clone git@github.com:AdMAVIN/reactjs-project-seed.git
+  ```
+- Install NPM packages
+  ```sh
+  npm install
+  ```
+- Start the frontend application:
+  ```sh
+  npm start
+  ```
+- Access the application in your web browser at http://localhost:3000
 
 ## Usage
 
