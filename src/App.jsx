@@ -1,30 +1,14 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
 // CSS and JS
 import './App.scss';
 import 'bootstrap/dist/js/bootstrap.js';
 
-// Pages
-import LoginPage from './pages/auth/LoginPage';
-
-// Constants
-import PageUrls from './constants/pageUrls';
-
-// Routes
-import { MainPageRoutes } from './routes/MainRoutes';
-
-//Page Components
-const router = createBrowserRouter([
-  MainPageRoutes,
-
-  {
-    path: PageUrls.LoginPage,
-    element: <LoginPage />,
-  },
-]);
+// Router
+import Router from './routes/Routes';
 
 function App() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={Router} />;
 }
 
 export default App;

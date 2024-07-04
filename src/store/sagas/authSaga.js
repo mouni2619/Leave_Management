@@ -16,6 +16,27 @@ import HttpClientFactory from '../../utils/httpClientFactory';
 import LocalStorage from '../../utils/localStorageUtils';
 
 /**
+ * Function to store the loggedIn user info in the Local Storage..
+ * @param {*} loggedInData
+ */
+function storeUserInfoInLocalStorage(loggedInData) {
+  const { org: orgDetails = {}, privileges = [], token } = loggedInData;
+
+  //setting token in localstorage
+  LocalStorage.set(LocalStorageKeys.TOKEN, token);
+
+  //store permissions in local storage
+  LocalStorage.set(LocalStorageKeys.PERMISSIONS, privileges);
+
+  //set user details in local storage
+  LocalStorage.set(LocalStorageKeys.USER, JSON.stringify(loggedInData));
+
+  // set org info
+  LocalStorage.set(LocalStorageKeys.AUTH_ORG, JSON.stringify(orgDetails));
+  LocalStorage.set(LocalStorageKeys.ORG_TYPE, orgDetails.type);
+}
+
+/**
  * Login
  */
 function* login(action) {
@@ -26,20 +47,7 @@ function* login(action) {
     // ------------------------------------
     const loggedInData = yield AuthService.login(username, password);
 
-    const { org: orgDetails = {}, privileges = [], token } = loggedInData;
-
-    //setting token in localstorage
-    LocalStorage.set(LocalStorageKeys.TOKEN, token);
-
-    //store permissions in local storage
-    LocalStorage.set(LocalStorageKeys.PERMISSIONS, privileges);
-
-    //set user details in local storage
-    LocalStorage.set(LocalStorageKeys.USER, JSON.stringify(loggedInData));
-
-    // set org info
-    LocalStorage.set(LocalStorageKeys.AUTH_ORG, JSON.stringify(orgDetails));
-    LocalStorage.set(LocalStorageKeys.ORG_TYPE, orgDetails.type);
+    storeUserInfoInLocalStorage(loggedInData);
 
     // Reload HttpClientFactory
     HttpClientFactory.reload();

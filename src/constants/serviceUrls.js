@@ -1,2 +1,2 @@
 //Auth Service Urls
-export const authUrls = { login: '/api/v1/auth/token' };
+export const AuthUrls = { login: '/api/v1/auth/token' };

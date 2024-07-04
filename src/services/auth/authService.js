@@ -2,7 +2,7 @@
 import HttpClientFactory from '../../utils/httpClientFactory';
 
 //Urls
-import { authUrls } from '../../constants/serviceUrls';
+import { AuthUrls } from '../../constants/serviceUrls';
 
 // Constants
 import { HttpContentTypes } from '../../constants/httpConstants';
@@ -15,7 +15,7 @@ async function login(username, password) {
 
   const httpClient = HttpClientFactory.getInstance();
   return httpClient.post(
-    authUrls.login,
+    AuthUrls.login,
     {},
     bodyFormData,
     HttpContentTypes.APP_FORM_URL_ENCODED,

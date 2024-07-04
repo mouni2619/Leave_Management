@@ -1,5 +1,5 @@
 // Page paths
-const PagePath = {
+const PagePaths = {
   Auth: '/auth',
   Error: '/error',
 };
@@ -8,17 +8,17 @@ const PagePath = {
 const PageUrls = {
   // Auth Prefix
   // Login Page
-  LoginPage: `${PagePath.Auth}/login`,
-  ForgotPasswordPage: `${PagePath.Auth}/forgot-password`,
+  LoginPage: `${PagePaths.Auth}/login`,
+  ForgotPasswordPage: `${PagePaths.Auth}/forgot-password`,
 
   // Home Page
   DashboardPage: '/',
 
   // Error Page
-  ErrorPage: `${PagePath.Error}/:errorStatusCode`,
+  ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 
   // Custom Error Page Urls..
-  CustomErrorPage: `${PagePath.Error}`,
+  CustomErrorPage: `${PagePaths.Error}`,
 };
 
 export default PageUrls;

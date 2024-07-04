@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
  * @param {*} redirectURL : Redirect Page Url
  */
 export default function Logo({
-  className, //
+  className = '', //
   imageURL = '',
   imageHeight = 30,
   redirect = false,
@@ -21,7 +21,7 @@ export default function Logo({
   }
 
   return (
-    <div className={`${className}`}>
+    <div className={className}>
       <Link
         className="d-block"
         to={redirect ? redirectURL : 'javascript:void(0);'}
