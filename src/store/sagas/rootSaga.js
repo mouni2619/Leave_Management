@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
 // Auth Saga
-import AuthSaga from './AuthSaga';
+import AuthSaga from './authSaga';
 
 // Root Saga
 export default function* RootSaga() {

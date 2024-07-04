@@ -8,9 +8,7 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:import/errors",
-    "plugin:jsx-a11y/recommended"
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 12,
@@ -21,11 +19,9 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
-    // add customize rules here as per our project's needs
-    "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "off",
-    "react/prop-types": "off",
-    "jsx-a11y/click-events-have-key-events": "off"
+    "react/react-in-jsx-scope": "off"
+    // "no-unused-vars": "off",
+    // "react/prop-types": "off"
   },
 
   "settings": {

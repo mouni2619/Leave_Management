@@ -1,20 +1,15 @@
-// CSS
-import './App.scss';
+import { RouterProvider } from 'react-router-dom';
 
-// Pages
-import WidePageLayout from './components/layouts/WidePageLayout.jsx';
-import TwoColumnsLayout from './components/layouts/TwoColumnsLayout.jsx';
-import ThreeColumnsLayout from './components/layouts/ThreeColumnsLayout.jsx';
+// CSS and JS
+import './App.scss';
+import 'bootstrap/dist/js/bootstrap.js';
+
+// Router
+import Router from './routes/Routes';
 
 /**
- * App Component
+ * App File
  */
 export default function App() {
-  return (
-    <>
-      {/* <WidePageLayout /> */}
-      <TwoColumnsLayout />
-      {/* <ThreeColumnsLayout /> */}
-    </>
-  );
+  return <RouterProvider router={Router} />;
 }

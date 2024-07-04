@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 
 // Store
-import Store from './store/Store.js';
+import Store from './store/store.js';
 
 // App
 import App from './App.jsx';

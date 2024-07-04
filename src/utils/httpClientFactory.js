@@ -2,7 +2,7 @@
 import AuthUtils from './authUtils';
 
 // Http Client
-import HttpClient from './HttpClient';
+import HttpClient from './httpClient';
 
 //
 // Factory Implementation of HttpClient

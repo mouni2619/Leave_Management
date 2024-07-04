@@ -1,18 +1,22 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Constants
-import { HttpContentTypes, HttpHeaders, HttpMethods } from "../constants/HttpConstants";
+import {
+  HttpContentTypes,
+  HttpHeaders,
+  HttpMethods,
+} from '../constants/httpConstants';
 
 // convert False To String
 function convertFalseToString(params, key) {
   if (params[key] === false) {
-    params[key] = "false";
+    params[key] = 'false';
   }
 }
 
 // convert String To False
 function convertStringToFalse(params, key) {
-  if (params[key] === "false") {
+  if (params[key] === 'false') {
     params[key] = false;
   }
 }
@@ -21,18 +25,22 @@ function convertStringToFalse(params, key) {
 // ----------------------------------------------------------------------------
 function serializeParams(params) {
   // options
-  let options = "";
+  let options = '';
 
   for (const key in params) {
     // converting false to string
     convertFalseToString(params, key);
-    if (typeof params[key] !== "object" && params[key]) {
+    if (typeof params[key] !== 'object' && params[key]) {
       // converting string to false
       convertStringToFalse(params, key);
 
       // update options
       options += `${key}=${params[key]}&`;
-    } else if (typeof params[key] === "object" && params[key] && params[key].length) {
+    } else if (
+      typeof params[key] === 'object' &&
+      params[key] &&
+      params[key].length
+    ) {
       params[key].forEach((el) => (options += `${key}=${el}&`));
     }
   }
@@ -57,7 +65,9 @@ class HttpClient {
   get = async (url, params = {}, contentType = HttpContentTypes.APP_JSON) => {
     // headers
     const headers = {
-      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken
+        ? 'Bearer ' + this.authToken
+        : '',
       [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
       [HttpHeaders.ContentType]: contentType,
     };
@@ -75,10 +85,17 @@ class HttpClient {
   };
 
   // Method :: POST
-  post = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
+  post = async (
+    url,
+    params = {},
+    data = {},
+    contentType = HttpContentTypes.APP_JSON,
+  ) => {
     // headers
     const headers = {
-      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken
+        ? 'Bearer ' + this.authToken
+        : '',
       [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
       [HttpHeaders.ContentType]: contentType,
     };
@@ -96,10 +113,17 @@ class HttpClient {
   };
 
   // Methods :: PUT
-  put = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
+  put = async (
+    url,
+    params = {},
+    data = {},
+    contentType = HttpContentTypes.APP_JSON,
+  ) => {
     // headers
     const headers = {
-      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken
+        ? 'Bearer ' + this.authToken
+        : '',
       [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
       [HttpHeaders.ContentType]: contentType,
     };
@@ -117,10 +141,17 @@ class HttpClient {
   };
 
   // Methods :: DELETE
-  delete = async (url, params = {}, data = {}, contentType = HttpContentTypes.APP_JSON) => {
+  delete = async (
+    url,
+    params = {},
+    data = {},
+    contentType = HttpContentTypes.APP_JSON,
+  ) => {
     // headers
     const headers = {
-      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken
+        ? 'Bearer ' + this.authToken
+        : '',
       [HttpHeaders.Accept]: HttpContentTypes.APP_JSON,
       [HttpHeaders.ContentType]: contentType,
     };
@@ -138,11 +169,18 @@ class HttpClient {
   };
 
   // Methods :: DOWNLOAD FILE
-  downloadFile = async (url, params = {}, headers = {}, responseType = "blob") => {
+  downloadFile = async (
+    url,
+    params = {},
+    headers = {},
+    responseType = 'blob',
+  ) => {
     // headers
     const reqHeaders = {
       ...headers,
-      [HttpHeaders.Authorization]: this.authToken ? "Bearer " + this.authToken : "",
+      [HttpHeaders.Authorization]: this.authToken
+        ? 'Bearer ' + this.authToken
+        : '',
     };
 
     // invoke axios

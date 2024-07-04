@@ -20,31 +20,7 @@ function isTokenExpired(authToken) {
   return isExpired;
 }
 
-/**
- * Set Token
- */
-const setToken = (token) => {
-  localStorage.setItem('token', token);
-};
-
-/**
- * Get Token
- */
-const getToken = () => {
-  return localStorage.getItem('token');
-};
-
-/**
- * Remove Token
- */
-const removeToken = () => {
-  localStorage.removeItem('token');
-};
-
 const AuthUtils = {
-  setToken,
-  getToken,
-  removeToken,
   isTokenExpired,
 };
 
