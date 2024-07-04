@@ -28,7 +28,7 @@ const authSlice = createSlice({
     },
 
     //---- clear Login Details -----//
-    resetLogin: () => initialState,
+    logout: () => initialState,
   },
 });
 

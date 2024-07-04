@@ -2,10 +2,10 @@ import { compose, configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 
 // Root Reducer
-import { RootReducer } from './reducer/RootReducer';
+import { RootReducer } from './reducer/rootReducer';
 
 // Root Saga
-import RootSaga from './saga/RootSaga';
+import RootSaga from './sagas/rootSaga';
 
 // Middleware
 const sagaMiddleware = createSagaMiddleware();

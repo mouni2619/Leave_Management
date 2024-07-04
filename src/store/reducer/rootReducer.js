@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 
 // Auth Reducer
-import { AuthReducer } from '../redux-slices/AuthSlice';
+import { AuthReducer } from '../redux-slices/authSlice';
+
+// Error Reducer
+import { ErrorReducer } from '../redux-slices/errorSlice';
 
 // Root Reducer definition
 export const RootReducer = combineReducers({
@@ -9,4 +12,7 @@ export const RootReducer = combineReducers({
 
   // Auth Reducer
   auth: AuthReducer,
+
+  // Error Reducer
+  error: ErrorReducer,
 });
