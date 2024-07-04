@@ -2,12 +2,12 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 
 // Utils
-import AuthUtils from '../utils/authUtils';
-import LocalStorage from '../utils/localStorageUtils';
+import AuthUtils from '../../utils/authUtils';
+import LocalStorage from '../../utils/localStorageUtils';
 
 // constants
-import { LocalStorageKeys } from '../constants/generalConstants';
-import PageUrls from '../constants/pageUrls';
+import { LocalStorageKeys } from '../../constants/generalConstants';
+import PageUrls from '../../constants/pageUrls';
 
 // Private Methods
 // --------------------------------------------------------------------------

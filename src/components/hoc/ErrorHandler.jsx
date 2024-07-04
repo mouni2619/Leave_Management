@@ -6,14 +6,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 // Actions
-import { ErrorActions } from '../store/redux-slices/errorSlice';
+import { ErrorActions } from '../../store/redux-slices/errorSlice';
 
 // constants
-import PageUrls from '../constants/pageUrls';
+import PageUrls from '../../constants/pageUrls';
 
 // Utils
-import UrlUtils from '../utils/urlUtils';
-import ErrorUtils from '../utils/errorUtils';
+import UrlUtils from '../../utils/urlUtils';
+import ErrorUtils from '../../utils/errorUtils';
 
 // Constants
 const ServerErrorCodes = [500, 502, 503];
