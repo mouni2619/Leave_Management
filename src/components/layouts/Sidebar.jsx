@@ -4,7 +4,7 @@ import { cloneElement } from 'react';
 import NavBranding from './NavBranding';
 
 // Page Component
-function SidebarHeader({ showSideBar, sidebarConfig }) {
+function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
   // Sidebar Config
   const {
     redirectURL = '',
@@ -27,7 +27,7 @@ function SidebarHeader({ showSideBar, sidebarConfig }) {
     return null;
   }
 
-  if (showSideBar) {
+  if (isSidebarOpen) {
     return (
       <NavBranding
         height={headerLogoHeight}
@@ -49,48 +49,47 @@ function SidebarHeader({ showSideBar, sidebarConfig }) {
 /**
  * Sidebar
  * @param {*} sidebarConfig : Object
- * @param {*} showSideBar : Boolean Value
+ * @param {*} isSidebarOpen : Boolean Value
  * @param {*} setShowSideBar : Boolean Value
  * @param {*} sidebarCollapsible : Boolean Value
  */
 export default function Sidebar({
   sidebarConfig = {},
-  showSideBar = false,
-  setShowSideBar,
+  isSidebarOpen = false,
+  setIsSidebarOpen = () => {},
   sidebarCollapsible = false,
   sidebarPosition = 'left',
 }) {
   const { menuComponent = <></>, footerComponent = <></> } = sidebarConfig;
 
+  // collapsed style
+  const sidebarCollapsedStyle = isSidebarOpen ? '' : 'collapsed';
+
   return (
-    <nav
-      className={`sidebar ${sidebarPosition} ${showSideBar ? '' : 'collapsed'}`}
-    >
+    <nav className={`sidebar ${sidebarPosition} ${sidebarCollapsedStyle}`}>
       <header>
         {/* Side bar Header */}
         <SidebarHeader
-          showSideBar={showSideBar}
+          isSidebarOpen={isSidebarOpen}
           sidebarConfig={sidebarConfig}
-          setShowSideBar={setShowSideBar}
-          sidebarCollapsible={sidebarCollapsible}
         />
       </header>
 
       {sidebarCollapsible && (
         <button
           className="bg-black rounded-circle burger-style"
-          onClick={() => setShowSideBar(!showSideBar)}
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           <i className="fa fa-fw fa-bars text-white" />
         </button>
       )}
 
       {/* Menu Component */}
-      {menuComponent && cloneElement(menuComponent, { showSideBar })}
+      {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
 
-      <footer className="sidebar-footer ms-0">
+      <footer className="sidebar-footer">
         {/* Footer Component */}
-        {footerComponent && cloneElement(footerComponent, { showSideBar })}
+        {footerComponent && cloneElement(footerComponent, { isSidebarOpen })}
       </footer>
     </nav>
   );

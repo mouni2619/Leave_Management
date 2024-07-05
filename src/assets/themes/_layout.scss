@@ -83,8 +83,8 @@ html.scroll-smooth {
     }
 
     .sidebar-footer {
-      background-color: $gray-600;
-      padding: 12px 0px 12px 28px;
+      background-color: $footer-color;
+      padding: 10px 20px;
     }
   }
 
@@ -132,19 +132,18 @@ html.scroll-smooth {
       }
 
       &.with-right-sidebar {
-        margin-right: $sidebar-left-width;
+        margin-right: $sidebar-right-width;
 
         &.right-collapsed {
-          margin-right: $sidebar-left-width-collapse;
+          margin-right: $sidebar-right-width-collapse;
         }
       }
     }
 
     .sidebar {
-      width: $sidebar-left-width;
-
       &.left {
         left: 0;
+        width: $sidebar-left-width;
         border-right: 1px solid $gray-300;
 
         .burger-style {
@@ -154,6 +153,7 @@ html.scroll-smooth {
 
       &.right {
         right: 0;
+        width: $sidebar-right-width;
         border-left: 1px solid $gray-300;
 
         .burger-style {
@@ -180,7 +180,7 @@ html.scroll-smooth {
       }
 
       &.right.collapsed {
-        width: $sidebar-left-width-collapse;
+        width: $sidebar-right-width-collapse;
 
         .burger-style {
           margin-left: -1.25rem;
@@ -190,9 +190,6 @@ html.scroll-smooth {
 
     // main cont style with left-right sidebars
     .main-cont {
-      // top: $topbar-height;
-      background-color: red;
-
       &.left {
         left: $sidebar-left-width;
 
@@ -202,10 +199,10 @@ html.scroll-smooth {
       }
 
       &.right {
-        right: $sidebar-left-width;
+        right: $sidebar-right-width;
 
         &.right-collapsed {
-          right: $sidebar-left-width-collapse;
+          right: $sidebar-right-width-collapse;
         }
       }
     }

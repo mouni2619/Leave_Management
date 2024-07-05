@@ -1,16 +1,15 @@
 import { useState } from 'react';
 
 // Layouts
-import Layout from './Layout';
+import Layout from '../components/layouts/Layout';
 
 // Constants
-import PageUrls from '../../constants/pageUrls';
+import PageUrls from '../constants/pageUrls';
 
 // Images
-import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
+import URL_IMG_LOGO from '../assets/images/brand/logo.png';
 
 // Sidebar Footer
-// with "showSidebar" prop, footer content can be changed
 function SidebarFooter({ showSideBar }) {
   const spanText = showSideBar ? 'Open' : 'Closed';
 
@@ -48,8 +47,8 @@ export default function MainPageLayout() {
     containerClassName: '',
   };
 
-  // Sidebar Config
-  const sidebarConfig = {
+  // Left Sidebar Config
+  const leftSidebarConfig = {
     isSidebarCollapsible: true,
     menuComponent: <SidebarContent />,
     footerComponent: <SidebarFooter />,
@@ -71,7 +70,7 @@ export default function MainPageLayout() {
   return (
     <Layout
       topbarConfig={topbarConfig}
-      sidebarConfig={sidebarConfig}
+      leftSidebarConfig={leftSidebarConfig}
       rightSidebarConfig={rightSidebarConfig}
       outletProps={[setPageHeader]}
     />

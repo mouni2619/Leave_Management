@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
 // Components
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
+import MainContent from './MainContent';
 
 // CSS
 import '../../assets/themes/_layout.scss';
@@ -14,47 +14,31 @@ import '../../assets/themes/_layout.scss';
  */
 export default function Layout({
   topbarConfig = {},
-  sidebarConfig = {},
+  leftSidebarConfig = {},
   rightSidebarConfig = {},
   themeId = '',
   outletProps = [],
 }) {
-  // Page State
-  const [showSideBar, setShowSideBar] = useState(true);
-  const [showRightSideBar, setShowRightSideBar] = useState(true);
+  // Sidebar States
+  const [isLeftSideOpen, setIsLeftSideOpen] = useState(true);
+  const [isRightSideOpen, setIsRightSideOpen] = useState(true);
 
   // Checking whether topbar and sidebar is present or not
   const isTopbarPresent = Object.keys(topbarConfig).length !== 0;
-  const isSidebarPresent = Object.keys(sidebarConfig).length !== 0;
+  const isLeftSidebarPresent = Object.keys(leftSidebarConfig).length !== 0;
   const isRightSidebarPresent = Object.keys(rightSidebarConfig).length !== 0;
 
-  // Data
+  // page layout styles (with topbar and sidebar)
   const layoutTopbarClassName =
-    isTopbarPresent && !isSidebarPresent && !isRightSidebarPresent
+    isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent
       ? 'layout-topbar'
       : '';
   const layoutSidebarClassName =
-    isSidebarPresent || isRightSidebarPresent ? 'layout-sidebar' : '';
-
-  const isSidebarCollapsed = isSidebarPresent && !showSideBar;
-  const isRightSidebarCollapsed = isRightSidebarPresent && !showRightSideBar;
-
-  // main container collapsed style
-  const leftSidebarCollapsedStyle = isSidebarCollapsed ? 'left-collapsed' : '';
-  const rightSidebarCollapsedStyle = isRightSidebarCollapsed
-    ? 'right-collapsed'
-    : '';
-  const combineCollapsedStyle = `${leftSidebarCollapsedStyle} ${rightSidebarCollapsedStyle}`;
-
-  // main container sidebar keys
-  const leftSidebarKey = isSidebarPresent ? 'left' : '';
-  const rightSidebarKey = isRightSidebarPresent ? 'right' : '';
-  const existingSidebarsKeys = `${leftSidebarKey} ${rightSidebarKey}`;
+    isLeftSidebarPresent || isRightSidebarPresent ? 'layout-sidebar' : '';
 
   // is sidebars collapsible
-  const isSidebarCollapsible = sidebarConfig.isSidebarCollapsible || false;
-  const isRightSidebarCollapsible =
-    rightSidebarConfig.isSidebarCollapsible || false;
+  const isSidebarCollapsible = leftSidebarConfig?.isSidebarCollapsible;
+  const isRightSidebarCollapsible = rightSidebarConfig?.isSidebarCollapsible;
 
   return (
     <div
@@ -65,40 +49,40 @@ export default function Layout({
       {isTopbarPresent && (
         <TopNav
           topbarConfig={topbarConfig}
-          showSideBar={showSideBar}
-          showRightSideBar={showRightSideBar}
-          isSidebarPresent={isSidebarPresent}
+          isLeftSidebarPresent={isLeftSidebarPresent}
           isRightSidebarPresent={isRightSidebarPresent}
+          isLeftSideOpen={isLeftSideOpen}
+          isRightSideOpen={isRightSideOpen}
         />
       )}
 
       {/* Left Sidebar */}
-      {isSidebarPresent && (
+      {isLeftSidebarPresent && (
         <Sidebar
-          sidebarConfig={sidebarConfig}
-          showSideBar={showSideBar}
-          setShowSideBar={setShowSideBar}
+          sidebarConfig={leftSidebarConfig}
+          isSidebarOpen={isLeftSideOpen}
+          setIsSidebarOpen={setIsLeftSideOpen}
           sidebarCollapsible={isSidebarCollapsible}
         />
       )}
 
       {/* Main Content */}
-      <div
-        className={`main-cont ${combineCollapsedStyle} ${existingSidebarsKeys}`}
-      >
-        <div className={'content-wrapper'}>
-          <Outlet context={outletProps} />
-        </div>
-      </div>
+      <MainContent
+        outletProps={outletProps}
+        isLeftSidebarPresent={isLeftSidebarPresent}
+        isRightSidebarPresent={isRightSidebarPresent}
+        isLeftSideOpen={isLeftSideOpen}
+        isRightSideOpen={isRightSideOpen}
+      />
 
       {/* Right Sidebar */}
       {isRightSidebarPresent && (
         <Sidebar
-          sidebarConfig={rightSidebarConfig}
-          showSideBar={showRightSideBar}
-          setShowSideBar={setShowRightSideBar}
-          sidebarCollapsible={isRightSidebarCollapsible}
           sidebarPosition="right"
+          sidebarConfig={rightSidebarConfig}
+          isSidebarOpen={isRightSideOpen}
+          setIsSidebarOpen={setIsRightSideOpen}
+          sidebarCollapsible={isRightSidebarCollapsible}
         />
       )}
     </div>

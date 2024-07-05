@@ -18,7 +18,7 @@ export default function DashboardPage() {
 
   return (
     <div className="page-content">
-      <h1>Dashboard Page</h1>
+      <h3>Dashboard Page Content Here...</h3>
     </div>
   );
 }
