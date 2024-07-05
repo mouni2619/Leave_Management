@@ -25,14 +25,21 @@ $green: #198754 !default;
 $teal: #20c997 !default;
 $cyan: #0dcaf0 !default;
 
+// Additional Colors
+$primary: #556ee6;
+$light-blue: #d4daf9;
+$topbar-color: #f5f5f5;
+$footer-color: #262b3c;
+
 // Body
 $border-radius: 0.125rem;
 $body-bg: $white;
+$body-bg-alt: #f8f9fa;
 $font-size-base: 0.875rem;
 
 // Body :: Font
-$font-family-base: "Roboto", "Helvetica", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-  "Noto Color Emoji";
+$font-family-base: 'Mulish', 'Roboto', 'Helvetica', sans-serif,
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 $font-size-base: 0.875rem;
 $font-weight-medium: 500;
 
@@ -41,10 +48,6 @@ $box-shadow-lg: 0 0 2rem 0.5rem rgba($gray-500, 0.175);
 $box-shadow: 0 0 1rem 0.25rem rgba($gray-500, 0.15);
 $box-shadow-sm: 0 0 0.5rem 0.125rem rgba($gray-500, 0.075);
 
-// Scrollbar
-$scrollbar-box-shadow: rgba(0, 0, 0, 0.3);
-$scrollbar-bg: #f5f5f5;
-
 // Form :: input
 $input-btn-padding-x: 2rem;
 $input-btn-padding-x-sm: 1.25rem;
@@ -52,13 +55,29 @@ $input-btn-padding-x-lg: 2.5rem;
 $input-padding-x: 0.75rem;
 $input-padding-x-sm: 0.5rem;
 $input-padding-x-lg: 1rem;
+
 $grid-gutter-width: 2rem !default;
-$breadcrumb-divider: quote(">");
+
+$breadcrumb-divider: quote('>');
 
 // Additional Variables
 // ----------------------------------------------------------------------------
-$body-bg-alt: #f3f7ff;
 $topbar-height: 4rem;
 $topbar-zindex: 2000;
-$sidebar-width: 16rem;
-$sidebar-width-collapse: 88px;
+$sidebar-left-width: 16rem;
+$sidebar-left-width-collapse: 88px;
+$sidebar-right-width: 18rem;
+$header-height: 70px;
+$sidebar-close-width: 88px;
+$footer-height: 60px;
+$collapse-margin-left: 88px;
+
+// Other
+$main-header-height: 4rem;
+$main-footer-height: 0rem;
+$zindex-main-header: 2000;
+$navbar-padding-x: #{$grid-gutter-width / 2};
+$navbar-padding-y: 0.25rem;
+$sidebar-width: 15rem;
+$content-padding-x: #{$grid-gutter-width / 2};
+$content-padding-y: 1.5rem;
