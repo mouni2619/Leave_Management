@@ -4,7 +4,7 @@ body {
   font-weight: $font-weight-normal;
 }
 
-// Table
+// Table ---------------------------------------------
 table {
   $table-border: 1px solid
     darken(
@@ -39,8 +39,44 @@ table {
     color: $gray-600;
     display: block;
   }
+
+  .tr-sec-header {
+    font-weight: bold;
+    text-align: center;
+    td {
+      background-color: $gray-100 !important;
+    }
+  }
 }
 
+.table-truncate {
+  max-width: 10rem;
+}
+
+.table-compact {
+  th {
+    padding: 4px;
+  }
+  td {
+    padding: 0px;
+  }
+
+  .form-error {
+    border: 1px double $red !important;
+  }
+
+  .selected {
+    border: 1px double $blue !important;
+  }
+}
+
+// Pagination -----------------------------------------------
+.pagination-cont {
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+// Input
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -49,28 +85,117 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
-.form-readonly {
-  input,
-  select,
-  textarea {
-    border: 1px solid transparent;
-    background-color: transparent;
-    padding-left: 0;
-  }
+// Buttons and Button Container ------------------------------
+.btn-primary {
+  color: white !important;
+}
 
-  input[disabled],
-  select[disabled],
-  textarea[disabled] {
-    background-color: transparent;
+.btn-cont {
+  button,
+  .btn {
+    margin: 2px 4px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
   }
 }
 
-// Utilities ::
-//"text-truncate" is default for  1-line
+// Forms (uncomment if needed) ------------------------------
+// .form-group {
+//   margin-bottom: 1rem;
+// }
+
+// .form-readonly {
+//   input,
+//   select,
+//   textarea {
+//     border: 1px solid transparent;
+//     background-color: transparent;
+//     padding-left: 0;
+//   }
+
+//   input[disabled],
+//   select[disabled],
+//   textarea[disabled] {
+//     background-color: transparent;
+//     resize: none;
+//   }
+// }
+
+// Card style (uncomment if needed) --------------------------------
+// .card.card-inline {
+//   display: inline-block;
+//   margin: 10px 10px;
+
+//   &:first-child {
+//     margin-left: 0px;
+//   }
+
+//   &:last-child {
+//     margin-right: 0px;
+//   }
+// }
+
+// Dropdown (uncomment if needed) -------------------------------
+// .dropdown {
+//   .menu {
+//     width: 100%;
+//     border-radius: 5px !important;
+//   }
+
+//   .button {
+//     display: flex;
+//     width: 100%;
+//     height: 100%;
+//     justify-content: space-between;
+//     align-items: center;
+//     background-color: $white;
+//   }
+
+//   .text {
+//     white-space: normal;
+//     color: $gray-900;
+//     margin-right: 5px;
+
+//     &.default {
+//       color: $gray-600;
+//     }
+//   }
+
+//   .dropdown-menu {
+//     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+//     animation-name: DropDownSlide;
+//     animation-duration: 0.3s;
+//     animation-fill-mode: both;
+//     margin-top: 55px !important;
+//     position: absolute;
+//     z-index: 1000;
+//   }
+// }
+
+// @keyframes DropDownSlide {
+//   100% {
+//     transform: translateY(0);
+//   }
+//   0% {
+//     transform: translateY(10px);
+//   }
+// }
+
+// Utilities --------------------------------------------------------
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-bold {
+  font-weight: 600;
+}
+
 // for truncate after 2-lines
 .text-truncate-2 {
   -webkit-line-clamp: 2;
@@ -87,4 +212,30 @@ input[type="number"] {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+// Position Utilities ---------------------------------------------
+.position-top-0 {
+  top: 0 !important;
+}
+
+.position-right-0 {
+  right: 0 !important;
+}
+
+.position-bottom-0 {
+  bottom: 0 !important;
+}
+
+.position-left-0 {
+  left: 0 !important;
+}
+
+// Modal ------------------------------------------------------
+.modal-backdrop {
+  z-index: 2040;
+}
+
+.modal {
+  z-index: 2050;
 }

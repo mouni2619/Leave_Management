@@ -3,6 +3,7 @@ import ErrorHandler from '../components/hoc/ErrorHandler';
 
 // Routes
 import ProtectedRoute from '../components/hoc/ProtectedRoute';
+import MainPageLayout from '../route-layouts/MainPageLayout';
 
 // Constants
 import PageUrls from '../constants/pageUrls';
@@ -17,7 +18,10 @@ export const MainPageRoutes = {
     // ErrorHandler
     <ErrorHandler>
       {/* ProtectedRoute */}
-      <ProtectedRoute />
+      <ProtectedRoute>
+        {/* Layout */}
+        <MainPageLayout />
+      </ProtectedRoute>
     </ErrorHandler>
   ),
   children: [
