@@ -7,8 +7,9 @@ import 'bootstrap/dist/js/bootstrap.js';
 // Router
 import Router from './routes/Routes';
 
-function App() {
+/**
+ * App File
+ */
+export default function App() {
   return <RouterProvider router={Router} />;
 }
-
-export default App;

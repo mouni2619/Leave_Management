@@ -22,7 +22,7 @@ import LocalStorage from '../../utils/localStorageUtils';
 function storeUserInfoInLocalStorage(loggedInData) {
   const { org: orgDetails = {}, privileges = [], token } = loggedInData;
 
-  //setting token in localstorage
+  //setting token in local storage
   LocalStorage.set(LocalStorageKeys.TOKEN, token);
 
   //store permissions in local storage
