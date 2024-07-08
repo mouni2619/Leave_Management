@@ -115,7 +115,9 @@ export default function Sidebar({
       )}
 
       {/* Menu Component */}
-      {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
+      <div className="sidebar-content">
+        {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
+      </div>
 
       <footer className="sidebar-footer">
         {/* Footer Component */}

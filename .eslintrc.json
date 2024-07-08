@@ -19,9 +19,10 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "off",
-    "react/prop-types": "off"
+    "react/react-in-jsx-scope": "off"
+    // un-comment below 2 rules while working locally
+    // "no-unused-vars": "off",
+    // "react/prop-types": "off"
   },
 
   "settings": {
