@@ -3,6 +3,12 @@ import { cloneElement } from 'react';
 // Components
 import NavBranding from './NavBranding';
 
+// Constants
+import {
+  SidebarClassNames,
+  SidebarPositions,
+} from '../../constants/layoutConstants';
+
 // Page Component
 function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
   // Sidebar Config
@@ -27,23 +33,44 @@ function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
     return null;
   }
 
-  if (isSidebarOpen) {
-    return (
-      <NavBranding
-        height={headerLogoHeight}
-        logoURL={headerLogoURL}
-        redirectURL={redirectURL}
-      />
-    );
-  }
+  // navBrand logo height and url
+  const navBrandLogoHeight = isSidebarOpen
+    ? headerLogoHeight
+    : collapsedHeaderLogoHeight;
+  const navBrandLogoUrl = isSidebarOpen
+    ? headerLogoURL
+    : collapsedHeaderLogoURL;
 
   return (
     <NavBranding
-      height={collapsedHeaderLogoHeight}
-      logoURL={collapsedHeaderLogoURL}
+      height={navBrandLogoHeight}
+      logoURL={navBrandLogoUrl}
       redirectURL={redirectURL}
     />
   );
+}
+
+// construct Sidebar ClassName
+function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
+  // Case 1: Position = "right"
+  if (sidebarPosition === SidebarPositions.right) {
+    // with collapsed
+    if (!isSidebarOpen) {
+      return SidebarClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
+    }
+
+    // without collapsed
+    return SidebarClassNames.ONLY_RIGHT_SIDE_BAR;
+  }
+
+  // DEFAULT :: Position = "left"
+  // with collapsed
+  if (!isSidebarOpen) {
+    return SidebarClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
+  }
+
+  // without collapsed
+  return SidebarClassNames.ONLY_LEFT_SIDE_BAR;
 }
 
 /**
@@ -58,15 +85,18 @@ export default function Sidebar({
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
   sidebarCollapsible = false,
-  sidebarPosition = 'left',
+  sidebarPosition = SidebarPositions.left,
 }) {
   const { menuComponent = <></>, footerComponent = <></> } = sidebarConfig;
 
-  // collapsed style
-  const sidebarCollapsedStyle = isSidebarOpen ? '' : 'collapsed';
+  // sidebar ClassName
+  const sidebarClassName = constructSidebarClassName(
+    sidebarPosition,
+    isSidebarOpen,
+  );
 
   return (
-    <nav className={`sidebar ${sidebarPosition} ${sidebarCollapsedStyle}`}>
+    <nav className={sidebarClassName}>
       <header>
         {/* Side bar Header */}
         <SidebarHeader

@@ -5,8 +5,28 @@ import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 
-// CSS
-import '../../assets/themes/_layout.scss';
+// Constants
+import { PageLayoutClassNames } from '../../constants/layoutConstants';
+
+// construct Page Layout ClassName
+function constructPageLayoutClassName(
+  isTopbarPresent,
+  isLeftSidebarPresent,
+  isRightSidebarPresent,
+) {
+  // Case 1: Only Topbar Layout
+  if (isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent) {
+    return PageLayoutClassNames.ONLY_TOPBAR_LAYOUT;
+  }
+
+  // Case 2: Top With Sidebar Layout
+  if (isLeftSidebarPresent || isRightSidebarPresent) {
+    return PageLayoutClassNames.TOP_WITH_SIDEBAR_LAYOUT;
+  }
+
+  // DEFAULT : Only Page
+  return PageLayoutClassNames.ONLY_PAGE;
+}
 
 /**
  * Layout Component
@@ -28,23 +48,19 @@ export default function Layout({
   const isLeftSidebarPresent = Object.keys(leftSidebarConfig).length !== 0;
   const isRightSidebarPresent = Object.keys(rightSidebarConfig).length !== 0;
 
-  // page layout styles (with topbar and sidebar)
-  const layoutTopbarClassName =
-    isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent
-      ? 'layout-topbar'
-      : '';
-  const layoutSidebarClassName =
-    isLeftSidebarPresent || isRightSidebarPresent ? 'layout-sidebar' : '';
-
   // is sidebars collapsible
   const isSidebarCollapsible = leftSidebarConfig?.isSidebarCollapsible;
   const isRightSidebarCollapsible = rightSidebarConfig?.isSidebarCollapsible;
 
+  // page Layout ClassName (with topbar and sidebar)
+  const pageLayoutClassName = constructPageLayoutClassName(
+    isTopbarPresent,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
+
   return (
-    <div
-      data-theme={themeId}
-      className={`page ${layoutTopbarClassName} ${layoutSidebarClassName}`}
-    >
+    <div data-theme={themeId} className={pageLayoutClassName}>
       {/* Topbar */}
       {isTopbarPresent && (
         <TopNav

@@ -10,8 +10,9 @@ import PageUrls from '../constants/pageUrls';
 import URL_IMG_LOGO from '../assets/images/brand/logo.png';
 
 // Sidebar Footer
-function SidebarFooter({ showSideBar }) {
-  const spanText = showSideBar ? 'Open' : 'Closed';
+// "isSidebarOpen" : key use change sidebar content
+function SidebarFooter({ isSidebarOpen }) {
+  const spanText = isSidebarOpen ? 'Open' : 'Closed';
 
   return (
     <div className="cursor-pointer text-white">
@@ -21,13 +22,22 @@ function SidebarFooter({ showSideBar }) {
 }
 
 // Sidebar Content
-function SidebarContent() {
+// "isSidebarOpen" : key use change sidebar content
+function SidebarContent({ isSidebarOpen }) {
+  // closed sidebar content
+  if (!isSidebarOpen) {
+    return (
+      <div className="p-3 h-100">
+        <h5>Closed</h5>
+        <h5>Content</h5>
+      </div>
+    );
+  }
+
   return (
-    <div className="p-3 my-2 h-100">
-      <h5 className="mb-0 p-1">{'one'}</h5>
-      <h5 className="mb-0 p-1">{'two'}</h5>
-      <h5 className="mb-0 p-1">{'three'}</h5>
-      <h5 className="mb-0 p-1">{'four'}</h5>
+    <div className="p-3 h-100">
+      <h5>Opened</h5>
+      <h5>Content</h5>
     </div>
   );
 }
