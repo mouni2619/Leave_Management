@@ -3,6 +3,12 @@ import { cloneElement } from 'react';
 // Components
 import NavBranding from './NavBranding';
 
+// Utils
+import LayoutUtils from '../../utils/layoutUtils';
+
+// Constants
+import { SidebarPositions } from '../../constants/layoutConstants';
+
 // Page Component
 function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
   // Sidebar Config
@@ -27,20 +33,18 @@ function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
     return null;
   }
 
-  if (isSidebarOpen) {
-    return (
-      <NavBranding
-        height={headerLogoHeight}
-        logoURL={headerLogoURL}
-        redirectURL={redirectURL}
-      />
-    );
-  }
+  // navBrand logo height and url
+  const navBrandLogoHeight = isSidebarOpen
+    ? headerLogoHeight
+    : collapsedHeaderLogoHeight;
+  const navBrandLogoUrl = isSidebarOpen
+    ? headerLogoURL
+    : collapsedHeaderLogoURL;
 
   return (
     <NavBranding
-      height={collapsedHeaderLogoHeight}
-      logoURL={collapsedHeaderLogoURL}
+      height={navBrandLogoHeight}
+      logoURL={navBrandLogoUrl}
       redirectURL={redirectURL}
     />
   );
@@ -51,31 +55,51 @@ function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
  * @param {*} sidebarConfig : Object
  * @param {*} isSidebarOpen : Boolean Value
  * @param {*} setShowSideBar : Boolean Value
- * @param {*} sidebarCollapsible : Boolean Value
+ * @param {*} sidebarPosition : "left / right"
  */
 export default function Sidebar({
   sidebarConfig = {},
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
-  sidebarCollapsible = false,
-  sidebarPosition = 'left',
+  sidebarPosition = SidebarPositions.LEFT,
 }) {
-  const { menuComponent = <></>, footerComponent = <></> } = sidebarConfig;
+  const {
+    menuComponent = <></>,
+    isSidebarCollapsible = true,
+    showHeaderCollapsibleButton = false,
+    showFooterCollapsibleButton = false,
+  } = sidebarConfig;
 
-  // collapsed style
-  const sidebarCollapsedStyle = isSidebarOpen ? '' : 'collapsed';
+  // is sidebarPosition is "left"
+  const isLeftSidebar = sidebarPosition === SidebarPositions.LEFT;
+
+  // sidebar ClassName
+  const sidebarClassName = LayoutUtils.constructSidebarClassName(
+    sidebarPosition,
+    isSidebarOpen,
+  );
+
+  // iconName and Title
+  const footerCollapsibleIconTitle = isSidebarOpen ? 'Collapse' : 'Expand';
+  const footerCollapsibleIconName = LayoutUtils.getFooterCollapsibleIconName(
+    isSidebarOpen,
+    sidebarPosition,
+  );
 
   return (
-    <nav className={`sidebar ${sidebarPosition} ${sidebarCollapsedStyle}`}>
-      <header>
-        {/* Side bar Header */}
-        <SidebarHeader
-          isSidebarOpen={isSidebarOpen}
-          sidebarConfig={sidebarConfig}
-        />
-      </header>
+    <nav className={sidebarClassName}>
+      {/* Side bar Header :: only show for sidebarPosition === "left" */}
+      {isLeftSidebar && (
+        <header>
+          <SidebarHeader
+            isSidebarOpen={isSidebarOpen}
+            sidebarConfig={sidebarConfig}
+          />
+        </header>
+      )}
 
-      {sidebarCollapsible && (
+      {/* top hamburger to close/open sidebar */}
+      {showHeaderCollapsibleButton && isSidebarCollapsible && (
         <button
           className="bg-black rounded-circle burger-style"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -85,12 +109,20 @@ export default function Sidebar({
       )}
 
       {/* Menu Component */}
-      {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
+      <div className="sidebar-content">
+        {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
+      </div>
 
-      <footer className="sidebar-footer">
-        {/* Footer Component */}
-        {footerComponent && cloneElement(footerComponent, { isSidebarOpen })}
-      </footer>
+      {/* bottom close/open sidebar button */}
+      {isSidebarCollapsible && showFooterCollapsibleButton && (
+        <footer
+          title={footerCollapsibleIconTitle}
+          className="sidebar-footer"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          <i className={`fa fa-lg ${footerCollapsibleIconName}`} />
+        </footer>
+      )}
     </nav>
   );
 }

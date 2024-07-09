@@ -1,16 +1,19 @@
 import { useState } from 'react';
 
+// Constants
+import { SidebarPositions } from '../../constants/layoutConstants';
+
+// Utils
+import LayoutUtils from '../../utils/layoutUtils';
+
 // Components
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 
-// CSS
-import '../../assets/themes/_layout.scss';
-
 /**
  * Layout Component
- *TODO :: Handle the case where we need Sidebar but no Topbar
+ * TODO :: Handle the case where we need Sidebar but no Topbar
  */
 export default function Layout({
   topbarConfig = {},
@@ -28,32 +31,34 @@ export default function Layout({
   const isLeftSidebarPresent = Object.keys(leftSidebarConfig).length !== 0;
   const isRightSidebarPresent = Object.keys(rightSidebarConfig).length !== 0;
 
-  // page layout styles (with topbar and sidebar)
-  const layoutTopbarClassName =
-    isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent
-      ? 'layout-topbar'
-      : '';
-  const layoutSidebarClassName =
-    isLeftSidebarPresent || isRightSidebarPresent ? 'layout-sidebar' : '';
+  // construct className for topnav
+  const topNavClassName = LayoutUtils.constructTopnavClassName(
+    isLeftSideOpen,
+    isRightSideOpen,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
 
-  // is sidebars collapsible
-  const isSidebarCollapsible = leftSidebarConfig?.isSidebarCollapsible;
-  const isRightSidebarCollapsible = rightSidebarConfig?.isSidebarCollapsible;
+  // page Layout ClassName (with topbar and sidebar)
+  const pageLayoutClassName = LayoutUtils.constructPageLayoutClassName(
+    isTopbarPresent,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
+
+  // construct main container className
+  const mainContentClassName = LayoutUtils.constructMainContentClassName(
+    isLeftSideOpen,
+    isRightSideOpen,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
 
   return (
-    <div
-      data-theme={themeId}
-      className={`page ${layoutTopbarClassName} ${layoutSidebarClassName}`}
-    >
+    <div data-theme={themeId} className={pageLayoutClassName}>
       {/* Topbar */}
       {isTopbarPresent && (
-        <TopNav
-          topbarConfig={topbarConfig}
-          isLeftSidebarPresent={isLeftSidebarPresent}
-          isRightSidebarPresent={isRightSidebarPresent}
-          isLeftSideOpen={isLeftSideOpen}
-          isRightSideOpen={isRightSideOpen}
-        />
+        <TopNav topbarConfig={topbarConfig} topNavClassName={topNavClassName} />
       )}
 
       {/* Left Sidebar */}
@@ -62,27 +67,22 @@ export default function Layout({
           sidebarConfig={leftSidebarConfig}
           isSidebarOpen={isLeftSideOpen}
           setIsSidebarOpen={setIsLeftSideOpen}
-          sidebarCollapsible={isSidebarCollapsible}
         />
       )}
 
       {/* Main Content */}
       <MainContent
         outletProps={outletProps}
-        isLeftSidebarPresent={isLeftSidebarPresent}
-        isRightSidebarPresent={isRightSidebarPresent}
-        isLeftSideOpen={isLeftSideOpen}
-        isRightSideOpen={isRightSideOpen}
+        mainContentClassName={mainContentClassName}
       />
 
       {/* Right Sidebar */}
       {isRightSidebarPresent && (
         <Sidebar
-          sidebarPosition="right"
+          sidebarPosition={SidebarPositions.RIGHT}
           sidebarConfig={rightSidebarConfig}
           isSidebarOpen={isRightSideOpen}
           setIsSidebarOpen={setIsRightSideOpen}
-          sidebarCollapsible={isRightSidebarCollapsible}
         />
       )}
     </div>
