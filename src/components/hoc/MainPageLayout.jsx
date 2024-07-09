@@ -7,7 +7,8 @@ import Layout from '../layouts/Layout';
 import PageUrls from '../../constants/pageUrls';
 
 // Images
-import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
+import URL_IMG_LOGO from '../../assets/images/brand/admavin.png';
+import URL_IMG_LOGO_SHORT from '../../assets/images/brand/admavin-short-logo.png';
 
 // Components
 import SidebarMenu from '../layouts/SidebarMenu';
@@ -34,8 +35,8 @@ export default function MainPageLayout() {
     showHeaderCollapsibleButton: true,
     showFooterCollapsibleButton: true,
     menuComponent: <SidebarMenu />,
-    headerLogo: { height: 35, logoURL: URL_IMG_LOGO },
-    collapsedHeaderLogo: { height: 35, logoURL: URL_IMG_LOGO },
+    headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
+    collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
     redirectURL: PageUrls.DashboardPage,
   };
 
@@ -45,8 +46,8 @@ export default function MainPageLayout() {
     showHeaderCollapsibleButton: true,
     showFooterCollapsibleButton: true,
     menuComponent: <SidebarMenu />,
-    headerLogo: { height: 35, logoURL: URL_IMG_LOGO },
-    collapsedHeaderLogo: { height: 35, logoURL: URL_IMG_LOGO },
+    headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
+    collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
     redirectURL: PageUrls.DashboardPage,
   };
 
