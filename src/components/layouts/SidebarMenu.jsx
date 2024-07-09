@@ -122,7 +122,7 @@ export function MenuItem({
         >
           <div className="d-flex align-items-center">
             <i className={`fa fa-xl nav-item-icon ${iconName}`} />
-            <h4 className="mx-2 mb-0">{title}</h4>
+            <h5 className="mx-2 mb-0">{title}</h5>
           </div>
 
           {/* arrow : open / close menu */}
