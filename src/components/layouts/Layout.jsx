@@ -1,40 +1,15 @@
 import { useState } from 'react';
 
+// Constants
+import { SidebarPositions } from '../../constants/layoutConstants';
+
+// Utils
+import LayoutUtils from '../../utils/layoutUtils';
+
 // Components
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
-
-// Constants
-import {
-  PageLayoutClassNames,
-  SidebarPositions,
-} from '../../constants/layoutConstants';
-
-// construct Page Layout ClassName
-function constructPageLayoutClassName(
-  isTopbarPresent,
-  isLeftSidebarPresent,
-  isRightSidebarPresent,
-) {
-  // Conditions
-  const onlyTopbarLayout =
-    isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
-  const onlySidebarLayout = isLeftSidebarPresent || isRightSidebarPresent;
-
-  // Case 1: Only Topbar Layout
-  if (onlyTopbarLayout) {
-    return PageLayoutClassNames.ONLY_TOPBAR_LAYOUT;
-  }
-
-  // Case 2: Only Sidebar Layout
-  if (onlySidebarLayout) {
-    return PageLayoutClassNames.ONLY_SIDEBAR_LAYOUT;
-  }
-
-  // DEFAULT : Only Page
-  return PageLayoutClassNames.ONLY_PAGE;
-}
 
 /**
  * Layout Component
@@ -56,13 +31,25 @@ export default function Layout({
   const isLeftSidebarPresent = Object.keys(leftSidebarConfig).length !== 0;
   const isRightSidebarPresent = Object.keys(rightSidebarConfig).length !== 0;
 
-  // is sidebars collapsible
-  const isSidebarCollapsible = leftSidebarConfig?.isSidebarCollapsible;
-  const isRightSidebarCollapsible = rightSidebarConfig?.isSidebarCollapsible;
+  // construct className for topnav
+  const topNavClassName = LayoutUtils.constructTopnavClassName(
+    isLeftSideOpen,
+    isRightSideOpen,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
 
   // page Layout ClassName (with topbar and sidebar)
-  const pageLayoutClassName = constructPageLayoutClassName(
+  const pageLayoutClassName = LayoutUtils.constructPageLayoutClassName(
     isTopbarPresent,
+    isLeftSidebarPresent,
+    isRightSidebarPresent,
+  );
+
+  // construct main container className
+  const mainContentClassName = LayoutUtils.constructMainContentClassName(
+    isLeftSideOpen,
+    isRightSideOpen,
     isLeftSidebarPresent,
     isRightSidebarPresent,
   );
@@ -71,13 +58,7 @@ export default function Layout({
     <div data-theme={themeId} className={pageLayoutClassName}>
       {/* Topbar */}
       {isTopbarPresent && (
-        <TopNav
-          topbarConfig={topbarConfig}
-          isLeftSidebarPresent={isLeftSidebarPresent}
-          isRightSidebarPresent={isRightSidebarPresent}
-          isLeftSideOpen={isLeftSideOpen}
-          isRightSideOpen={isRightSideOpen}
-        />
+        <TopNav topbarConfig={topbarConfig} topNavClassName={topNavClassName} />
       )}
 
       {/* Left Sidebar */}
@@ -86,17 +67,13 @@ export default function Layout({
           sidebarConfig={leftSidebarConfig}
           isSidebarOpen={isLeftSideOpen}
           setIsSidebarOpen={setIsLeftSideOpen}
-          sidebarCollapsible={isSidebarCollapsible}
         />
       )}
 
       {/* Main Content */}
       <MainContent
         outletProps={outletProps}
-        isLeftSidebarPresent={isLeftSidebarPresent}
-        isRightSidebarPresent={isRightSidebarPresent}
-        isLeftSideOpen={isLeftSideOpen}
-        isRightSideOpen={isRightSideOpen}
+        mainContentClassName={mainContentClassName}
       />
 
       {/* Right Sidebar */}
@@ -106,7 +83,6 @@ export default function Layout({
           sidebarConfig={rightSidebarConfig}
           isSidebarOpen={isRightSideOpen}
           setIsSidebarOpen={setIsRightSideOpen}
-          sidebarCollapsible={isRightSidebarCollapsible}
         />
       )}
     </div>

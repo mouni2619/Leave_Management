@@ -3,37 +3,11 @@ import { cloneElement } from 'react';
 // Components
 import NavBranding from './NavBranding';
 
+// Utils
+import LayoutUtils from '../../utils/layoutUtils';
+
 // Constants
-import {
-  SidebarClassNames,
-  SidebarPositions,
-} from '../../constants/layoutConstants';
-
-// construct Sidebar ClassName
-function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
-  // Conditions
-  const isSidebarPositionRight = sidebarPosition === SidebarPositions.RIGHT;
-
-  // Case 1: Position = "right"
-  if (isSidebarPositionRight) {
-    // with collapsed
-    if (!isSidebarOpen) {
-      return SidebarClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
-    }
-
-    // without collapsed
-    return SidebarClassNames.ONLY_RIGHT_SIDE_BAR;
-  }
-
-  // DEFAULT :: Position = "left"
-  // with collapsed
-  if (!isSidebarOpen) {
-    return SidebarClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
-  }
-
-  // without collapsed
-  return SidebarClassNames.ONLY_LEFT_SIDE_BAR;
-}
+import { SidebarPositions } from '../../constants/layoutConstants';
 
 // Page Component
 function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
@@ -81,34 +55,51 @@ function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
  * @param {*} sidebarConfig : Object
  * @param {*} isSidebarOpen : Boolean Value
  * @param {*} setShowSideBar : Boolean Value
- * @param {*} sidebarCollapsible : Boolean Value
+ * @param {*} sidebarPosition : "left / right"
  */
 export default function Sidebar({
   sidebarConfig = {},
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
-  sidebarCollapsible = false,
   sidebarPosition = SidebarPositions.LEFT,
 }) {
-  const { menuComponent = <></>, footerComponent = <></> } = sidebarConfig;
+  const {
+    menuComponent = <></>,
+    isSidebarCollapsible = true,
+    showHeaderCollapsibleButton = false,
+    showFooterCollapsibleButton = false,
+  } = sidebarConfig;
+
+  // is sidebarPosition is "left"
+  const isLeftSidebar = sidebarPosition === SidebarPositions.LEFT;
 
   // sidebar ClassName
-  const sidebarClassName = constructSidebarClassName(
+  const sidebarClassName = LayoutUtils.constructSidebarClassName(
     sidebarPosition,
     isSidebarOpen,
   );
 
+  // iconName and Title
+  const footerCollapsibleIconTitle = isSidebarOpen ? 'Collapse' : 'Expand';
+  const footerCollapsibleIconName = LayoutUtils.getFooterCollapsibleIconName(
+    isSidebarOpen,
+    sidebarPosition,
+  );
+
   return (
     <nav className={sidebarClassName}>
-      <header>
-        {/* Side bar Header */}
-        <SidebarHeader
-          isSidebarOpen={isSidebarOpen}
-          sidebarConfig={sidebarConfig}
-        />
-      </header>
+      {/* Side bar Header :: only show for sidebarPosition === "left" */}
+      {isLeftSidebar && (
+        <header>
+          <SidebarHeader
+            isSidebarOpen={isSidebarOpen}
+            sidebarConfig={sidebarConfig}
+          />
+        </header>
+      )}
 
-      {sidebarCollapsible && (
+      {/* top hamburger to close/open sidebar */}
+      {showHeaderCollapsibleButton && isSidebarCollapsible && (
         <button
           className="bg-black rounded-circle burger-style"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -122,10 +113,16 @@ export default function Sidebar({
         {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
       </div>
 
-      <footer className="sidebar-footer">
-        {/* Footer Component */}
-        {footerComponent && cloneElement(footerComponent, { isSidebarOpen })}
-      </footer>
+      {/* bottom close/open sidebar button */}
+      {isSidebarCollapsible && showFooterCollapsibleButton && (
+        <footer
+          title={footerCollapsibleIconTitle}
+          className="sidebar-footer"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          <i className={`fa fa-lg ${footerCollapsibleIconName}`} />
+        </footer>
+      )}
     </nav>
   );
 }

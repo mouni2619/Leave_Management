@@ -13,18 +13,6 @@ import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
 import SidebarMenu from '../layouts/SidebarMenu';
 import TopnavMenu from '../layouts/TopnavMenu';
 
-// Sidebar Footer
-// "isSidebarOpen" : key use change sidebar content
-function SidebarFooter({ isSidebarOpen }) {
-  const spanText = isSidebarOpen ? 'Open' : 'Closed';
-
-  return (
-    <div className="cursor-pointer text-white">
-      <span>{spanText}</span>
-    </div>
-  );
-}
-
 /**
  * Main Page Layout
  */
@@ -43,8 +31,9 @@ export default function MainPageLayout() {
   // Left Sidebar Config
   const leftSidebarConfig = {
     isSidebarCollapsible: true,
+    showHeaderCollapsibleButton: true,
+    showFooterCollapsibleButton: true,
     menuComponent: <SidebarMenu />,
-    footerComponent: <SidebarFooter />,
     headerLogo: { height: 35, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 35, logoURL: URL_IMG_LOGO },
     redirectURL: PageUrls.DashboardPage,
@@ -52,9 +41,10 @@ export default function MainPageLayout() {
 
   // Right Sidebar Config
   const rightSidebarConfig = {
-    isSidebarCollapsible: true,
+    isSidebarCollapsible: false,
+    showHeaderCollapsibleButton: true,
+    showFooterCollapsibleButton: true,
     menuComponent: <SidebarMenu />,
-    footerComponent: <SidebarFooter />,
     headerLogo: { height: 35, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 35, logoURL: URL_IMG_LOGO },
     redirectURL: PageUrls.DashboardPage,

@@ -10,8 +10,8 @@ export const PageLayoutClassNames = {
   // Only Topbar Layout
   ONLY_TOPBAR_LAYOUT: 'page layout-topbar',
 
-  // Only Sidebar layout
-  ONLY_SIDEBAR_LAYOUT: 'page layout-sidebar',
+  // Top With Sidebar layout
+  TOP_WITH_SIDEBAR_LAYOUT: 'page layout-sidebar',
 };
 
 /**

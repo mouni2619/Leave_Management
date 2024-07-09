@@ -124,8 +124,13 @@ html.scroll-smooth {
     }
 
     .sidebar-footer {
-      background-color: $footer-color;
+      text-align: center;
+      vertical-align: middle;
+      cursor: pointer;
+      width: 100%;
       padding: 10px 20px;
+      background-color: $footer-color;
+      color: $white;
     }
 
     // sidebar nav links
@@ -226,15 +231,14 @@ html.scroll-smooth {
         }
       }
 
-      &.with-right-sidebar {
-        margin-right: $sidebar-right-width;
-
-        &.right-collapsed {
-          margin-right: $sidebar-right-width-collapse;
-        }
+      // right sidebar top position only if topbar is present
+      ~ .sidebar.right {
+        top: $topbar-height;
+        height: calc(100vh - 4rem) !important; // topbar-height
       }
     }
 
+    // ------------------------------------------
     .sidebar {
       &.left {
         left: 0;
