@@ -6,7 +6,10 @@ import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 
 // Constants
-import { PageLayoutClassNames } from '../../constants/layoutConstants';
+import {
+  PageLayoutClassNames,
+  SidebarPositions,
+} from '../../constants/layoutConstants';
 
 // construct Page Layout ClassName
 function constructPageLayoutClassName(
@@ -14,14 +17,19 @@ function constructPageLayoutClassName(
   isLeftSidebarPresent,
   isRightSidebarPresent,
 ) {
+  // Conditions
+  const onlyTopbarLayout =
+    isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
+  const onlySidebarLayout = isLeftSidebarPresent || isRightSidebarPresent;
+
   // Case 1: Only Topbar Layout
-  if (isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent) {
+  if (onlyTopbarLayout) {
     return PageLayoutClassNames.ONLY_TOPBAR_LAYOUT;
   }
 
-  // Case 2: Top With Sidebar Layout
-  if (isLeftSidebarPresent || isRightSidebarPresent) {
-    return PageLayoutClassNames.TOP_WITH_SIDEBAR_LAYOUT;
+  // Case 2: Only Sidebar Layout
+  if (onlySidebarLayout) {
+    return PageLayoutClassNames.ONLY_SIDEBAR_LAYOUT;
   }
 
   // DEFAULT : Only Page
@@ -30,7 +38,7 @@ function constructPageLayoutClassName(
 
 /**
  * Layout Component
- *TODO :: Handle the case where we need Sidebar but no Topbar
+ * TODO :: Handle the case where we need Sidebar but no Topbar
  */
 export default function Layout({
   topbarConfig = {},
@@ -94,7 +102,7 @@ export default function Layout({
       {/* Right Sidebar */}
       {isRightSidebarPresent && (
         <Sidebar
-          sidebarPosition="right"
+          sidebarPosition={SidebarPositions.RIGHT}
           sidebarConfig={rightSidebarConfig}
           isSidebarOpen={isRightSideOpen}
           setIsSidebarOpen={setIsRightSideOpen}

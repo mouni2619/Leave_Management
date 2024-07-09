@@ -10,8 +10,8 @@ export const PageLayoutClassNames = {
   // Only Topbar Layout
   ONLY_TOPBAR_LAYOUT: 'page layout-topbar',
 
-  // Top With Sidebar layout
-  TOP_WITH_SIDEBAR_LAYOUT: 'page layout-sidebar',
+  // Only Sidebar layout
+  ONLY_SIDEBAR_LAYOUT: 'page layout-sidebar',
 };
 
 /**
@@ -43,6 +43,30 @@ export const TopNavClassNames = {
   RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED:
     'topbar with-left-sidebar with-right-sidebar right-collapsed',
 };
+
+// Topnav Data
+export const TopnavData = [
+  {
+    id: 1,
+    title: 'Home',
+    link: '',
+  },
+  {
+    id: 2,
+    title: 'Features',
+    link: '',
+  },
+  {
+    id: 3,
+    title: 'Contacts',
+    link: '',
+  },
+  {
+    id: 4,
+    title: 'Settings',
+    link: '',
+  },
+];
 
 /**
  * Main Content ClassNames
@@ -78,8 +102,8 @@ export const MainContentClassNames = {
  * ----------------------------------------------------------------------
  */
 export const SidebarPositions = {
-  left: 'left',
-  right: 'right',
+  LEFT: 'left',
+  RIGHT: 'right',
 };
 
 /**
@@ -96,3 +120,45 @@ export const SidebarClassNames = {
   ONLY_RIGHT_SIDE_BAR: 'sidebar right',
   ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED: 'sidebar right right-collapsed',
 };
+
+// Sidebar Data
+export const SidebarDefaultData = [
+  {
+    id: 1,
+    title: 'Item 1',
+    iconName: 'fa-user',
+    isSelected: false,
+    subItems: [
+      { label: 'Sub Item 1', id: 'a', link: '' },
+      { label: 'Sub Item 2', id: 'b', link: '' },
+      { label: 'Sub Item 3', id: 'c', link: '' },
+    ],
+  },
+  {
+    id: 2,
+    title: 'Item 2',
+    iconName: 'fa-user-cog',
+    isSelected: false,
+    subItems: [
+      { label: 'Sub Item 1', id: 'd', link: '' },
+      { label: 'Sub Item 2', id: 'e', link: '' },
+      { label: 'Sub Item 3', id: 'f', link: '' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Item 3',
+    iconName: 'fa-user-check',
+    isSelected: false,
+    subItems: [
+      { label: 'Sub Item 1', id: 'g', link: '' },
+      { label: 'Sub Item 2', id: 'h', link: '' },
+      { label: 'Sub Item 3', id: 'i', link: '' },
+    ],
+  },
+  {
+    id: 4,
+    title: 'Item 4',
+    iconName: 'fa-user-group',
+  },
+];

@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
 // Layouts
-import Layout from '../components/layouts/Layout';
+import Layout from '../layouts/Layout';
 
 // Constants
-import PageUrls from '../constants/pageUrls';
+import PageUrls from '../../constants/pageUrls';
 
 // Images
-import URL_IMG_LOGO from '../assets/images/brand/logo.png';
+import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
 
 // Components
-import SidebarMenu from '../components/layouts/SidebarMenu';
-import TopnavMenu from '../components/layouts/TopnavMenu';
+import SidebarMenu from '../layouts/SidebarMenu';
+import TopnavMenu from '../layouts/TopnavMenu';
 
 // Sidebar Footer
 // "isSidebarOpen" : key use change sidebar content

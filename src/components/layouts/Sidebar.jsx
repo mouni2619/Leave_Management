@@ -9,6 +9,32 @@ import {
   SidebarPositions,
 } from '../../constants/layoutConstants';
 
+// construct Sidebar ClassName
+function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
+  // Conditions
+  const isSidebarPositionRight = sidebarPosition === SidebarPositions.RIGHT;
+
+  // Case 1: Position = "right"
+  if (isSidebarPositionRight) {
+    // with collapsed
+    if (!isSidebarOpen) {
+      return SidebarClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
+    }
+
+    // without collapsed
+    return SidebarClassNames.ONLY_RIGHT_SIDE_BAR;
+  }
+
+  // DEFAULT :: Position = "left"
+  // with collapsed
+  if (!isSidebarOpen) {
+    return SidebarClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
+  }
+
+  // without collapsed
+  return SidebarClassNames.ONLY_LEFT_SIDE_BAR;
+}
+
 // Page Component
 function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
   // Sidebar Config
@@ -50,29 +76,6 @@ function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
   );
 }
 
-// construct Sidebar ClassName
-function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
-  // Case 1: Position = "right"
-  if (sidebarPosition === SidebarPositions.right) {
-    // with collapsed
-    if (!isSidebarOpen) {
-      return SidebarClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
-    }
-
-    // without collapsed
-    return SidebarClassNames.ONLY_RIGHT_SIDE_BAR;
-  }
-
-  // DEFAULT :: Position = "left"
-  // with collapsed
-  if (!isSidebarOpen) {
-    return SidebarClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
-  }
-
-  // without collapsed
-  return SidebarClassNames.ONLY_LEFT_SIDE_BAR;
-}
-
 /**
  * Sidebar
  * @param {*} sidebarConfig : Object
@@ -85,7 +88,7 @@ export default function Sidebar({
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
   sidebarCollapsible = false,
-  sidebarPosition = SidebarPositions.left,
+  sidebarPosition = SidebarPositions.LEFT,
 }) {
   const { menuComponent = <></>, footerComponent = <></> } = sidebarConfig;
 

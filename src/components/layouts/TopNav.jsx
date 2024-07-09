@@ -8,8 +8,18 @@ function constructTopnavClassName(
   isLeftSidebarPresent,
   isRightSidebarPresent,
 ) {
-  // Case 1: "Only Left Side" Bar Present (with or without collapsed)
-  if (isLeftSidebarPresent && !isRightSidebarPresent) {
+  // Conditions
+  const onlyLeftSidebarPresent = isLeftSidebarPresent && !isRightSidebarPresent;
+  const onlyRightSidebarPresent =
+    isRightSidebarPresent && !isLeftSidebarPresent;
+  const bothSidebarsPresent = isLeftSidebarPresent && isRightSidebarPresent;
+  const bothSidebarsCollapsed = !isLeftSideOpen && !isRightSideOpen;
+  const bothSidebarsOpen = isLeftSideOpen && isRightSideOpen;
+  const leftCollapsedAndRightOpen = !isLeftSideOpen && isRightSideOpen;
+  const rightCollapsedAndLeftOpen = !isRightSideOpen && isLeftSideOpen;
+
+  // Case 1: "Only Left Sidebar" Present (with or without collapsed)
+  if (onlyLeftSidebarPresent) {
     // with collapsed
     if (!isLeftSideOpen) {
       return TopNavClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
@@ -19,8 +29,8 @@ function constructTopnavClassName(
     return TopNavClassNames.ONLY_LEFT_SIDE_BAR;
   }
 
-  // Case 2: "Only Right Side" Bar Present (with or without collapsed)
-  if (isRightSidebarPresent && !isLeftSidebarPresent) {
+  // Case 2: "Only Right Sidebar" Present (with or without collapsed)
+  if (onlyRightSidebarPresent) {
     // with collapsed
     if (!isRightSideOpen) {
       return TopNavClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
@@ -31,27 +41,27 @@ function constructTopnavClassName(
   }
 
   // Case 3: Both Left and Right Side Bars Present
-  if (isLeftSidebarPresent && isRightSidebarPresent) {
+  if (bothSidebarsPresent) {
     // with both collapsed
-    if (!isLeftSideOpen && !isRightSideOpen) {
+    if (bothSidebarsCollapsed) {
       return TopNavClassNames.LEFT_AND_RIGHT_SIDE_BARS_COLLAPSED;
     }
 
     // without both collapsed
-    if (isLeftSideOpen && isRightSideOpen) {
+    if (bothSidebarsOpen) {
       return TopNavClassNames.LEFT_AND_RIGHT_SIDE_BARS;
     }
   }
 
-  // Case 4: One Collapsed And Other Not
-  if (isLeftSidebarPresent && isRightSidebarPresent) {
+  // Case 4: Both Present But One Collapsed And Other Not
+  if (bothSidebarsPresent) {
     // if Left Collapsed and Not Right
-    if (!isLeftSideOpen && isRightSideOpen) {
+    if (leftCollapsedAndRightOpen) {
       return TopNavClassNames.LEFT_SIDE_BAR_COLLAPSED_AND_RIGHT_SIDE_BAR_NOT_COLLAPSED;
     }
 
     // if Right Collapsed And Left Not
-    if (!isRightSideOpen && isLeftSideOpen) {
+    if (rightCollapsedAndLeftOpen) {
       return TopNavClassNames.RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED;
     }
   }

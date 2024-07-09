@@ -1,19 +1,60 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Page Constants
-const topnavData = [
-  { id: 1, title: 'Home', link: '' },
-  { id: 2, title: 'Features', link: '' },
-  { id: 3, title: 'Contacts', link: '' },
-  { id: 4, title: 'Settings', link: '' },
+// Hooks
+import { useToggleMenu } from '../../hooks/useToggleMenu';
+
+// Constants
+import { TopnavData } from '../../constants/layoutConstants';
+
+// profile menu constants
+const profileMenuOptions = [
+  {
+    label: 'Profile',
+    onClick: () => {},
+    iconName: 'fa-user',
+  },
+  {
+    label: 'Settings',
+    onClick: () => {},
+    iconName: 'fa-gear',
+  },
+  {
+    label: 'Logout',
+    onClick: () => {},
+    iconName: 'fa-arrow-right-from-bracket',
+  },
 ];
 
 // User Profile
 function UserProfile() {
+  // custom hooks
+  const [showMenu, toggleMenu, menuRef] = useToggleMenu();
+
   return (
-    <div className="user-profile">
+    <div ref={menuRef} className="user-profile" onClick={toggleMenu}>
+      {/* icon */}
       <i className="fa fa-user fa-xl" />
+
+      {/* Menu items */}
+      {showMenu && (
+        <ul className="rounded-3 bg-white shadow-lg p-2">
+          {profileMenuOptions.map((item, i) => {
+            const { label, onClick, iconName } = item;
+            return (
+              <li
+                key={i}
+                title={label}
+                className={`d-flex align-items-center py-2 px-4 cursor-pointer`}
+                onClick={onClick}
+              >
+                <i className={`fa ${iconName} me-2`} />
+                <span>{label}</span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }
@@ -45,12 +86,15 @@ function TopnavMenuItem({
 /**
  * Topnav Menu
  */
-export default function TopnavMenu({ topnavItems = [], defaultSelected = '' }) {
+export default function TopnavMenu({
+  topnavItems = [],
+  defaultSelectedId = 2,
+}) {
   // state
-  const [selectedItemId, setSelectedItemId] = useState(2);
+  const [selectedItemId, setSelectedItemId] = useState(defaultSelectedId);
 
   // topnav menu items
-  const menuItems = topnavItems.length > 0 ? topnavItems : topnavData;
+  const menuItems = topnavItems.length > 0 ? topnavItems : TopnavData;
 
   return (
     <div className="page-header">
