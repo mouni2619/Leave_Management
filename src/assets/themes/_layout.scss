@@ -53,7 +53,7 @@ html.scroll-smooth {
     background-color: $topbar-color !important;
 
     // adding "top" to main-container if "topbar" exist
-    ~.main-cont {
+    ~ .main-cont {
       top: $topbar-height;
     }
 
@@ -208,7 +208,6 @@ html.scroll-smooth {
 
   // Topbar Only (without sidebar)
   &.layout-topbar {
-
     // remove sidebar placeholder
     .sidebar {
       width: 0;
@@ -338,8 +337,8 @@ html.scroll-smooth {
   // topnav profile menu
   .user-profile {
     position: relative;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     align-content: center;
     text-align: center;
     border: 1px solid $gray-600;
@@ -354,7 +353,7 @@ html.scroll-smooth {
 
     ul {
       position: absolute;
-      top: 55px;
+      top: 45px;
       right: 0;
       margin-bottom: 0;
       min-width: 170px;
