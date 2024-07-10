@@ -9,7 +9,7 @@ import { AuthActions } from '../../store/redux-slices/authSlice';
 import Logo from '../../components/logo/Logo';
 
 // Images
-import URL_IMG_LOGO from '../../assets/images/brand/logo.png';
+import URL_IMG_LOGO from '../../assets/images/brand/admavin-short-logo.png';
 
 // Page Components
 // ----------------------------------------------------------------------------

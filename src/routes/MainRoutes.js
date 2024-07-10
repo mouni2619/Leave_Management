@@ -3,7 +3,7 @@ import ErrorHandler from '../components/hoc/ErrorHandler';
 
 // Routes
 import ProtectedRoute from '../components/hoc/ProtectedRoute';
-import MainPageLayout from '../route-layouts/MainPageLayout';
+import MainPageLayout from '../components/hoc/MainPageLayout';
 
 // Constants
 import PageUrls from '../constants/pageUrls';

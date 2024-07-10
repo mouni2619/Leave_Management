@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom/dist';
 
 // Components
-import PageHeader from '../../components/layouts/PageHeader';
+// import PageHeader from '../../components/layouts/PageHeader';
 
 /**
  * Dashboard Page
@@ -13,7 +13,8 @@ export default function DashboardPage() {
 
   // useEffect to update Page Header for specific pages
   useEffect(() => {
-    setHeaderComponent(<PageHeader title="Page Header" />);
+    // custom PageHeader :: (uncomment when needed)
+    // setHeaderComponent(<PageHeader title="Page Header" />);
   }, []);
 
   return (

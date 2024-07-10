@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
  * 2. toggle = function,
  * 3. ref
  */
-export function useToggle(props) {
+export function useToggleMenu(props) {
   // State
   const [show, setShow] = useState(false);
 

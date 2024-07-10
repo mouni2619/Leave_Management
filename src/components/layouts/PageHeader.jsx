@@ -2,18 +2,18 @@
 // import Breadcrumb from '../breadcrumb/Breadcrumb';
 
 // Page Components
-function TitleSection({ body = '' }) {
-  // if "body" is String then return :
-  if (typeof body === 'string') {
+function TitleSection({ title = '' }) {
+  // if "title" is String then return :
+  if (typeof title === 'string') {
     return (
-      <h2 title={body} className="title text-truncate">
-        {body}
+      <h2 title={title} className="title text-truncate">
+        {title}
       </h2>
     );
   }
 
   // returning component itself
-  return <div>{body}</div>;
+  return <div>{title}</div>;
 }
 
 /**
@@ -43,7 +43,7 @@ export default function PageHeader({
       {/* {breadcrumbList.length !== 0 && <Breadcrumb items={breadcrumbList} />} */}
 
       {/** Title */}
-      <TitleSection body={title} />
+      <TitleSection title={title} />
 
       {/** Actions */}
       {actions && <div className="page-actions">{actions}</div>}
