@@ -31,6 +31,7 @@ This is a ReactJS based project's Seed codebase frontend. The project uses npm f
 - React Redux `State Management`
 - Redux Saga `Handle Api Calls`
 - Axios `Api Calls`
+- React Hot Toast `Toaster` [Documentation](https://react-hot-toast.com/docs)
 
 ## Prerequisites
 

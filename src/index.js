@@ -9,10 +9,17 @@ import Store from './store/store.js';
 // App
 import App from './App.jsx';
 
+// Components
+import ReactHotToast from './components/react-hot-toast/ReactHotToast.jsx';
+
+// root
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
     <App />
+
+    {/* React Hot Toast */}
+    <ReactHotToast />
   </Provider>,
 );
 

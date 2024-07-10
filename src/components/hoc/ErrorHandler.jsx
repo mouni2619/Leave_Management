@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
-// TODO: @HariBukke please create a ticket to use the other toaster library you have mentioned
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 // Actions
 import { ErrorActions } from '../../store/redux-slices/errorSlice';

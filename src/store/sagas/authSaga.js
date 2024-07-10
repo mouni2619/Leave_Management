@@ -1,5 +1,6 @@
 // React Related Imports
 import { all, put, takeLatest } from 'redux-saga/effects';
+import toast from 'react-hot-toast';
 
 // Actions
 import { AuthActions } from '../redux-slices/authSlice';
@@ -58,6 +59,9 @@ function* login(action) {
     // dispatching action
     yield put(AuthActions.loginSuccess({ authInfo: loggedInData }));
   } catch (error) {
+    // Toaster
+    toast.error('Login Error');
+
     yield put(AuthActions.loginFailure({ error: 'Login Error' }));
   }
 }
