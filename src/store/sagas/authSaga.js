@@ -60,7 +60,8 @@ function* login(action) {
     yield put(AuthActions.loginSuccess({ authInfo: loggedInData }));
   } catch (error) {
     // Toaster
-    toast.error('Login Error');
+    // TODO :: uncomment when needed or show behaviour
+    // toast.error('Login Error', { position: 'top-left' });
 
     yield put(AuthActions.loginFailure({ error: 'Login Error' }));
   }
