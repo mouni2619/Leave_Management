@@ -6,12 +6,21 @@ export const PageLayoutClassNames = {
   // Only Page --------------------------
   ONLY_PAGE: 'page',
 
+  // Only Page with SidePanel --------------------------
+  ONLY_PAGE_WITH_SIDE_PANEL: 'page with-panel',
+
   // Combination styles ----------------------
   // Only Topbar Layout
   ONLY_TOPBAR_LAYOUT: 'page layout-topbar',
 
+  // Only Topbar with SidePanel Layout
+  ONLY_TOPBAR_WITH_SIDE_PANEL_LAYOUT: 'page layout-topbar with-panel',
+
   // Top With Sidebar layout
   TOP_WITH_SIDEBAR_LAYOUT: 'page layout-sidebar',
+
+  // Top With Sidebar and SidePanel layout
+  TOP_WITH_SIDEBAR_AND_PANEL_LAYOUT: 'page layout-sidebar with-panel',
 };
 
 /**
@@ -160,5 +169,43 @@ export const SidebarDefaultData = [
     id: 4,
     title: 'Item 4',
     iconName: 'fa-user-group',
+  },
+];
+
+/**
+ * Side Panel Positions
+ * ----------------------------------------------------------------------
+ */
+export const SidePanelPositions = {
+  LEFT: 'left',
+  RIGHT: 'right',
+};
+
+// Side Panel Data
+export const SidePanelData = [
+  {
+    id: 0,
+    icon: 'fa-envelope',
+    label: 'Mail',
+  },
+  {
+    id: 1,
+    icon: 'fa-video',
+    label: 'Video',
+  },
+  {
+    id: 2,
+    icon: 'fa-cart-shopping',
+    label: 'Shopping',
+  },
+  {
+    id: 3,
+    icon: 'fa-train-subway',
+    label: 'Travel',
+  },
+  {
+    id: 4,
+    icon: 'fa-hand-holding-heart',
+    label: 'Donate',
   },
 ];

@@ -10,7 +10,7 @@ import LayoutUtils from '../../utils/layoutUtils';
 import { SidebarPositions } from '../../constants/layoutConstants';
 
 // Page Component
-function SidebarHeader({ isSidebarOpen, sidebarConfig }) {
+function SidebarBranding({ isSidebarOpen, sidebarConfig }) {
   // Sidebar Config
   const {
     redirectURL = '',
@@ -62,6 +62,8 @@ export default function Sidebar({
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
   sidebarPosition = SidebarPositions.LEFT,
+  isLeftPanelPresent = false,
+  isTopbarPresent = false,
 }) {
   const {
     menuComponent = <></>,
@@ -72,6 +74,10 @@ export default function Sidebar({
 
   // is sidebarPosition is "left"
   const isLeftSidebar = sidebarPosition === SidebarPositions.LEFT;
+
+  // checking condition to show Sidebar Branding
+  const isShowSidebarBranding =
+    isLeftSidebar && (!isLeftPanelPresent || !isTopbarPresent);
 
   // sidebar ClassName
   const sidebarClassName = LayoutUtils.constructSidebarClassName(
@@ -88,16 +94,6 @@ export default function Sidebar({
 
   return (
     <nav className={sidebarClassName}>
-      {/* Side bar Header :: only show for sidebarPosition === "left" */}
-      {isLeftSidebar && (
-        <header>
-          <SidebarHeader
-            isSidebarOpen={isSidebarOpen}
-            sidebarConfig={sidebarConfig}
-          />
-        </header>
-      )}
-
       {/* top hamburger to close/open sidebar */}
       {showHeaderCollapsibleButton && isSidebarCollapsible && (
         <button
@@ -106,6 +102,14 @@ export default function Sidebar({
         >
           <i className="fa fa-fw fa-bars text-white" />
         </button>
+      )}
+
+      {/* Sidebar Branding */}
+      {isShowSidebarBranding && (
+        <SidebarBranding
+          isSidebarOpen={isSidebarOpen}
+          sidebarConfig={sidebarConfig}
+        />
       )}
 
       {/* Menu Component */}

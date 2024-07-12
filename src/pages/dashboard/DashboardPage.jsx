@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useOutletContext } from 'react-router-dom/dist';
+// import { useOutletContext } from 'react-router-dom/dist';
 
 // Components
 // import PageHeader from '../../components/layouts/PageHeader';
@@ -9,7 +9,7 @@ import { useOutletContext } from 'react-router-dom/dist';
  */
 export default function DashboardPage() {
   // Outlet Context
-  const [setHeaderComponent] = useOutletContext();
+  // const [setHeaderComponent] = useOutletContext();
 
   // useEffect to update Page Header for specific pages
   useEffect(() => {

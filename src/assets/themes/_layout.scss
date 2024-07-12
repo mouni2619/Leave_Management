@@ -57,6 +57,13 @@ html.scroll-smooth {
       top: $topbar-height;
     }
 
+    // topbar navBranding
+    .navbar-branding {
+      margin-top: -5px;
+      padding-left: 55px;
+      padding-right: 10px;
+    }
+
     // topbar nav-links
     .nav-links {
       padding-left: 15px;
@@ -74,7 +81,7 @@ html.scroll-smooth {
         height: 100%;
         align-content: center;
         padding: 10px;
-        font-weight: 400;
+        font-weight: 600;
 
         &.selected {
           font-weight: 800;
@@ -100,6 +107,46 @@ html.scroll-smooth {
     align-items: center;
   }
 
+  // Side Panel --------------------------------------------
+  .side-panel {
+    width: $side-panel-width;
+    height: 100%;
+    border-right: 1px solid $gray-300;
+
+    .burger-cont {
+      width: 100%;
+      height: $topbar-height;
+      text-align: center;
+      align-content: center;
+      background-color: $topbar-color;
+      cursor: pointer;
+      border-bottom: 1px solid $gray-300;
+    }
+
+    .panel-menu {
+      text-align: center;
+      align-content: center;
+      margin-top: 10px;
+
+      .panel-item {
+        margin: 13px;
+        margin-bottom: 10px;
+        padding: 15px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $alt;
+        }
+
+        &.selected {
+          background-color: $alt;
+          color: $primary;
+        }
+      }
+    }
+  }
+
   .sidebar {
     position: absolute;
     // z-index: $topbar-zindex - 1; // uncomment if needed
@@ -111,12 +158,11 @@ html.scroll-smooth {
     height: 100vh;
 
     // Sidebar Header
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    .navbar-branding {
+      text-align: center;
+      align-content: center;
       height: 4rem;
+      padding: 12px;
     }
 
     .sidebar-content {
@@ -188,6 +234,7 @@ html.scroll-smooth {
     }
   }
 
+  // main container --------------------------------------------------------
   .main-cont {
     position: absolute;
     // z-index: $topbar-zindex - 2; // uncomment if needed
@@ -199,7 +246,7 @@ html.scroll-smooth {
     overflow-y: auto;
   }
 
-  // Footer
+  // Footer -----------------------------------------------------
   .footer {
     bottom: 0;
     padding: 20px calc(#{$grid-gutter-width} * 0.75);
@@ -211,7 +258,14 @@ html.scroll-smooth {
     height: $footer-height;
   }
 
-  // Topbar Only (without sidebar)
+  // page with panel only -----------------------------------------
+  &.with-panel {
+    .main-cont {
+      left: $side-panel-width !important;
+    }
+  }
+
+  // Topbar Only (without sidebar) ----------------------------------
   &.layout-topbar {
     // remove sidebar placeholder
     .sidebar {
@@ -220,7 +274,63 @@ html.scroll-smooth {
     }
   }
 
-  // Topbar and Sidebar (with or without collapsible)
+  // Topbar Only (without sidebar) ----------------------------------
+  &.layout-topbar.with-panel {
+    .topbar {
+      margin-left: $side-panel-width;
+    }
+
+    .main-cont {
+      left: $side-panel-width;
+    }
+  }
+
+  // layout sidebar with panel css -----------------------------------
+  &.layout-sidebar.with-panel {
+    .sidebar.left {
+      margin-left: $side-panel-width;
+
+      // remove burger icon (open/close) and sidebar footer
+      .burger-style,
+      .sidebar-footer {
+        display: none !important;
+      }
+
+      // if side-panel is present then remove sidebar on collapse
+      &.left-collapsed {
+        display: none !important;
+      }
+
+      ~ .main-cont {
+        left: $side-panel-width + $sidebar-left-width !important;
+      }
+    }
+
+    // only when topbar present
+    .topbar ~ .sidebar.left {
+      top: $topbar-height;
+      height: calc(100vh - 4rem) !important; // topbar-height
+    }
+
+    .topbar {
+      margin-left: $side-panel-width !important;
+
+      &.left-collapsed {
+        margin-left: $side-panel-width !important;
+      }
+    }
+
+    // main container with-side-panel css
+    .main-cont {
+      left: $side-panel-width !important;
+
+      &.left.left-collapsed {
+        left: $side-panel-width !important;
+      }
+    }
+  }
+
+  // Topbar and Sidebar (with or without collapsible) ----------------------------------
   &.layout-sidebar {
     .topbar {
       &.with-left-sidebar {
@@ -274,7 +384,7 @@ html.scroll-smooth {
         width: $sidebar-left-width-collapse;
 
         .burger-style {
-          margin-left: $sidebar-left-width-collapse - 20px;
+          margin-left: $sidebar-left-width-collapse - 1.25rem;
         }
       }
 
@@ -307,16 +417,6 @@ html.scroll-smooth {
     }
   }
 }
-
-// Branding (uncomment when needed) -------------------------------------------------------
-// .navbar-branding {
-//   height: $topbar-height;
-//   border-bottom: 1px solid $gray-300;
-
-//   &.left {
-//     width: $sidebar-left-width;
-//   }
-// }
 
 // Page Header ----------------------------------------------------
 .page-header {

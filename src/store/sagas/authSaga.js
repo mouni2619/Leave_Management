@@ -41,7 +41,11 @@ function storeUserInfoInLocalStorage(loggedInData) {
  */
 function* login(action) {
   try {
-    const { username, password, navigation } = action.payload;
+    const {
+      username,
+      password,
+      // navigation
+    } = action.payload;
 
     // Call API
     // ------------------------------------
