@@ -2,6 +2,11 @@ import { Skeleton, Table } from 'antd';
 
 const KEY = 'key';
 
+/**
+ * Constructs Column placeholders
+ * @param {*} columnCount
+ * @returns
+ */
 function constructColumns(columnCount) {
   const columns = [];
   for (let i = 0; i <= columnCount; i++) {
@@ -13,28 +18,40 @@ function constructColumns(columnCount) {
     };
     columns.push(eachColumn);
   }
-  return columns;
+
+  return columns.map((column) => {
+    return {
+      ...column,
+      render: () => (
+        <Skeleton
+          key={column.dataIndex}
+          title={true}
+          paragraph={false}
+          active={true}
+        />
+      ),
+    };
+  });
 }
 
-function columnPlaceholder(key) {
-  return <Skeleton key={key} title={true} paragraph={false} active={true} />;
+/**
+ * Function to construct placeholders for rows
+ * @param {*} rowCount
+ * @returns
+ */
+function constructDataSource(rowCount) {
+  return [...Array(rowCount)].map((_, index) => ({
+    key: `${KEY}${index}`,
+  }));
 }
 
 export default function SkeletonTable({ columnCount, rowCount }) {
-  const columns = constructColumns(columnCount);
   return (
     <Table
       rowKey={KEY}
       pagination={false}
-      dataSource={[...Array(rowCount)].map((_, index) => ({
-        key: `${KEY}${index}`,
-      }))}
-      columns={columns.map((column) => {
-        return {
-          ...column,
-          render: () => columnPlaceholder(column.dataIndex),
-        };
-      })}
+      dataSource={() => constructDataSource(rowCount)}
+      columns={() => constructColumns(columnCount)}
     />
   );
 }
