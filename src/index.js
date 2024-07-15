@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import { Toaster } from 'react-hot-toast';
 
 // Store
 import Store from './store/store.js';
@@ -9,17 +10,14 @@ import Store from './store/store.js';
 // App
 import App from './App.jsx';
 
-// Components
-import ReactHotToast from './components/react-hot-toast/ReactHotToast.jsx';
-
 // root
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={Store}>
     <App />
 
-    {/* React Hot Toast */}
-    <ReactHotToast />
+    {/* React Hot Toast : https://react-hot-toast.com/docs/toaster */}
+    <Toaster position="top-center" reverseOrder={false} />
   </Provider>,
 );
 
