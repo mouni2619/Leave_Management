@@ -77,7 +77,7 @@ function* logOut(action) {
     navigate(PageUrls.LoginPage);
   } catch (error) {
     // TODO :: Handle error
-    console.log(error);
+    // console.log(error);
   }
 }
 
