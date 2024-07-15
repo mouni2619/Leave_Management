@@ -4,8 +4,8 @@ const KEY = 'key';
 
 /**
  * Constructs Column placeholders
- * @param {*} columnCount
- * @returns
+ * @param {*} columnCount: Number
+ * @returns Array of column placholders to render loading skeleton
  */
 function constructColumns(columnCount) {
   const columns = [];
@@ -36,8 +36,8 @@ function constructColumns(columnCount) {
 
 /**
  * Function to construct placeholders for rows
- * @param {*} rowCount
- * @returns
+ * @param {*} rowCount: Number
+ * @returns: Array of row placholders to render loading skeleton
  */
 function constructDataSource(rowCount) {
   return [...Array(rowCount)].map((_, index) => ({
