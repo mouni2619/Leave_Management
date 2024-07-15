@@ -1,5 +1,7 @@
 import { Skeleton, Table } from 'antd';
 
+const KEY = 'key';
+
 function constructColumns(columnCount) {
   const columns = [];
   for (let i = 0; i <= columnCount; i++) {
@@ -22,10 +24,10 @@ export default function SkeletonTable({ columnCount, rowCount }) {
   const columns = constructColumns(columnCount);
   return (
     <Table
-      rowKey="key"
+      rowKey={KEY}
       pagination={false}
       dataSource={[...Array(rowCount)].map((_, index) => ({
-        key: `key${index}`,
+        key: `${KEY}${index}`,
       }))}
       columns={columns.map((column) => {
         return {
