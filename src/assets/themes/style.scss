@@ -8,7 +8,7 @@ body {
 table {
   $table-border: 1px solid
     darken(
-      $color: $body-bg-alt,
+      $color: $alice-blue,
       $amount: 5%,
     ) !important;
 
@@ -26,7 +26,7 @@ table {
   }
 
   th {
-    background-color: $body-bg-alt !important;
+    background-color: $alice-blue !important;
     font-weight: 600 !important;
   }
 

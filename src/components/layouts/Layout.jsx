@@ -21,6 +21,7 @@ export default function Layout({
   leftSidebarConfig = {},
   rightSidebarConfig = {},
   themeId = '',
+  // array of props (can be used to set custom header for specific page under a Route)
   outletProps = [],
 }) {
   // Sidebar States for open/close

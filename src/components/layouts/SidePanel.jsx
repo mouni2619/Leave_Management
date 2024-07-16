@@ -1,3 +1,5 @@
+import { cloneElement } from 'react';
+
 // Constants
 import { SidePanelPositions } from '../../constants/layoutConstants';
 
@@ -20,7 +22,7 @@ export default function SidePanel({
   const { containerClassName = '', menuComponent = <></> } = sidePanelConfig;
 
   // title
-  const collapseButtonTitle = isSidebarOpen ? 'Close Sidebar' : 'Open Sidebar';
+  const collapseButtonTitle = isSidebarOpen ? 'Hide Menu' : 'Show Menu';
 
   // className
   const iconClassName = isSidebarPresent && isSidebarOpen ? 'text-primary' : '';
@@ -47,7 +49,8 @@ export default function SidePanel({
       </div>
 
       {/* Menu Component */}
-      {menuComponent}
+      {menuComponent &&
+        cloneElement(menuComponent, { isSidebarOpen, setIsSidebarOpen })}
     </div>
   );
 }

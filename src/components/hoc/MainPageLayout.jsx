@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 // Layouts
 import Layout from '../layouts/Layout';
 
@@ -19,9 +17,6 @@ import SidePanelMenu from '../layouts/SidePanelMenu';
  * Main Page Layout
  */
 export default function MainPageLayout() {
-  // State
-  const [pageHeader, setPageHeader] = useState(<TopnavMenu />);
-
   // left panel config
   const leftPanelConfig = {
     menuComponent: <SidePanelMenu />,
@@ -29,10 +24,10 @@ export default function MainPageLayout() {
   };
 
   // Top bar Config
-  // default will be added here for all same RoutePages
+  // default header component will be added here for all same RoutePages
   // custom header can be added from page itself using hook : useOutletContext
   const topbarConfig = {
-    menuComponent: pageHeader,
+    menuComponent: <TopnavMenu />,
     containerClassName: '',
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
     redirectURL: PageUrls.DashboardPage,
@@ -66,7 +61,6 @@ export default function MainPageLayout() {
       leftPanelConfig={leftPanelConfig}
       leftSidebarConfig={leftSidebarConfig}
       rightSidebarConfig={rightSidebarConfig}
-      outletProps={[setPageHeader]}
     />
   );
 }

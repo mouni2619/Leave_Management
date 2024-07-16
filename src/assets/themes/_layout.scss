@@ -59,8 +59,7 @@ html.scroll-smooth {
 
     // topbar navBranding
     .navbar-branding {
-      margin-top: -5px;
-      padding-left: 55px;
+      padding-left: 32px;
       padding-right: 10px;
     }
 
@@ -82,6 +81,7 @@ html.scroll-smooth {
         align-content: center;
         padding: 10px;
         font-weight: 600;
+        cursor: pointer;
 
         &.selected {
           font-weight: 800;
@@ -136,11 +136,11 @@ html.scroll-smooth {
         cursor: pointer;
 
         &:hover {
-          background-color: $alt;
+          background-color: $alice-blue;
         }
 
         &.selected {
-          background-color: $alt;
+          background-color: $alice-blue;
           color: $primary;
         }
       }
@@ -182,7 +182,7 @@ html.scroll-smooth {
     // sidebar nav links
     .nav-links {
       padding: 15px;
-      overflow: auto;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       row-gap: 8px;
@@ -199,7 +199,7 @@ html.scroll-smooth {
 
         &.selected,
         &:hover {
-          background-color: $alt;
+          background-color: $alice-blue;
           border-radius: 5px;
         }
 
@@ -464,7 +464,7 @@ html.scroll-smooth {
       border: 1px solid $gray-200;
 
       li:hover {
-        background-color: $alt;
+        background-color: $alice-blue;
         border-radius: 5px;
         font-weight: 700;
       }
