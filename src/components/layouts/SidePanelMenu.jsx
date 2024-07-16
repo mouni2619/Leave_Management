@@ -23,11 +23,7 @@ export default function SidePanelMenu({ menuItems = [] }) {
     <div className="panel-menu">
       {sidePanelMenuItems.map((info) => {
         const { id, label, icon } = info;
-
-        // checking selected or not
         const isSelectedOption = selected === id;
-
-        // selected className
         const selectedCLassName = isSelectedOption ? 'selected' : '';
 
         return (
