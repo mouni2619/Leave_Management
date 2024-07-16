@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 // Layouts
 import Layout from '../layouts/Layout';
 
@@ -13,20 +11,26 @@ import URL_IMG_LOGO_SHORT from '../../assets/images/brand/admavin-short-logo.png
 // Components
 import SidebarMenu from '../layouts/SidebarMenu';
 import TopnavMenu from '../layouts/TopnavMenu';
+import SidePanelMenu from '../layouts/SidePanelMenu';
 
 /**
  * Main Page Layout
  */
 export default function MainPageLayout() {
-  // State
-  const [pageHeader, setPageHeader] = useState(<TopnavMenu />);
+  // left panel config
+  const leftPanelConfig = {
+    menuComponent: <SidePanelMenu />,
+    containerClassName: '',
+  };
 
   // Top bar Config
-  // default will be added here for all same RoutePages
+  // default header component will be added here for all same RoutePages
   // custom header can be added from page itself using hook : useOutletContext
   const topbarConfig = {
-    menuComponent: pageHeader,
+    menuComponent: <TopnavMenu />,
     containerClassName: '',
+    headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
+    redirectURL: PageUrls.DashboardPage,
   };
 
   // Left Sidebar Config
@@ -42,7 +46,7 @@ export default function MainPageLayout() {
 
   // Right Sidebar Config
   const rightSidebarConfig = {
-    isSidebarCollapsible: false,
+    isSidebarCollapsible: true,
     showHeaderCollapsibleButton: true,
     showFooterCollapsibleButton: true,
     menuComponent: <SidebarMenu />,
@@ -54,9 +58,9 @@ export default function MainPageLayout() {
   return (
     <Layout
       topbarConfig={topbarConfig}
+      leftPanelConfig={leftPanelConfig}
       leftSidebarConfig={leftSidebarConfig}
       rightSidebarConfig={rightSidebarConfig}
-      outletProps={[setPageHeader]}
     />
   );
 }

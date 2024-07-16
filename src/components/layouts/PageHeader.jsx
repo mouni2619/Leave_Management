@@ -30,7 +30,7 @@ export default function PageHeader({
   actions,
   shadow = false,
   border = false,
-  breadcrumbList = [],
+  // breadcrumbList = [],
   className = '',
 }) {
   // Props

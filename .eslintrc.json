@@ -19,10 +19,14 @@
   },
   "plugins": ["react", "react-hooks"],
   "rules": {
-    "react/react-in-jsx-scope": "off"
-    // un-comment below 2 rules while working locally
+    "react/react-in-jsx-scope": "off",
+    // don't keep any unused variable (either comment them or remove)
+    // "off" means wont show any error for unused variables
     // "no-unused-vars": "off",
-    // "react/prop-types": "off"
+
+    // as of now we are keeping this "off"
+    // until we define "prop-types" for every component
+    "react/prop-types": "off"
   },
 
   "settings": {

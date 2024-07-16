@@ -83,20 +83,40 @@ function constructPageLayoutClassName(
   isTopbarPresent,
   isLeftSidebarPresent,
   isRightSidebarPresent,
+  isLeftPanelPresent,
 ) {
   // Conditions
   const onlyTopbarLayout =
     isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
   const topWithSidebarLayout = isLeftSidebarPresent || isRightSidebarPresent;
+  const onlyPageWithSidePanelLayout =
+    isLeftPanelPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
 
   // Case 1: Only Topbar Layout
   if (onlyTopbarLayout) {
+    // with side panel
+    if (isLeftPanelPresent) {
+      return PageLayoutClassNames.ONLY_TOPBAR_WITH_SIDE_PANEL_LAYOUT;
+    }
+
+    // without side-panel
     return PageLayoutClassNames.ONLY_TOPBAR_LAYOUT;
   }
 
   // Case 2: Top with Sidebar Layout
   if (topWithSidebarLayout) {
+    // with side panel
+    if (isLeftPanelPresent) {
+      return PageLayoutClassNames.TOP_WITH_SIDEBAR_AND_PANEL_LAYOUT;
+    }
+
+    // without side pane;
     return PageLayoutClassNames.TOP_WITH_SIDEBAR_LAYOUT;
+  }
+
+  // Case 3: Only Page WIth Side Panel
+  if (onlyPageWithSidePanelLayout) {
+    return PageLayoutClassNames.ONLY_PAGE_WITH_SIDE_PANEL;
   }
 
   // DEFAULT : Only Page

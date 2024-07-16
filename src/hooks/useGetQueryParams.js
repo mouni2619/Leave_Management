@@ -9,7 +9,10 @@ import { useSearchParams } from 'react-router-dom';
  */
 export function useGetQueryParams() {
   // search params
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [
+    searchParams,
+    // setSearchParams
+  ] = useSearchParams();
 
   // params object
   const queryParams = {};
