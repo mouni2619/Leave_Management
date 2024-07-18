@@ -14,6 +14,9 @@ const PageUrls = {
   // Home Page
   DashboardPage: '/',
 
+  // Dev Components Page
+  DevComponentsPage: '/dev/components',
+
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 
