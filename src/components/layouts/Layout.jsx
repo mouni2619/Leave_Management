@@ -26,7 +26,7 @@ export default function Layout({
 }) {
   // Sidebar States for open/close
   const [isLeftSideOpen, setIsLeftSideOpen] = useState(true);
-  const [isRightSideOpen, setIsRightSideOpen] = useState(true);
+  const [isRightSideOpen, setIsRightSideOpen] = useState(false);
 
   // Checking whether topbar and sidebar is present or not
   const isTopbarPresent = Object.keys(topbarConfig).length !== 0;
