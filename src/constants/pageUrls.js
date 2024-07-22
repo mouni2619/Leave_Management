@@ -14,8 +14,12 @@ const PageUrls = {
   // Home Page
   DashboardPage: '/',
 
-  // Dev Components Page
-  DevComponentsPage: '/dev/components',
+  // Charts Page
+  LineChartsPage: '/line-charts',
+  BarChartsPage: '/bar-charts',
+  PieChartsPage: '/pie-charts',
+  BoxplotChartsPage: '/boxplot-charts',
+  HeatMapsPage: '/heat-maps',
 
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
