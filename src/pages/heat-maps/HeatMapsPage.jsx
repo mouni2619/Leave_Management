@@ -1,8 +1,8 @@
 // Constants
-import HEAT_MAP_DATA from './HeatMapConstants';
+import HEAT_MAP_DATA from '../../constants/HeatMapConstants';
 
 // Section
-import Charts from '../../page-components/charts/Charts';
+import ChartTypes from '../../components/chart/ChartTypes';
 
 /**
  * Heat Maps
@@ -12,8 +12,8 @@ export default function HeatMaps() {
     <>
       <h3 className="text-center mt-3 fw-bold">Heat Maps</h3>
 
-      {/* Charts */}
-      <Charts data={HEAT_MAP_DATA} />
+      {/* Chart Types */}
+      <ChartTypes data={HEAT_MAP_DATA} />
     </>
   );
 }

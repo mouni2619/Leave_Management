@@ -1,8 +1,8 @@
 // Constants
-import LINE_CHARTS_DATA from './LineChartConstants';
+import LINE_CHARTS_DATA from '../../constants/LineChartConstants';
 
 // Sections
-import Charts from '../../page-components/charts/Charts';
+import ChartTypes from '../../components/chart/ChartTypes';
 
 /**
  * Line Charts
@@ -12,8 +12,8 @@ export default function LineCharts() {
     <>
       <h3 className="text-center mt-3 fw-bold">Line Charts</h3>
 
-      {/* Charts */}
-      <Charts data={LINE_CHARTS_DATA} />
+      {/* Chart Types */}
+      <ChartTypes data={LINE_CHARTS_DATA} />
     </>
   );
 }

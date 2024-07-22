@@ -1,10 +1,10 @@
 // Components
-import Chart from '../../components/chart/Chart';
+import Chart from './Chart';
 
 /**
- * Charts
+ * Chart Types
  */
-export default function Charts({ data = {} }) {
+export default function ChartTypes({ data = {} }) {
   return (
     <div className="row me-5">
       {Object.keys(data).map((eachKey) => {

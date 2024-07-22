@@ -1,8 +1,8 @@
 // Constants
-import PIE_CHARTS_DATA from './PieChartConstants';
+import PIE_CHARTS_DATA from '../../constants/PieChartConstants';
 
 // Section
-import Charts from '../../page-components/charts/Charts';
+import ChartTypes from '../../components/chart/ChartTypes';
 
 /**
  * Pie Charts
@@ -12,8 +12,8 @@ export default function PieCharts() {
     <>
       <h3 className="text-center mt-3 fw-bold">Pie Charts</h3>
 
-      {/* Charts */}
-      <Charts data={PIE_CHARTS_DATA} />
+      {/* Chart Types */}
+      <ChartTypes data={PIE_CHARTS_DATA} />
     </>
   );
 }
