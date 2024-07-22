@@ -1,5 +1,5 @@
 // Constants
-import PIE_CHARTS_DATA from '../../constants/PieChartConstants';
+import { PIE_CHARTS_DATA } from '../../constants/chartConstants';
 
 // Section
 import ChartTypes from '../../components/chart/ChartTypes';

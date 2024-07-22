@@ -1,5 +1,5 @@
 // Constants
-import HEAT_MAP_DATA from '../../constants/HeatMapConstants';
+import { HEAT_MAP_DATA } from '../../constants/chartConstants';
 
 // Section
 import ChartTypes from '../../components/chart/ChartTypes';

@@ -1,5 +1,5 @@
 // Constants
-import BOX_PLOTS_CHARTS_DATA from '../../constants/BoxPlotChartConstants';
+import { BOX_PLOTS_CHARTS_DATA } from '../../constants/chartConstants';
 
 // Section
 import ChartTypes from '../../components/chart/ChartTypes';

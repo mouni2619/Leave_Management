@@ -1,5 +1,5 @@
 // Constants
-import LINE_CHARTS_DATA from '../../constants/LineChartConstants';
+import { LINE_CHARTS_DATA } from '../../constants/chartConstants';
 
 // Sections
 import ChartTypes from '../../components/chart/ChartTypes';

@@ -1,5 +1,5 @@
 // Constants
-import BAR_CHARTS_DATA from '../../constants/BarChartConstants';
+import { BAR_CHARTS_DATA } from '../../constants/chartConstants';
 
 // Section
 import ChartTypes from '../../components/chart/ChartTypes';
