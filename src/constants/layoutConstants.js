@@ -1,3 +1,6 @@
+// URLs
+import PageUrls from './pageUrls';
+
 /**
  * Page Layout ClassNames
  * ----------------------------------------------------------------------
@@ -134,13 +137,15 @@ export const SidebarClassNames = {
 export const SidebarDefaultData = [
   {
     id: 1,
-    title: 'Item 1',
-    iconName: 'fa-user',
+    title: 'Charts',
+    iconName: 'fa-chart-simple',
     isSelected: false,
     subItems: [
-      { label: 'Sub Item 1', id: 'a', link: '' },
-      { label: 'Sub Item 2', id: 'b', link: '' },
-      { label: 'Sub Item 3', id: 'c', link: '' },
+      { label: 'Line', id: 'a', link: PageUrls.LineChartsPage },
+      { label: 'Bar', id: 'b', link: PageUrls.BarChartsPage },
+      { label: 'Box Plot', id: 'c', link: PageUrls.BoxplotChartsPage },
+      { label: 'Pie', id: 'd', link: PageUrls.PieChartsPage },
+      { label: 'Heat Map', id: 'e', link: PageUrls.HeatMapsPage },
     ],
   },
   {

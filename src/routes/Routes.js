@@ -6,7 +6,7 @@ import PageUrls from '../constants/pageUrls';
 // Routes
 import { MainPageRoutes } from './MainRoutes';
 
-// Pages
+// Pages :: Login
 import LoginPage from '../pages/auth/LoginPage';
 
 const Router = createBrowserRouter([

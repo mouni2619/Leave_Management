@@ -11,6 +11,13 @@ import PageUrls from '../constants/pageUrls';
 // Pages :: Dashboard
 import DashboardPage from '../pages/dashboard/DashboardPage';
 
+// Pages :: Charts
+import LineChartsPage from '../pages/line-charts/LineChartsPage';
+import BarChartsPage from '../pages/bar-charts/BarChartsPage';
+import BoxPlotChartsPage from '../pages/boxplot-charts/BoxPlotChartsPage';
+import PieChartsPage from '../pages/pie-charts/PieChartsPage';
+import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardPage,
@@ -28,6 +35,28 @@ export const MainPageRoutes = {
     {
       path: PageUrls.DashboardPage,
       element: <DashboardPage />,
+    },
+
+    // Charts
+    {
+      path: PageUrls.LineChartsPage,
+      element: <LineChartsPage />,
+    },
+    {
+      path: PageUrls.BarChartsPage,
+      element: <BarChartsPage />,
+    },
+    {
+      path: PageUrls.BoxplotChartsPage,
+      element: <BoxPlotChartsPage />,
+    },
+    {
+      path: PageUrls.PieChartsPage,
+      element: <PieChartsPage />,
+    },
+    {
+      path: PageUrls.HeatMapsPage,
+      element: <HeatMapsPage />,
     },
   ],
 };
