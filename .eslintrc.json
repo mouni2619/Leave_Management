@@ -24,9 +24,9 @@
     // "off" means wont show any error for unused variables
     // "no-unused-vars": "off",
 
-    // as of now we are keeping this "off"
+    // as of now we are keeping this as 0
     // until we define "prop-types" for every component
-    "react/prop-types": "off"
+    "react/prop-types": 0
   },
 
   "settings": {

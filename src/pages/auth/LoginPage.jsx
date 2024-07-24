@@ -12,8 +12,8 @@ import LoginForm from './LoginForm';
 // Page Components
 // ----------------------------------------------------------------------------
 
-function LoginError({ error }) {
-  // TODO: If needed please use the loginError to display customised error messages..
+function LoginError() {
+  // TODO: If needed please use the loginError to display customized error messages..
   return (
     <div className="card bg-secondary-subtle">
       <div className="card-body text-center text-danger">
