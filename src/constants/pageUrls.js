@@ -26,6 +26,9 @@ const PageUrls = {
   UploadFileComponentPage: '/upload-file',
   FormModalComponentPage: '/form-modal',
 
+  // User Management
+  UserManagementPage: '/user-management',
+
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 

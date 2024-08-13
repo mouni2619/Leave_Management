@@ -190,8 +190,9 @@ export const SidePanelPositions = {
 export const SidePanelData = [
   {
     id: 0,
-    icon: 'fa-envelope',
-    label: 'Mail',
+    icon: 'fa-user-group',
+    label: 'Users',
+    link: PageUrls.UserManagementPage,
   },
   {
     id: 1,

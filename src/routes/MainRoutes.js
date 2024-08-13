@@ -23,6 +23,9 @@ import AntdTable from '../pages/components/antd-table/AntdTable';
 import UploadFile from '../pages/components/upload-file/UploadFile';
 import FormModalPage from '../pages/components/form-modal/FormModalPage';
 
+// Pages :: User Management
+import UserListPage from '../pages/user/UserListPage';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardPage,
@@ -76,6 +79,12 @@ export const MainPageRoutes = {
     {
       path: PageUrls.FormModalComponentPage,
       element: <FormModalPage />,
+    },
+
+    // User Management
+    {
+      path: PageUrls.UserManagementPage,
+      element: <UserListPage />,
     },
   ],
 };
