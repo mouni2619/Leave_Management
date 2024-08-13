@@ -222,3 +222,15 @@ input[type='number'] {
 .modal {
   z-index: 2050;
 }
+
+// Table Hover Styles
+.list-table-hover {
+  tr:hover {
+    svg {
+      stroke: $ultramarine-blue;
+    }
+  }
+  svg {
+    stroke: $gray-700;
+  }
+}

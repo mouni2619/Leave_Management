@@ -1,0 +1,25 @@
+.custom-table-wrapper {
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  max-height: 75vh;
+  overflow: auto;
+}
+
+.custom-table-wrapper .ant-table-container {
+  border-top: none;
+}
+
+.custom-table-wrapper .ant-table-thead > tr > th,
+.custom-table-wrapper .ant-table-tbody > tr > td {
+  border-top: 1px solid #f0f0f0;
+  border-right: none;
+}
+
+.custom-table-wrapper .ant-table-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+.custom-table-wrapper .ant-table-tbody > tr > td:last-child,
+.custom-table-wrapper .ant-table-thead > tr > th:last-child {
+  border-right: none;
+}
