@@ -153,7 +153,10 @@ export const SidebarDefaultData = [
     title: 'Components',
     iconName: 'fa-square',
     isSelected: false,
-    subItems: [{ label: 'Table', id: 'd', link: PageUrls.TableComponentPage }],
+    subItems: [
+      { label: 'Table', id: 'd', link: PageUrls.TableComponentPage },
+      { label: 'Upload File', id: 'e', link: PageUrls.UploadFileComponentPage },
+    ],
   },
   {
     id: 3,
