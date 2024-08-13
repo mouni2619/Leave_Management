@@ -24,6 +24,7 @@ const PageUrls = {
   // Components
   TableComponentPage: '/table',
   UploadFileComponentPage: '/upload-file',
+  FormModalComponentPage: '/form-modal',
 
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,

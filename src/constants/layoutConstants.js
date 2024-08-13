@@ -154,8 +154,9 @@ export const SidebarDefaultData = [
     iconName: 'fa-square',
     isSelected: false,
     subItems: [
-      { label: 'Table', id: 'd', link: PageUrls.TableComponentPage },
-      { label: 'Upload File', id: 'e', link: PageUrls.UploadFileComponentPage },
+      { label: 'Table', id: 'a', link: PageUrls.TableComponentPage },
+      { label: 'Upload File', id: 'b', link: PageUrls.UploadFileComponentPage },
+      { label: 'Form Modal', id: 'c', link: PageUrls.FormModalComponentPage },
     ],
   },
   {

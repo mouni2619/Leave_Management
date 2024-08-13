@@ -21,6 +21,7 @@ import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 // Pages :: Components
 import AntdTable from '../pages/components/antd-table/AntdTable';
 import UploadFile from '../pages/components/upload-file/UploadFile';
+import FormModalPage from '../pages/components/form-modal/FormModalPage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
@@ -71,6 +72,10 @@ export const MainPageRoutes = {
     {
       path: PageUrls.UploadFileComponentPage,
       element: <UploadFile />,
+    },
+    {
+      path: PageUrls.FormModalComponentPage,
+      element: <FormModalPage />,
     },
   ],
 };
