@@ -18,6 +18,9 @@ import BoxPlotChartsPage from '../pages/boxplot-charts/BoxPlotChartsPage';
 import PieChartsPage from '../pages/pie-charts/PieChartsPage';
 import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
+// Pages :: Components
+import AntdTable from '../pages/components/AntdTable';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardPage,
@@ -57,6 +60,12 @@ export const MainPageRoutes = {
     {
       path: PageUrls.HeatMapsPage,
       element: <HeatMapsPage />,
+    },
+
+    // Components
+    {
+      path: PageUrls.TableComponentPage,
+      element: <AntdTable />,
     },
   ],
 };

@@ -21,6 +21,9 @@ const PageUrls = {
   BoxplotChartsPage: '/boxplot-charts',
   HeatMapsPage: '/heat-maps',
 
+  // Components
+  TableComponentPage: '/table',
+
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 

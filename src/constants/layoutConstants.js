@@ -150,14 +150,10 @@ export const SidebarDefaultData = [
   },
   {
     id: 2,
-    title: 'Item 2',
-    iconName: 'fa-user-cog',
+    title: 'Components',
+    iconName: 'fa-square',
     isSelected: false,
-    subItems: [
-      { label: 'Sub Item 1', id: 'd', link: '' },
-      { label: 'Sub Item 2', id: 'e', link: '' },
-      { label: 'Sub Item 3', id: 'f', link: '' },
-    ],
+    subItems: [{ label: 'Table', id: 'd', link: PageUrls.TableComponentPage }],
   },
   {
     id: 3,
