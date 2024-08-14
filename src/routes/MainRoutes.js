@@ -19,7 +19,7 @@ import PieChartsPage from '../pages/pie-charts/PieChartsPage';
 import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
 // Pages :: Components
-import AntdTable from '../pages/components/AntdTable';
+import AntdTablePage from '../pages/components/AntdTablePage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
@@ -65,7 +65,7 @@ export const MainPageRoutes = {
     // Components
     {
       path: PageUrls.TableComponentPage,
-      element: <AntdTable />,
+      element: <AntdTablePage />,
     },
   ],
 };
