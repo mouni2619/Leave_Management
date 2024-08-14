@@ -234,3 +234,20 @@ input[type='number'] {
     stroke: $gray-700;
   }
 }
+
+// Buttons and Button Container ------------------------------
+.btn-default {
+  font-size: $btn-label-font-size;
+  border-radius: $btn-border-radius;
+  transition: $btn-transition;
+}
+
+.btn-outline-custom {
+  @extend .btn-default;
+}
+
+.btn-outline-custom:hover {
+  color: $blue;
+  background-color: white;
+  border-color: $blue;
+}

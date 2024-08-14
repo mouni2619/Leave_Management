@@ -20,7 +20,7 @@ import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
 // Pages :: Components
 import AntdTablePage from '../pages/components/antd-table/AntdTablePage';
-import UploadFile from '../pages/components/upload-file/UploadFile';
+import UploadFilePage from '../pages/components/upload-file/UploadFilePage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
@@ -70,7 +70,7 @@ export const MainPageRoutes = {
     },
     {
       path: PageUrls.UploadFileComponentPage,
-      element: <UploadFile />,
+      element: <UploadFilePage />,
     },
   ],
 };
