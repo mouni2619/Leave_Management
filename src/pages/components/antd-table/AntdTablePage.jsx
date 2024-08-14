@@ -1,3 +1,4 @@
+// Components
 import DataTable from '../../../components/antd/table/DataTable';
 
 const rows = [
@@ -37,11 +38,11 @@ function Header() {
   return <h3 className="my-4">AntD Table Component</h3>;
 }
 
-export default function AntdTable() {
+export default function AntdTablePage() {
   return (
     <div className="page-content">
       <Header />
-      <DataTable rows={rows} columns={columns} />
+      <DataTable rows={rows} columns={columns} applyTableBorder={true} />
     </div>
   );
 }

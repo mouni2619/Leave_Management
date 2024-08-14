@@ -2,7 +2,7 @@ import { Table } from 'antd';
 
 import './DataTable.scss';
 
-function getTableWrapperClassname(className, applyTableBorder) {
+function getTableWrapperClassName(className, applyTableBorder) {
   return applyTableBorder ? `${className} custom-table-wrapper` : className;
 }
 
@@ -21,17 +21,17 @@ export default function DataTable({
     scroll: scrollConfig,
   };
 
-  if (!applyTableBorder) {
+  if (applyTableBorder) {
     tableProps['bordered'] = true;
   }
 
-  const tableWrapperClassname = getTableWrapperClassname(
+  const tableWrapperClassName = getTableWrapperClassName(
     className,
     applyTableBorder,
   );
 
   return (
-    <div className={`${tableWrapperClassname} list-table-hover`}>
+    <div className={`${tableWrapperClassName} list-table-hover`}>
       <Table {...tableProps} columns={columns} dataSource={rows} />
     </div>
   );
