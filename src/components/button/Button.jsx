@@ -1,4 +1,4 @@
-function constructClassname(disabled, loading, className) {
+function constructClassName(disabled, loading, className) {
   const modifierClassName = disabled || loading ? 'opacity-25' : '';
   return `btn ${className} ${modifierClassName}`;
 }
@@ -18,7 +18,7 @@ export default function Button({
   icon = '',
   children,
 }) {
-  const btnClassName = constructClassname(disabled, loading, className);
+  const btnClassName = constructClassName(disabled, loading, className);
   return (
     <button className={btnClassName} disabled={disabled} onClick={onClick}>
       {!loading && icon && <span className="pe-1">{icon}</span>}

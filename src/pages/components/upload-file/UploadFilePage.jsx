@@ -12,31 +12,27 @@ import Button from '../../../components/button/Button';
 import XLSXIcon from '../../../assets/images/icons/excel.png';
 
 // CSS
-import './UploadFile.scss';
+import './UploadFilePage.scss';
 
 function UploadDraggerBody({ isFileSelected = false, file = {} }) {
   const { name } = file;
+
+  if (!isFileSelected) {
+    return (
+      <>
+        <UploadIcon />
+        <p className="ant-upload-text fs-5 fw-semibold my-2 opacity-75">
+          Drag & Drop or <span className="text-primary">Choose file</span> to
+          upload
+        </p>
+        <p className="ant-upload-hint m-0">File Type : XLSX, CSV</p>
+      </>
+    );
+  }
   return (
     <>
-      {/* Display when selected file state is true */}
-      {isFileSelected && (
-        <>
-          <img src={XLSXIcon} alt="XLSX Image" className="xlsx-icon" />
-          <p className="mt-3">{name}</p>
-        </>
-      )}
-
-      {/* Display when selected file state is false */}
-      {!isFileSelected && (
-        <>
-          <UploadIcon />
-          <p className="ant-upload-text fs-5 fw-semibold my-2 opacity-75">
-            Drag & Drop or <span className="text-primary">Choose file</span> to
-            upload
-          </p>
-          <p className="ant-upload-hint m-0">File Type : XLSX, CSV</p>
-        </>
-      )}
+      <img src={XLSXIcon} alt="XLSX Image" className="xlsx-icon" />
+      <p className="mt-3">{name}</p>
     </>
   );
 }
@@ -58,12 +54,11 @@ export default function UploadFile() {
       setValidationError('Invalid file type');
       setShowError(true);
       setIsFileSelected(false);
-      return false;
+      return;
     }
 
     setFile(file);
     setIsFileSelected(true);
-    return false;
   }
 
   function handleReset() {
@@ -102,7 +97,7 @@ export default function UploadFile() {
       <div className="d-flex justify-content-end gap-3">
         <Button
           onClick={handleReset}
-          className="btn-outline-dark btn-outline-custom px-3 py-2"
+          className="btn-outline-dark btn-outline-custom"
         >
           Reset
         </Button>
