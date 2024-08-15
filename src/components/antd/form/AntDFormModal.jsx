@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Alert, Form, Input, Modal, Space } from 'antd';
 
 // Components
-import Button from '../../../components/button/Button';
+import Button from '../../button/Button';
 
 // Form Action Function
 function FormActions({
@@ -59,10 +59,11 @@ export default function AntDFormModal({
   function handleSubmit() {
     form
       .validateFields()
+      // eslint-disable-next-line no-unused-vars
       .then((values) => {
         setValidationError('');
         setShowError(false);
-        console.log(values);
+        // console.log(values);
         // dispatch action
       })
       .catch((info) => {

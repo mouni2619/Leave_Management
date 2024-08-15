@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Button from '../../../components/button/Button';
 
 // Page Components
-import AntDFormModal from './AntDFormModal';
+import AntDFormModal from '../../../components/antd/form/AntDFormModal';
 
 export default function FormModalPage() {
   const [openModal, setOpenModal] = useState(false);
