@@ -19,8 +19,8 @@ import PieChartsPage from '../pages/pie-charts/PieChartsPage';
 import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
 // Pages :: Components
-import AntdTable from '../pages/components/antd-table/AntdTable';
-import UploadFile from '../pages/components/upload-file/UploadFile';
+import AntdTablePage from '../pages/components/antd-table/AntdTablePage';
+import UploadFilePage from '../pages/components/upload-file/UploadFilePage';
 import FormModalPage from '../pages/components/form-modal/FormModalPage';
 
 // Pages :: User Management
@@ -70,11 +70,11 @@ export const MainPageRoutes = {
     // Components
     {
       path: PageUrls.TableComponentPage,
-      element: <AntdTable />,
+      element: <AntdTablePage />,
     },
     {
       path: PageUrls.UploadFileComponentPage,
-      element: <UploadFile />,
+      element: <UploadFilePage />,
     },
     {
       path: PageUrls.FormModalComponentPage,
