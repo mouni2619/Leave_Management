@@ -26,6 +26,9 @@ import FormModalPage from '../pages/components/form-modal/FormModalPage';
 // Pages :: User Management
 import UserListPage from '../pages/user/UserListPage';
 
+// Pages :: Datasets Management
+import DatasetListPage from '../pages/datasets/DatasetListPage';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardPage,
@@ -85,6 +88,12 @@ export const MainPageRoutes = {
     {
       path: PageUrls.UserManagementPage,
       element: <UserListPage />,
+    },
+
+    // Dataset Management
+    {
+      path: PageUrls.DatasetManagementPage,
+      element: <DatasetListPage />,
     },
   ],
 };

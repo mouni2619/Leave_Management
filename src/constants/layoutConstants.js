@@ -196,8 +196,9 @@ export const SidePanelData = [
   },
   {
     id: 1,
-    icon: 'fa-video',
-    label: 'Video',
+    icon: 'fa-database',
+    label: 'Database',
+    link: PageUrls.DatasetManagementPage,
   },
   {
     id: 2,

@@ -29,6 +29,9 @@ const PageUrls = {
   // User Management
   UserManagementPage: '/user-management',
 
+  // Dataset Management
+  DatasetManagementPage: '/dataset-management',
+
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 
