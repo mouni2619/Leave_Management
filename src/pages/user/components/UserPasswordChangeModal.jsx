@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal } from 'antd';
 
 // Constants
@@ -6,6 +7,9 @@ import {
   USER_CHANGE_PASSWORD_INPUT_DATA,
   USER_MODAL_TYPES,
 } from '../../../constants/userConstants';
+
+// Actions
+import { UserActions } from '../../../store/redux-slices/userSlice';
 
 // Components
 import Button from '../../../components/button/Button';
@@ -61,8 +65,10 @@ export default function UserPasswordChangeModal({
   userData = {},
   openModal = { state: false, type: '' },
   setOpenModal = () => {},
-  setRows = () => {},
 }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
   // Form
   const [form] = Form.useForm();
 
@@ -103,15 +109,7 @@ export default function UserPasswordChangeModal({
       return;
     }
 
-    setRows((rows) => {
-      return rows.map((user) => {
-        const { key = '' } = user;
-        if (key === userId) {
-          return { ...user, password: newPassword };
-        }
-        return user;
-      });
-    });
+    dispatch(UserActions.updateUserPassword({ userId, newPassword }));
     setOpenModal({ state: false, type: '' });
     setValidationError('');
     setShowError(false);

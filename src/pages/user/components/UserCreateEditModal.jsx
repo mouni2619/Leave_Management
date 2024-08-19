@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal } from 'antd';
 
 // Constants
@@ -7,6 +7,9 @@ import {
   USER_FORM_INPUT_DATA,
   USER_MODAL_TYPES,
 } from '../../../constants/userConstants';
+
+// Actions
+import { UserActions } from '../../../store/redux-slices/userSlice';
 
 // Components
 import Button from '../../../components/button/Button';
@@ -93,10 +96,12 @@ function FormItem({ data = [], userId = '' }) {
 export default function UserCreateEditModal({
   openModal = { state: false, type: '' },
   setOpenModal = () => {},
-  setRows = () => {},
   userData = {},
   setUserData = () => {},
 }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
   // Form
   const [form] = Form.useForm();
 
@@ -137,20 +142,13 @@ export default function UserCreateEditModal({
     setUserData({});
 
     if (userId) {
-      setRows((rows) => {
-        return rows.map((user) => {
-          return user.key === userId
-            ? { ...values, key: userId, isActive, role }
-            : user;
-        });
-      });
+      dispatch(
+        UserActions.updateUser({ userId, data: { ...values, isActive, role } }),
+      );
       return;
     }
 
-    setRows((rows) => [
-      ...rows,
-      { ...values, key: rows.length + 1, isActive: true, role: 'VIEWER' },
-    ]);
+    dispatch(UserActions.createUser(values));
     setOpenModal({ state: false, type: '' });
   }
 
