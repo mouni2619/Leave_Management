@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Tag } from 'antd';
 import { KeyRound, Pencil, UserPen } from 'lucide-react';
 
 // Constants
 import {
   USER_LIST_TABLE_HEADER,
-  USER_LIST_TABLE_ROWS,
   USER_MODAL_TYPES,
   USER_ROLES,
   USER_STATUS,
   USER_TAG_COLOR,
 } from '../../constants/userConstants';
+
+// Actions
+import { UserActions } from '../../store/redux-slices/userSlice';
 
 // Components
 import Button from '../../components/button/Button';
@@ -39,8 +42,10 @@ function UserListTableActions({
   record = {},
   setOpenModal = () => {},
   setUserData = () => {},
-  setRows = () => {},
 }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
   const { key = '', isActive = '', role = '' } = record;
 
   const actionIconClassName = isActive
@@ -65,14 +70,7 @@ function UserListTableActions({
 
   // Function to handle user status enable/disable
   function handleEditUserActive(status, userId) {
-    setRows((rows) =>
-      rows.map((user) => {
-        if (user.key === userId) {
-          return { ...user, isActive: status };
-        }
-        return user;
-      }),
-    );
+    dispatch(UserActions.updateUserStatus({ status, userId }));
   }
 
   return (
@@ -117,9 +115,11 @@ function UserListTableActions({
 export default function UserListPage() {
   // States
   const [openModal, setOpenModal] = useState({ state: 'false', type: '' });
-  const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
   const [userData, setUserData] = useState({});
+
+  // Selector State
+  const usersList = useSelector((state) => state.users.users);
 
   // Constructing columns for users table
   const statusColumn = {
@@ -151,7 +151,6 @@ export default function UserListPage() {
         <UserListTableActions
           record={record}
           setOpenModal={setOpenModal}
-          setRows={setRows}
           setUserData={setUserData}
         />
       );
@@ -159,18 +158,16 @@ export default function UserListPage() {
   };
 
   useEffect(() => {
-    setRows(USER_LIST_TABLE_ROWS);
     setColumns([...USER_LIST_TABLE_HEADER, statusColumn, actionColumn]);
   }, []);
   return (
     <div className="page-content">
       <Header setOpenModal={setOpenModal} />
-      <UsersTable rows={rows} columns={columns} />
+      <UsersTable rows={usersList} columns={columns} />
 
       <UserCreateEditModal
         openModal={openModal}
         setOpenModal={setOpenModal}
-        setRows={setRows}
         userData={userData}
         setUserData={setUserData}
       />
@@ -179,14 +176,12 @@ export default function UserListPage() {
         userData={userData}
         openModal={openModal}
         setOpenModal={setOpenModal}
-        setRows={setRows}
       />
 
       <UserRoleUpdateModal
         userData={userData}
         openModal={openModal}
         setOpenModal={setOpenModal}
-        setRows={setRows}
       />
     </div>
   );

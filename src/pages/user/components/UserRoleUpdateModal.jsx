@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal, Select } from 'antd';
 
 // Constants
 import { USER_MODAL_TYPES, USER_ROLES } from '../../../constants/userConstants';
+
+// Actions
+import { UserActions } from '../../../store/redux-slices/userSlice';
 
 // Components
 import Button from '../../../components/button/Button';
@@ -43,8 +47,11 @@ export default function UserRoleUpdateModal({
   openModal = { state: false, type: '' },
   userData = {},
   setOpenModal = () => {},
-  setRows = () => {},
 }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
+  // Form
   const [form] = Form.useForm();
 
   const { key: userId } = userData;
@@ -71,15 +78,7 @@ export default function UserRoleUpdateModal({
 
   function handleUpdateUserRole(value) {
     const { role = '' } = value;
-    setRows((rows) => {
-      return rows.map((user) => {
-        const { key = '' } = user;
-        if (key === userId) {
-          return { ...user, role };
-        }
-        return user;
-      });
-    });
+    dispatch(UserActions.updateUserRole({ userId, role }));
     setOpenModal({ state: false, type: '' });
     setValidationError('');
     setShowError(false);
