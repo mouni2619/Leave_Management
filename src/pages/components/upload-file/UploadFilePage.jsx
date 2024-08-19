@@ -37,7 +37,7 @@ function UploadDraggerBody({ isFileSelected = false, file = {} }) {
   );
 }
 
-export default function UploadFile() {
+export default function UploadFilePage() {
   // States
   const [file, setFile] = useState({});
   const [isFileSelected, setIsFileSelected] = useState(false);
