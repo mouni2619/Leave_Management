@@ -42,7 +42,7 @@ export default function AntdTablePage() {
   return (
     <div className="page-content">
       <Header />
-      <DataTable rows={rows} columns={columns} applyTableBorder={true} />
+      <DataTable rows={rows} columns={columns} applyOnlyTableBorder={true} />
     </div>
   );
 }

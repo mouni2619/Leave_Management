@@ -19,8 +19,8 @@ import PieChartsPage from '../pages/pie-charts/PieChartsPage';
 import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
 // Pages :: Components
-import AntdTablePage from '../pages/components/antd-table/AntdTablePage';
-import UploadFilePage from '../pages/components/upload-file/UploadFilePage';
+import AntdTablePage from '../pages/antd-components/antd-table/AntdTablePage';
+import UploadFilePage from '../pages/antd-components/upload-file/UploadFilePage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
