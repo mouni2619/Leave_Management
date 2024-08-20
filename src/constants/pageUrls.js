@@ -32,6 +32,9 @@ const PageUrls = {
   // Dataset Management
   DatasetManagementPage: '/dataset-management',
 
+  // Maps
+  NormalMapPage: '/normal-map',
+
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
 

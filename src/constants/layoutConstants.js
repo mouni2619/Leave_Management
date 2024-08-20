@@ -161,13 +161,13 @@ export const SidebarDefaultData = [
   },
   {
     id: 3,
-    title: 'Item 3',
-    iconName: 'fa-user-check',
+    title: 'Maps',
+    iconName: 'fa-map',
     isSelected: false,
     subItems: [
-      { label: 'Sub Item 1', id: 'g', link: '' },
-      { label: 'Sub Item 2', id: 'h', link: '' },
-      { label: 'Sub Item 3', id: 'i', link: '' },
+      { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
+      { label: 'Heat Map', id: 'h', link: '' },
+      { label: 'Boundaries', id: 'i', link: '' },
     ],
   },
   {
