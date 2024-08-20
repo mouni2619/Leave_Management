@@ -34,7 +34,8 @@ const PageUrls = {
 
   // Maps
   NormalMapPage: '/normal-map',
-  HeatMapPage: 'heat-map',
+  HeatMapPage: '/heat-map',
+  BoundaryMapPage: '/boundary-map',
 
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,

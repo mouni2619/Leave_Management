@@ -167,7 +167,7 @@ export const SidebarDefaultData = [
     subItems: [
       { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
       { label: 'Heat Map', id: 'h', link: PageUrls.HeatMapPage },
-      { label: 'Boundaries', id: 'i', link: '' },
+      { label: 'Boundaries', id: 'i', link: PageUrls.BoundaryMapPage },
     ],
   },
   {
