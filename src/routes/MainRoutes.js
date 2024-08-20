@@ -19,7 +19,7 @@ import PieChartsPage from '../pages/pie-charts/PieChartsPage';
 import HeatMapsPage from '../pages/heat-maps/HeatMapsPage';
 
 // Pages :: Components
-import AntdTablePage from '../pages/components/AntdTablePage';
+import AntdTablePage from '../pages/antd-components/AntdTablePage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
