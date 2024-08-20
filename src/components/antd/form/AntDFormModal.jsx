@@ -59,12 +59,12 @@ export default function AntDFormModal({
   function handleSubmit() {
     form
       .validateFields()
-      // eslint-disable-next-line no-unused-vars
       .then((values) => {
         setValidationError('');
         setShowError(false);
-        // console.log(values);
-        // dispatch action
+        // This values can be used for dispatching
+        // Here we can dispatch action instead of console
+        console.log(values);
       })
       .catch((info) => {
         setValidationError(info.errorFields[0].errors[0]);
