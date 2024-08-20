@@ -1,11 +1,11 @@
 import React from 'react';
 import 'leaflet.heat';
-import { MapContainer, TileLayer } from 'react-leaflet';
 
 // Constants
 import { HeatMapPoints } from '../../constants/heatMapConstants';
 
 // Components
+import LLMap from '../../components/maps/LLMap';
 import LLHeatLayer from '../../components/maps/LLHeatLayer';
 
 export default function HeatMapPage() {
@@ -16,13 +16,9 @@ export default function HeatMapPage() {
 
   return (
     <div className="page-content">
-      <MapContainer center={position} zoom={12} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+      <LLMap center={position} zoomLevel={12}>
         <LLHeatLayer points={points} />
-      </MapContainer>
+      </LLMap>
     </div>
   );
 }

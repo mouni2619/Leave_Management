@@ -1,7 +1,10 @@
-import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
+import { GeoJSON } from 'react-leaflet';
 
 // Constants
 import { BoundaryPoints } from '../../constants/boundaryMapConstants';
+
+// Components
+import LLMap from '../../components/maps/LLMap';
 
 export default function BoundaryMapPage() {
   // lat and lng coordinates for center
@@ -10,13 +13,9 @@ export default function BoundaryMapPage() {
   const geoJSONData = BoundaryPoints;
   return (
     <div className="page-content">
-      <MapContainer center={position} zoom={11} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+      <LLMap center={position} zoomLevel={11}>
         <GeoJSON data={geoJSONData} />
-      </MapContainer>
+      </LLMap>
     </div>
   );
 }

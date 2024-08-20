@@ -1,5 +1,8 @@
 import { Icon } from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { Marker, Popup } from 'react-leaflet';
+
+// Components
+import LLMap from '../../components/maps/LLMap';
 
 export default function NormalMapPage() {
   // lat and lng coordinates for center
@@ -13,15 +16,11 @@ export default function NormalMapPage() {
   });
   return (
     <div className="page-content">
-      <MapContainer center={position} zoom={15} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+      <LLMap center={position} zoomLevel={15}>
         <Marker position={position} icon={customIcon}>
           <Popup>AdMavin</Popup>
         </Marker>
-      </MapContainer>
+      </LLMap>
     </div>
   );
 }
