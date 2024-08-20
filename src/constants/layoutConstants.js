@@ -150,7 +150,7 @@ export const SidebarDefaultData = [
   },
   {
     id: 2,
-    title: 'Components',
+    title: 'AntD Components',
     iconName: 'fa-square',
     isSelected: false,
     subItems: [

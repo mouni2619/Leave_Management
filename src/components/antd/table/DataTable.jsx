@@ -2,8 +2,8 @@ import { Table } from 'antd';
 
 import './DataTable.scss';
 
-function getTableWrapperClassName(className, applyTableBorder) {
-  return applyTableBorder ? `${className} custom-table-wrapper` : className;
+function getTableWrapperClassName(className, applyOnlyTableBorder) {
+  return applyOnlyTableBorder ? `${className} custom-table-wrapper` : className;
 }
 
 export default function DataTable({
@@ -11,7 +11,7 @@ export default function DataTable({
   columns,
   scrollConfig = {},
   className = '',
-  applyTableBorder = false,
+  applyOnlyTableBorder = false,
 }) {
   const tableProps = {
     size: 'large',
@@ -21,13 +21,13 @@ export default function DataTable({
     scroll: scrollConfig,
   };
 
-  if (applyTableBorder) {
+  if (!applyOnlyTableBorder) {
     tableProps['bordered'] = true;
   }
 
   const tableWrapperClassName = getTableWrapperClassName(
     className,
-    applyTableBorder,
+    applyOnlyTableBorder,
   );
 
   return (

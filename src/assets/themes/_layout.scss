@@ -44,7 +44,7 @@ html.scroll-smooth {
     right: 0;
     left: 0;
     transition: all 0.5s ease;
-    z-index: $topbar-zindex;
+    // z-index: $topbar-zindex; // Uncomment if needed
     height: $topbar-height;
     border-bottom: 1px solid $gray-300;
     box-shadow: $box-shadow;
