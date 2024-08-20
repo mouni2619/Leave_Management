@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Eye, Info, Pencil, Trash2 } from 'lucide-react';
 
 // Constants
-import {
-  DATASET_LIST_TABLE_HEADER,
-  DATASET_LIST_TABLE_ROWS,
-} from '../../constants/datasetConstants';
+import { DATASET_LIST_TABLE_HEADER } from '../../constants/datasetConstants';
+
+// Actions
+import { DatasetActions } from '../../store/redux-slices/datasetSlice';
 
 // Components
 import Button from '../../components/button/Button';
@@ -27,17 +28,17 @@ function DatasetListTableActions({
   record = {},
   setOpenModal = () => {},
   setEditDatasetData = () => {},
-  setRows = () => {},
 }) {
+  // Dispatch
+  const dispatch = useDispatch();
+
   function editBtnClickFn() {
     setOpenModal(true);
     setEditDatasetData(record);
   }
 
   function handleDelete() {
-    setRows((rows) => {
-      return rows.filter((row) => row.key !== record.key);
-    });
+    dispatch(DatasetActions.deleteDataset({ datasetId: record.key }));
   }
   return (
     <div className="d-flex gap-4 align-items-center">
@@ -61,10 +62,13 @@ function DatasetListTableActions({
 }
 
 export default function DatasetListPage() {
+  // States
   const [openModal, setOpenModal] = useState(false);
-  const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
   const [editDatasetData, setEditDatasetData] = useState({});
+
+  // Selector State
+  const rows = useSelector((state) => state.datasets.datasets);
 
   const actionsColumn = {
     title: 'Action',
@@ -75,14 +79,12 @@ export default function DatasetListPage() {
           record={record}
           setOpenModal={setOpenModal}
           setEditDatasetData={setEditDatasetData}
-          setRows={setRows}
         />
       );
     },
   };
 
   useEffect(() => {
-    setRows(DATASET_LIST_TABLE_ROWS);
     setColumns([...DATASET_LIST_TABLE_HEADER, actionsColumn]);
   }, []);
   return (
@@ -95,7 +97,6 @@ export default function DatasetListPage() {
         setOpenModal={setOpenModal}
         editDatasetData={editDatasetData}
         setEditDatasetData={setEditDatasetData}
-        setRows={setRows}
       />
     </div>
   );

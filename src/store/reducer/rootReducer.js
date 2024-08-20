@@ -9,6 +9,9 @@ import { ErrorReducer } from '../redux-slices/errorSlice';
 // User Reducer
 import { UserReducer } from '../redux-slices/userSlice';
 
+// Dataset Reducer
+import { DatasetReducer } from '../redux-slices/datasetSlice';
+
 // Root Reducer definition
 export const RootReducer = combineReducers({
   // App specific reducers go here..
@@ -21,4 +24,7 @@ export const RootReducer = combineReducers({
 
   // User Reducer
   users: UserReducer,
+
+  // Dataset Reducer
+  datasets: DatasetReducer,
 });

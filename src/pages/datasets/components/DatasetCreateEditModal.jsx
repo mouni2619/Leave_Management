@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Alert, Form, Input, Modal, Space } from 'antd';
+
+// Actions
+import { DatasetActions } from '../../../store/redux-slices/datasetSlice';
 
 // Components
 import Button from '../../../components/button/Button';
@@ -44,8 +48,9 @@ export default function DatasetCreateEditModal({
   editDatasetData = {},
   setEditDatasetData = () => {},
   setOpenModal = () => {},
-  setRows = () => {},
 }) {
+  const dispatch = useDispatch();
+
   // Form
   const [form] = Form.useForm();
 
@@ -60,20 +65,15 @@ export default function DatasetCreateEditModal({
     setValidationError('');
     setShowError(false);
     setOpenModal(false);
+    setEditDatasetData({});
     if (datasetId) {
-      setRows((rows) => {
-        return rows.map((dataset) => {
-          return dataset.key === datasetId
-            ? { ...values, key: datasetId }
-            : dataset;
-        });
-      });
+      dispatch(
+        DatasetActions.updateDataset({ datasetId, data: { ...values } }),
+      );
       return;
     }
 
-    setRows((rows) => {
-      return [...rows, { ...values, key: rows.length + 1 }];
-    });
+    dispatch(DatasetActions.createDataset(values));
   }
 
   // Function to handle the form submission
