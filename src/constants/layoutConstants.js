@@ -168,6 +168,7 @@ export const SidebarDefaultData = [
       { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
       { label: 'Heat Map', id: 'h', link: PageUrls.HeatMapPage },
       { label: 'Boundaries', id: 'i', link: PageUrls.BoundaryMapPage },
+      { label: 'Vector Layers', id: 'j', link: PageUrls.VectorMapPage },
     ],
   },
   {

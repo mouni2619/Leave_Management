@@ -33,6 +33,7 @@ import DatasetListPage from '../pages/datasets/DatasetListPage';
 import NormalMapPage from '../pages/maps/NormalMapPage';
 import HeatMapPage from '../pages/maps/HeatMapPage';
 import BoundaryMapPage from '../pages/maps/BoundaryMapPage';
+import VectorMapPage from '../pages/maps/VectorMapPage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
@@ -113,6 +114,10 @@ export const MainPageRoutes = {
     {
       path: PageUrls.BoundaryMapPage,
       element: <BoundaryMapPage />,
+    },
+    {
+      path: PageUrls.VectorMapPage,
+      element: <VectorMapPage />,
     },
   ],
 };
