@@ -1,15 +1,27 @@
+import { useState } from 'react';
 import { Icon } from 'leaflet';
-import { Marker, Popup } from 'react-leaflet';
+import { Marker } from 'react-leaflet';
 
 // Constants
 import { MAP_POINTER } from '../../constants/mapConstants';
 
 // Components
 import LLMap from '../../components/maps/LLMap';
+import PinDropLocationAndZoom from '../../components/maps/PinDropLocationAndZoom';
+
+const LATITUDE = 12.992176277063903;
+const LONGITUDE = 80.2438303535238;
 
 export default function NormalMapPage() {
   // lat and lng coordinates for center
-  const position = [12.992176277063903, 80.2438303535238];
+  const center = [LATITUDE, LONGITUDE];
+
+  const [mapZoom, setMapZoom] = useState(null);
+  const [coordinate, setCoordinate] = useState(center);
+
+  function getCoordinatesFromPinDrop(locationData) {
+    setCoordinate([locationData.lat, locationData.lng]);
+  }
 
   // custom icon for the pointer marker
   const customIcon = new Icon({
@@ -18,10 +30,13 @@ export default function NormalMapPage() {
   });
   return (
     <div className="page-content">
-      <LLMap center={position} zoomLevel={15}>
-        <Marker position={position} icon={customIcon}>
-          <Popup>AdMavin</Popup>
-        </Marker>
+      <LLMap center={coordinate} zoom={15}>
+        <Marker position={coordinate} icon={customIcon}></Marker>
+        <PinDropLocationAndZoom
+          onLocationSelect={getCoordinatesFromPinDrop}
+          mapZoom={mapZoom}
+          setMapZoom={setMapZoom}
+        />
       </LLMap>
     </div>
   );
