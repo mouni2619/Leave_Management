@@ -9,8 +9,10 @@ import { MAP_POINTER } from '../../constants/mapConstants';
 import LLMap from '../../components/maps/LLMap';
 import PinDropLocationAndZoom from '../../components/maps/PinDropLocationAndZoom';
 
+// Page Constants
 const LATITUDE = 12.992176277063903;
 const LONGITUDE = 80.2438303535238;
+const zoomLevel = 15;
 
 export default function NormalMapPage() {
   // lat and lng coordinates for center
@@ -30,7 +32,7 @@ export default function NormalMapPage() {
   });
   return (
     <div className="page-content">
-      <LLMap center={coordinate} zoom={15}>
+      <LLMap center={coordinate} zoom={zoomLevel}>
         <Marker position={coordinate} icon={customIcon}></Marker>
         <PinDropLocationAndZoom
           onLocationSelect={getCoordinatesFromPinDrop}

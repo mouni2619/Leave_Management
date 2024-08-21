@@ -166,7 +166,11 @@ export const SidebarDefaultData = [
     isSelected: false,
     subItems: [
       { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
-      { label: 'Multiple Points', id: 'h', link: PageUrls.MPMapPage },
+      {
+        label: 'Multiple Points',
+        id: 'h',
+        link: PageUrls.MultiplePointsMapPage,
+      },
       { label: 'Heat Map', id: 'i', link: PageUrls.HeatMapPage },
       { label: 'Boundaries', id: 'j', link: PageUrls.BoundaryMapPage },
       { label: 'Vector Layers', id: 'k', link: PageUrls.VectorMapPage },

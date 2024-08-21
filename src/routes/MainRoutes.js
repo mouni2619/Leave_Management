@@ -121,7 +121,7 @@ export const MainPageRoutes = {
       element: <VectorMapPage />,
     },
     {
-      path: PageUrls.MPMapPage,
+      path: PageUrls.MultiplePointsMapPage,
       element: <MultiplePointsMapPage />,
     },
   ],

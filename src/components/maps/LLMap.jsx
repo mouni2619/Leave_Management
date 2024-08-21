@@ -24,7 +24,7 @@ function LLChangeView({ center, zoom }) {
 /**
  * Custom Leaflet Map with utility functions
  */
-function LLMap({
+export default function LLMap({
   center,
   zoom = DEFAULT_ZOOM,
   scrollWheelZoom = true,
@@ -50,5 +50,3 @@ function LLMap({
     </MapContainer>
   );
 }
-
-export default LLMap;
