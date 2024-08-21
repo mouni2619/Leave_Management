@@ -34,6 +34,7 @@ const PageUrls = {
 
   // Maps
   NormalMapPage: '/normal-map',
+  MPMapPage: '/multiple-points',
   HeatMapPage: '/heat-map',
   BoundaryMapPage: '/boundary-map',
   VectorMapPage: '/vector-map',

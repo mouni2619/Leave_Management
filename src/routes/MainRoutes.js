@@ -31,6 +31,7 @@ import DatasetListPage from '../pages/datasets/DatasetListPage';
 
 // Pages :: Maps
 import NormalMapPage from '../pages/maps/NormalMapPage';
+import MultiplePointsMapPage from '../pages/maps/MultiplePointsMapPage';
 import HeatMapPage from '../pages/maps/HeatMapPage';
 import BoundaryMapPage from '../pages/maps/BoundaryMapPage';
 import VectorMapPage from '../pages/maps/VectorMapPage';
@@ -118,6 +119,10 @@ export const MainPageRoutes = {
     {
       path: PageUrls.VectorMapPage,
       element: <VectorMapPage />,
+    },
+    {
+      path: PageUrls.MPMapPage,
+      element: <MultiplePointsMapPage />,
     },
   ],
 };
