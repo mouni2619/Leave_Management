@@ -1,25 +1,26 @@
-import { GeoJSON } from 'react-leaflet';
-
 // Constants
+import { MAP_ZOOM } from '../../constants/mapConstants';
 import { BoundaryPoints } from '../../constants/boundaryMapConstants';
 
 // Components
-import LLMap from '../../components/maps/LLMap';
+import LLBoundaryMap from '../../components/maps/boundary-map/LLBoundaryMap';
 
 const LATITUDE = 13.082254666802685;
 const LONGITUDE = 80.28040794212028;
-const zoomLevel = 11;
+const zoomLevel = MAP_ZOOM.zoomLevel11;
 
 export default function BoundaryMapPage() {
   // lat and lng coordinates for center
-  const position = [LATITUDE, LONGITUDE];
+  const center = [LATITUDE, LONGITUDE];
 
   const geoJSONData = BoundaryPoints;
   return (
     <div className="page-content">
-      <LLMap center={position} zoom={zoomLevel}>
-        <GeoJSON data={geoJSONData} />
-      </LLMap>
+      <LLBoundaryMap
+        center={center}
+        zoomLevel={zoomLevel}
+        geoJSONData={geoJSONData}
+      />
     </div>
   );
 }

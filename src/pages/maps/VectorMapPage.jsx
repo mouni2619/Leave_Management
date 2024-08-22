@@ -1,6 +1,5 @@
 // Components
-import LLMap from '../../components/maps/LLMap';
-import LLVectorLayers from '../../components/maps/LLVectorLayers';
+import LLVectorLayersMap from '../../components/maps/vector-layer-map/LLVectorLayersMap';
 
 // Page Constants
 const LATITUDE = 51.505;
@@ -12,9 +11,7 @@ export default function VectorMapPage() {
 
   return (
     <div className="page-content">
-      <LLMap center={center} zoom={zoomLevel}>
-        <LLVectorLayers center={center} />
-      </LLMap>
+      <LLVectorLayersMap center={center} zoomLevel={zoomLevel} />
     </div>
   );
 }

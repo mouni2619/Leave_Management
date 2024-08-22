@@ -3,14 +3,14 @@ import 'leaflet.heat';
 
 // Constants
 import { HeatMapPoints } from '../../constants/heatMapConstants';
+import { MAP_ZOOM } from '../../constants/mapConstants';
 
 // Components
-import LLMap from '../../components/maps/LLMap';
-import LLHeatLayer from '../../components/maps/LLHeatLayer';
+import LLHeatMap from '../../components/maps/heat-map/LLHeatMap';
 
 const LATITUDE = -37.87;
 const LONGITUDE = 175.475;
-const zoomLevel = 12;
+const zoomLevel = MAP_ZOOM.zoomLevel12;
 
 export default function HeatMapPage() {
   // lat and lng coordinates for center
@@ -20,9 +20,7 @@ export default function HeatMapPage() {
 
   return (
     <div className="page-content">
-      <LLMap center={position} zoom={zoomLevel}>
-        <LLHeatLayer points={points} />
-      </LLMap>
+      <LLHeatMap position={position} zoomLevel={zoomLevel} points={points} />
     </div>
   );
 }

@@ -14,7 +14,7 @@ import {
   POLYGON,
   POLYLINE,
   RECTANGLE,
-} from '../../constants/vectorMapConstants';
+} from '../../../constants/vectorMapConstants';
 
 export default function LLVectorLayers({ center }) {
   // Vectors Data

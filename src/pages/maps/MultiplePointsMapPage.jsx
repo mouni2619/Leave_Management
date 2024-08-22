@@ -1,17 +1,16 @@
 import { Icon } from 'leaflet';
-import { Marker, Popup } from 'react-leaflet';
 
 // Constants
-import { MAP_POINTER } from '../../constants/mapConstants';
+import { MAP_POINTER, MAP_ZOOM } from '../../constants/mapConstants';
 import { MULTIPLE_POINTS } from '../../constants/pointsMapConstant';
 
 // Components
-import LLMap from '../../components/maps/LLMap';
+import LLMultiplePointsMap from '../../components/maps/multiple-points-map/LLMultiplePointsMap';
 
 // Page Constants
 const LATITUDE = 12.992176277063903;
 const LONGITUDE = 80.2438303535238;
-const zoomLevel = 13;
+const zoomLevel = MAP_ZOOM.zoomLevel13;
 
 export default function MultiplePointsMapPage() {
   const center = [LATITUDE, LONGITUDE];
@@ -25,16 +24,12 @@ export default function MultiplePointsMapPage() {
   const markers = MULTIPLE_POINTS;
   return (
     <div className="page-content">
-      <LLMap center={center} zoom={zoomLevel}>
-        {markers.map((mark, i) => {
-          const { geocode, popUp } = mark;
-          return (
-            <Marker key={i} position={geocode} icon={customIcon}>
-              <Popup>{popUp}</Popup>
-            </Marker>
-          );
-        })}
-      </LLMap>
+      <LLMultiplePointsMap
+        center={center}
+        zoomLevel={zoomLevel}
+        markers={markers}
+        customIcon={customIcon}
+      />
     </div>
   );
 }
