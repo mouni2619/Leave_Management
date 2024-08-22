@@ -71,14 +71,12 @@ export default function DatasetCreateEditModal({
     setShowError(false);
     setOpenModal({ type: '', state: false });
     setEditDatasetData({});
-    if (datasetId) {
-      dispatch(
-        DatasetActions.updateDataset({ datasetId, data: { ...values } }),
-      );
+    if (!datasetId) {
+      dispatch(DatasetActions.createDataset(values));
       return;
     }
 
-    dispatch(DatasetActions.createDataset(values));
+    dispatch(DatasetActions.updateDataset({ datasetId, data: { ...values } }));
   }
 
   // Function to handle the form submission

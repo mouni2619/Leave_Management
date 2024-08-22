@@ -63,7 +63,7 @@ export default function DatasetDeleteModal({
 
   useEffect(() => {
     form.setFieldsValue({ name, description });
-  }, [deleteDatasetData]);
+  }, [JSON.stringify(deleteDatasetData)]);
   return (
     <Modal
       open={isModalOpen}

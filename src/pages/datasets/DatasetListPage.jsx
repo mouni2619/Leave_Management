@@ -36,7 +36,7 @@ function DatasetListTableActions({
   setEditDatasetData = () => {},
   setDeleteDatasetData = () => {},
 }) {
-  function editBtnClickFn() {
+  function handleEdit() {
     setOpenModal({ type: DATASET_MODAL_TYPES.DATA, state: true });
     setEditDatasetData(record);
   }
@@ -47,7 +47,7 @@ function DatasetListTableActions({
   }
   return (
     <div className="d-flex gap-4 align-items-center">
-      <Pencil className="cursor-pointer" size={16} onClick={editBtnClickFn}>
+      <Pencil className="cursor-pointer" size={16} onClick={handleEdit}>
         <title>Edit</title>
       </Pencil>
 
