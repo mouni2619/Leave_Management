@@ -65,7 +65,7 @@ export default function DatasetListPage() {
   const [deleteDatasetData, setDeleteDatasetData] = useState({});
 
   // Selector State
-  const rows = useSelector((state) => state.datasets.datas);
+  const rows = useSelector((state) => state.datasets.data);
 
   const actionsColumn = {
     title: 'Action',

@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { DATASET_LIST_TABLE_ROWS } from '../../constants/datasetConstants';
 
 const initialState = {
-  datas: DATASET_LIST_TABLE_ROWS,
+  data: DATASET_LIST_TABLE_ROWS,
 };
 
 const datasetSlice = createSlice({
@@ -12,29 +12,29 @@ const datasetSlice = createSlice({
   initialState,
   reducers: {
     createDataset: (state, action) => {
-      state.datas.push({
-        key: state.datas.length + 1,
+      state.data.push({
+        key: state.data.length + 1,
         ...action.payload,
       });
     },
 
     updateDataset: (state, action) => {
       const { datasetId, data } = action.payload;
-      const index = state.datas.findIndex(
+      const index = state.data.findIndex(
         (dataset) => dataset.key === datasetId,
       );
       if (index !== -1) {
-        state.datas[index] = { ...data, key: datasetId };
+        state.data[index] = { ...data, key: datasetId };
       }
     },
 
     deleteDataset: (state, action) => {
       const { datasetId } = action.payload;
-      const index = state.datas.findIndex(
+      const index = state.data.findIndex(
         (dataset) => dataset.key === datasetId,
       );
       if (index !== -1) {
-        state.datas.splice(index, 1);
+        state.data.splice(index, 1);
       }
     },
   },
