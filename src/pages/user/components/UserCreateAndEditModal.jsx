@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal } from 'antd';
 
+// Actions
+import { UserActions } from '../../../store/redux-slices/userSlice';
+
 // Constants
 import {
   USER_FORM_INPUT_DATA,
   USER_MODAL_TYPES,
 } from '../../../constants/userConstants';
 
-// Actions
-import { UserActions } from '../../../store/redux-slices/userSlice';
-
 // Components
 import Button from '../../../components/button/Button';
 
-const formInitalValues = {
+const formInitialValues = {
   firstName: '',
   lastName: '',
   emailId: '',
@@ -64,8 +64,8 @@ function FormItem({ data = [], userId = '' }) {
         // Check it is edit and removing the password field
         const isEditForm = userId !== '' && name === 'password';
 
-        return (
-          !isEditForm && (
+        if (!isEditForm) {
+          return (
             <Form.Item
               key={i}
               className="flex-grow-1 fw-semibold"
@@ -77,8 +77,10 @@ function FormItem({ data = [], userId = '' }) {
             >
               {input}
             </Form.Item>
-          )
-        );
+          );
+        }
+
+        return null;
       })}
     </div>
   );
@@ -93,7 +95,7 @@ function FormItem({ data = [], userId = '' }) {
  * @param {*} setUserData: Function
  * @returns
  */
-export default function UserCreateEditModal({
+export default function UserCreateAndEditModal({
   openModal = { state: false, type: '' },
   setOpenModal = () => {},
   userData = {},
@@ -119,11 +121,11 @@ export default function UserCreateEditModal({
   function handleReset() {
     setValidationError('');
     setShowError(false);
-    if (userId) {
-      form.setFieldsValue(userData);
+    if (!userId) {
+      form.resetFields();
       return;
     }
-    form.resetFields();
+    form.setFieldsValue(userData);
   }
 
   // Function to handle the modal cancel
@@ -141,14 +143,14 @@ export default function UserCreateEditModal({
     setOpenModal({ state: 'false', type: '' });
     setUserData({});
 
-    if (userId) {
-      dispatch(
-        UserActions.updateUser({ userId, data: { ...values, isActive, role } }),
-      );
+    if (!userId) {
+      dispatch(UserActions.createUser(values));
       return;
     }
 
-    dispatch(UserActions.createUser(values));
+    dispatch(
+      UserActions.updateUser({ userId, data: { ...values, isActive, role } }),
+    );
     setOpenModal({ state: false, type: '' });
   }
 
@@ -189,7 +191,7 @@ export default function UserCreateEditModal({
       {/* Error Alert */}
       {showError && <Alert message={validationError} type="error" />}
 
-      <Form className="pb-4" form={form} initialValues={formInitalValues}>
+      <Form className="pb-4" form={form} initialValues={formInitialValues}>
         {formInput.map((data, index) => (
           <FormItem key={index} data={data} userId={userId} />
         ))}

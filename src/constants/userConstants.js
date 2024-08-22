@@ -1,5 +1,12 @@
 import { Input } from 'antd';
 
+export const USER_ROLES = {
+  SUPER_ADMIN: 'SUPER_ADMIN',
+  ADMIN: 'ADMIN',
+  EDITOR: 'EDITOR',
+  VIEWER: 'VIEWER',
+};
+
 export const USER_LIST_TABLE_HEADER = [
   {
     title: 'S.No',
@@ -23,7 +30,7 @@ export const USER_LIST_TABLE_ROWS = [
     phoneNum: '9986654345',
     designation: 'App Administrator',
     isActive: true,
-    role: 'SUPER_ADMIN',
+    role: USER_ROLES.SUPER_ADMIN,
     password: 'admin',
   },
   {
@@ -34,7 +41,7 @@ export const USER_LIST_TABLE_ROWS = [
     phoneNum: '',
     designation: '',
     isActive: false,
-    role: 'VIEWER',
+    role: USER_ROLES.VIEWER,
     password: 'admin',
   },
 ];
@@ -112,13 +119,6 @@ export const USER_MODAL_TYPES = {
   USER_DATA: 'UserData',
   CHANGE_PASSWORD: 'ChangePassword',
   USER_ROLE: 'UserRole',
-};
-
-export const USER_ROLES = {
-  SUPER_ADMIN: 'SUPER_ADMIN',
-  ADMIN: 'ADMIN',
-  EDITOR: 'EDITOR',
-  VIEWER: 'VIEWER',
 };
 
 export const USER_STATUS = {

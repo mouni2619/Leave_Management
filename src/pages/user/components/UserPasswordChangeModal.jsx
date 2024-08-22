@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal } from 'antd';
 
+// Actions
+import { UserActions } from '../../../store/redux-slices/userSlice';
+
 // Constants
 import {
   USER_CHANGE_PASSWORD_INPUT_DATA,
   USER_MODAL_TYPES,
 } from '../../../constants/userConstants';
-
-// Actions
-import { UserActions } from '../../../store/redux-slices/userSlice';
 
 // Components
 import Button from '../../../components/button/Button';

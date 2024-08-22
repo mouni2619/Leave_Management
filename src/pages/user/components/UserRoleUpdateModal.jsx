@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Form, Modal, Select } from 'antd';
 
-// Constants
-import { USER_MODAL_TYPES, USER_ROLES } from '../../../constants/userConstants';
-
 // Actions
 import { UserActions } from '../../../store/redux-slices/userSlice';
+
+// Constants
+import { USER_MODAL_TYPES, USER_ROLES } from '../../../constants/userConstants';
 
 // Components
 import Button from '../../../components/button/Button';

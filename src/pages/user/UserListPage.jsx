@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Tag } from 'antd';
 import { KeyRound, Pencil, UserPen } from 'lucide-react';
 
+// Actions
+import { UserActions } from '../../store/redux-slices/userSlice';
+
 // Constants
 import {
   USER_LIST_TABLE_HEADER,
@@ -12,15 +15,12 @@ import {
   USER_TAG_COLOR,
 } from '../../constants/userConstants';
 
-// Actions
-import { UserActions } from '../../store/redux-slices/userSlice';
-
 // Components
 import Button from '../../components/button/Button';
-import UsersTable from './components/UsersTable';
-import UserCreateEditModal from './components/UserCreateEditModal';
+import UserCreateAndEditModal from './components/UserCreateAndEditModal';
 import UserPasswordChangeModal from './components/UserPasswordChangeModal';
 import UserRoleUpdateModal from './components/UserRoleUpdateModal';
+import DataTable from '../../components/antd/table/DataTable';
 
 function Header({ setOpenModal = () => {} }) {
   return (
@@ -53,39 +53,35 @@ function UserListTableActions({
     : 'pe-none opacity-25';
 
   // Function to handle edit
-  function handleEditUserBtn() {
+  function handleEdit() {
     setOpenModal({ state: true, type: USER_MODAL_TYPES.USER_DATA });
     setUserData(record);
   }
 
-  function handleChangePasswordBtn() {
+  function handleChangePassword() {
     setOpenModal({ state: true, type: USER_MODAL_TYPES.CHANGE_PASSWORD });
     setUserData(record);
   }
 
-  function handleUpdateUserBtn() {
+  function handleUpdateUser() {
     setOpenModal({ state: true, type: USER_MODAL_TYPES.USER_ROLE });
     setUserData(record);
   }
 
   // Function to handle user status enable/disable
-  function handleEditUserActive(status, userId) {
+  function handleUpdateUserStatus(status, userId) {
     dispatch(UserActions.updateUserStatus({ status, userId }));
   }
 
   return (
     <div className="d-flex align-items-center gap-3">
-      <Pencil
-        className={actionIconClassName}
-        size={16}
-        onClick={handleEditUserBtn}
-      >
+      <Pencil className={actionIconClassName} size={16} onClick={handleEdit}>
         <title>Edit</title>
       </Pencil>
 
       <KeyRound
         size={16}
-        onClick={handleChangePasswordBtn}
+        onClick={handleChangePassword}
         className={actionIconClassName}
         aria-disabled={true}
       >
@@ -96,14 +92,14 @@ function UserListTableActions({
         <>
           <UserPen
             size={16}
-            onClick={handleUpdateUserBtn}
+            onClick={handleUpdateUser}
             className={actionIconClassName}
           >
             <title>Update Role</title>
           </UserPen>
           <Switch
             defaultChecked={isActive}
-            onChange={(e) => handleEditUserActive(e, key)}
+            onChange={(e) => handleUpdateUserStatus(e, key)}
             size="small"
           ></Switch>
         </>
@@ -163,9 +159,13 @@ export default function UserListPage() {
   return (
     <div className="page-content">
       <Header setOpenModal={setOpenModal} />
-      <UsersTable rows={usersList} columns={columns} />
+      <DataTable
+        rows={usersList}
+        columns={columns}
+        applyOnlyTableBorder={true}
+      />
 
-      <UserCreateEditModal
+      <UserCreateAndEditModal
         openModal={openModal}
         setOpenModal={setOpenModal}
         userData={userData}
