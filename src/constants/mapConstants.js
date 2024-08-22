@@ -1,7 +1,29 @@
-export const MAP_TILE_DETAILS = {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+export const MAP_TILES = {
+  osm: {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
+  },
+  'osm-hydda': {
+    attribution:
+      '<a href="https://github.com/karlwettin/carto-style-hydda" target="_blank">Hydda</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.openstreetmap.se/hydda/full/{z}/{x}/{y}.png',
+  },
+  streets: {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=7Q1IdysXEHppNfS9B7GB',
+  },
+  transport: {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png?apikey=fe7f54b14b7245ddabbc2465d15522e9',
+  },
+  atlas: {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    url: 'https://{s}.tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=fe7f54b14b7245ddabbc2465d15522e9',
+  },
 };
 
 export const MAP_POINTER = {

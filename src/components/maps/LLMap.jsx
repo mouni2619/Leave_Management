@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { MapContainer, TileLayer, useMap, ZoomControl } from 'react-leaflet';
 
 // Constants
-import { MAP_TILE_DETAILS, MAP_ZOOM } from '../../constants/mapConstants';
+import { MAP_TILES, MAP_ZOOM } from '../../constants/mapConstants';
 
 // CSS
 import 'leaflet/dist/leaflet.css';
@@ -29,10 +29,11 @@ export default function LLMap({
   zoom = DEFAULT_ZOOM,
   scrollWheelZoom = true,
   zoomControl = 'bottomright',
+  titleName = 'osm',
   children,
 }) {
   // Tiles
-  const mapTileInfo = MAP_TILE_DETAILS;
+  const mapTileInfo = MAP_TILES[titleName];
 
   return (
     <MapContainer
