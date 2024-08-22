@@ -161,13 +161,19 @@ export const SidebarDefaultData = [
   },
   {
     id: 3,
-    title: 'Item 3',
-    iconName: 'fa-user-check',
+    title: 'Maps',
+    iconName: 'fa-map',
     isSelected: false,
     subItems: [
-      { label: 'Sub Item 1', id: 'g', link: '' },
-      { label: 'Sub Item 2', id: 'h', link: '' },
-      { label: 'Sub Item 3', id: 'i', link: '' },
+      { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
+      {
+        label: 'Multiple Points',
+        id: 'h',
+        link: PageUrls.MultiplePointsMapPage,
+      },
+      { label: 'Heat Map', id: 'i', link: PageUrls.HeatMapPage },
+      { label: 'Boundaries', id: 'j', link: PageUrls.BoundaryMapPage },
+      { label: 'Vector Layers', id: 'k', link: PageUrls.VectorMapPage },
     ],
   },
   {
@@ -190,13 +196,15 @@ export const SidePanelPositions = {
 export const SidePanelData = [
   {
     id: 0,
-    icon: 'fa-envelope',
-    label: 'Mail',
+    icon: 'fa-user-group',
+    label: 'Users',
+    link: PageUrls.UserManagementPage,
   },
   {
     id: 1,
-    icon: 'fa-video',
-    label: 'Video',
+    icon: 'fa-database',
+    label: 'Database',
+    link: PageUrls.DatasetManagementPage,
   },
   {
     id: 2,
