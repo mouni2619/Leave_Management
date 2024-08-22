@@ -29,6 +29,13 @@ import UserListPage from '../pages/user/UserListPage';
 // Pages :: Datasets Management
 import DatasetListPage from '../pages/datasets/DatasetListPage';
 
+// Pages :: Maps
+import NormalMapPage from '../pages/maps/NormalMapPage';
+import MultiplePointsMapPage from '../pages/maps/MultiplePointsMapPage';
+import HeatMapPage from '../pages/maps/HeatMapPage';
+import BoundaryMapPage from '../pages/maps/BoundaryMapPage';
+import VectorMapPage from '../pages/maps/VectorMapPage';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardPage,
@@ -94,6 +101,28 @@ export const MainPageRoutes = {
     {
       path: PageUrls.DatasetManagementPage,
       element: <DatasetListPage />,
+    },
+
+    // Maps
+    {
+      path: PageUrls.NormalMapPage,
+      element: <NormalMapPage />,
+    },
+    {
+      path: PageUrls.HeatMapPage,
+      element: <HeatMapPage />,
+    },
+    {
+      path: PageUrls.BoundaryMapPage,
+      element: <BoundaryMapPage />,
+    },
+    {
+      path: PageUrls.VectorMapPage,
+      element: <VectorMapPage />,
+    },
+    {
+      path: PageUrls.MultiplePointsMapPage,
+      element: <MultiplePointsMapPage />,
     },
   ],
 };

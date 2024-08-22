@@ -15,11 +15,11 @@ const PageUrls = {
   DashboardPage: '/',
 
   // Charts Page
-  LineChartsPage: '/line-charts',
-  BarChartsPage: '/bar-charts',
-  PieChartsPage: '/pie-charts',
-  BoxplotChartsPage: '/boxplot-charts',
-  HeatMapsPage: '/heat-maps',
+  LineChartsPage: '/charts/line-charts',
+  BarChartsPage: '/charts/bar-charts',
+  PieChartsPage: '/charts/pie-charts',
+  BoxplotChartsPage: '/charts/boxplot-charts',
+  HeatMapsPage: '/charts/heat-maps',
 
   // Components
   TableComponentPage: '/table',
@@ -27,10 +27,17 @@ const PageUrls = {
   FormModalComponentPage: '/form-modal',
 
   // User Management
-  UserManagementPage: '/user-management',
+  UserManagementPage: '/user/user-mgmt',
 
   // Dataset Management
-  DatasetManagementPage: '/dataset-management',
+  DatasetManagementPage: '/data/dataset-mgmt',
+
+  // Maps
+  NormalMapPage: '/map/normal-map',
+  MultiplePointsMapPage: '/map/multiple-points-map',
+  HeatMapPage: '/map/heat-map',
+  BoundaryMapPage: '/map/boundary-map',
+  VectorMapPage: '/map/vector-map',
 
   // Error Page
   ErrorPage: `${PagePaths.Error}/:errorStatusCode`,
