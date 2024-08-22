@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Tag } from 'antd';
 import { KeyRound, Pencil, UserPen } from 'lucide-react';
@@ -111,11 +111,10 @@ function UserListTableActions({
 export default function UserListPage() {
   // States
   const [openModal, setOpenModal] = useState({ state: 'false', type: '' });
-  const [columns, setColumns] = useState([]);
   const [userData, setUserData] = useState({});
 
   // Selector State
-  const usersList = useSelector((state) => state.users.users);
+  const userList = useSelector((state) => state.users.usersList);
 
   // Constructing columns for users table
   const statusColumn = {
@@ -153,14 +152,12 @@ export default function UserListPage() {
     },
   };
 
-  useEffect(() => {
-    setColumns([...USER_LIST_TABLE_HEADER, statusColumn, actionColumn]);
-  }, []);
+  const columns = [...USER_LIST_TABLE_HEADER, statusColumn, actionColumn];
   return (
     <div className="page-content">
       <Header setOpenModal={setOpenModal} />
       <DataTable
-        rows={usersList}
+        rows={userList}
         columns={columns}
         applyOnlyTableBorder={true}
       />

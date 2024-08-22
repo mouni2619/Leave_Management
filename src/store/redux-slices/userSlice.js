@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { USER_LIST_TABLE_ROWS } from '../../constants/userConstants';
 
 const initialState = {
-  users: USER_LIST_TABLE_ROWS,
+  usersList: USER_LIST_TABLE_ROWS,
 };
 
 const userSlice = createSlice({
@@ -10,8 +10,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     createUser: (state, action) => {
-      state.users.push({
-        key: state.users.length + 1,
+      state.usersList.push({
+        key: state.usersList.length + 1,
         ...action.payload,
         isActive: true,
         role: 'VIEWER',
@@ -20,33 +20,39 @@ const userSlice = createSlice({
 
     updateUser: (state, action) => {
       const { userId, data } = action.payload;
-      const index = state.users.findIndex((user) => user.key === userId);
+      const index = state.usersList.findIndex((user) => user.key === userId);
       if (index !== -1) {
-        state.users[index] = { ...data, key: userId };
+        state.usersList[index] = { ...data, key: userId };
       }
     },
 
     updateUserStatus: (state, action) => {
       const { userId, status } = action.payload;
-      const index = state.users.findIndex((user) => user.key === userId);
+      const index = state.usersList.findIndex((user) => user.key === userId);
       if (index !== -1) {
-        state.users[index] = { ...state.users[index], isActive: status };
+        state.usersList[index] = {
+          ...state.usersList[index],
+          isActive: status,
+        };
       }
     },
 
     updateUserPassword: (state, action) => {
       const { userId, newPassword } = action.payload;
-      const index = state.users.findIndex((user) => user.key === userId);
+      const index = state.usersList.findIndex((user) => user.key === userId);
       if (index !== -1) {
-        state.users[index] = { ...state.users[index], password: newPassword };
+        state.usersList[index] = {
+          ...state.usersList[index],
+          password: newPassword,
+        };
       }
     },
 
     updateUserRole: (state, action) => {
       const { userId, role } = action.payload;
-      const index = state.users.findIndex((user) => user.key === userId);
+      const index = state.usersList.findIndex((user) => user.key === userId);
       if (index !== -1) {
-        state.users[index] = { ...state.users[index], role };
+        state.usersList[index] = { ...state.usersList[index], role };
       }
     },
   },
