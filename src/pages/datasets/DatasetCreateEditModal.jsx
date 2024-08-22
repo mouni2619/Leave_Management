@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Alert, Form, Input, Modal, Space } from 'antd';
 
+// Constants
+import { DATASET_MODAL_TYPES } from '../../constants/datasetConstants';
+
 // Actions
-import { DatasetActions } from '../../../store/redux-slices/datasetSlice';
+import { DatasetActions } from '../../store/redux-slices/datasetSlice';
 
 // Components
-import Button from '../../../components/button/Button';
+import Button from '../../components/button/Button';
 
 function FormActions({
   handleReset = () => {},
@@ -36,15 +39,14 @@ function FormActions({
 
 /**
  * Dataset Create / Edit Modal
- * @param {*} openModal: Boolean
+ * @param {*} openModal: Object
  * @param {*} editDatasetData: Object
- * @param {*} editDatasetData: Function
+ * @param {*} setEditDatasetData: Function
  * @param {*} setOpenModal: Function
- * @param {*} setRows: Function
  * @returns
  */
 export default function DatasetCreateEditModal({
-  openModal = false,
+  openModal = { type: '', state: false },
   editDatasetData = {},
   setEditDatasetData = () => {},
   setOpenModal = () => {},
@@ -53,6 +55,9 @@ export default function DatasetCreateEditModal({
 
   // Form
   const [form] = Form.useForm();
+
+  const { type, state } = openModal;
+  const isModalOpen = state && type === DATASET_MODAL_TYPES.DATA;
 
   // States
   const [validationError, setValidationError] = useState('');
@@ -64,7 +69,7 @@ export default function DatasetCreateEditModal({
   function handleUpsert(values = {}) {
     setValidationError('');
     setShowError(false);
-    setOpenModal(false);
+    setOpenModal({ type: '', state: false });
     setEditDatasetData({});
     if (datasetId) {
       dispatch(
@@ -98,10 +103,11 @@ export default function DatasetCreateEditModal({
 
   // Function to handle modal cancel
   function handleCancel() {
-    setOpenModal(false);
+    setOpenModal({ type: '', state: false });
     setEditDatasetData({});
     setValidationError('');
     setShowError(false);
+    form.resetFields();
   }
 
   useEffect(() => {
@@ -109,11 +115,13 @@ export default function DatasetCreateEditModal({
   }, [datasetId]);
   return (
     <Modal
-      open={openModal}
+      open={isModalOpen}
       title={modalTitle}
       onCancel={handleCancel}
       width={600}
-      footer={false}
+      footer={() => (
+        <FormActions handleReset={handleReset} handleSubmit={handleSubmit} />
+      )}
       afterClose={handleReset}
       forceRender
     >
@@ -141,7 +149,6 @@ export default function DatasetCreateEditModal({
         >
           <Input.TextArea rows={4} />
         </Form.Item>
-        <FormActions handleReset={handleReset} handleSubmit={handleSubmit} />
       </Form>
     </Modal>
   );

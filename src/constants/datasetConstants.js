@@ -22,3 +22,5 @@ export const DATASET_LIST_TABLE_ROWS = [
     description: 'Sample Dataset with employees data',
   },
 ];
+
+export const DATASET_MODAL_TYPES = { DATA: 'Data', DELETE: 'Delete' };

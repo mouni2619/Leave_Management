@@ -1,23 +1,29 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Eye, Info, Pencil, Trash2 } from 'lucide-react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Pencil, Trash2 } from 'lucide-react';
 
 // Constants
-import { DATASET_LIST_TABLE_HEADER } from '../../constants/datasetConstants';
-
-// Actions
-import { DatasetActions } from '../../store/redux-slices/datasetSlice';
+import {
+  DATASET_LIST_TABLE_HEADER,
+  DATASET_MODAL_TYPES,
+} from '../../constants/datasetConstants';
 
 // Components
 import Button from '../../components/button/Button';
-import DatasetsTable from './components/DatasetsTable';
-import DatasetCreateEditModal from './components/DatasetCreateEditModal';
+import DatasetDeleteModal from './DatasetDeleteModal';
+import DataTable from '../../components/antd/table/DataTable';
+import DatasetCreateEditModal from './DatasetCreateEditModal';
 
 function Header({ setOpenModal = () => {} }) {
   return (
     <div className="w-100 d-flex justify-content-between my-4">
       <h2>{`Datasets List`}</h2>
-      <Button className="btn-primary" onClick={() => setOpenModal(true)}>
+      <Button
+        className="btn-primary"
+        onClick={() =>
+          setOpenModal({ type: DATASET_MODAL_TYPES.DATA, state: true })
+        }
+      >
         New Dataset
       </Button>
     </div>
@@ -28,31 +34,22 @@ function DatasetListTableActions({
   record = {},
   setOpenModal = () => {},
   setEditDatasetData = () => {},
+  setDeleteDatasetData = () => {},
 }) {
-  // Dispatch
-  const dispatch = useDispatch();
-
   function editBtnClickFn() {
-    setOpenModal(true);
+    setOpenModal({ type: DATASET_MODAL_TYPES.DATA, state: true });
     setEditDatasetData(record);
   }
 
   function handleDelete() {
-    dispatch(DatasetActions.deleteDataset({ datasetId: record.key }));
+    setOpenModal({ type: DATASET_MODAL_TYPES.DELETE, state: true });
+    setDeleteDatasetData(record);
   }
   return (
     <div className="d-flex gap-4 align-items-center">
       <Pencil className="cursor-pointer" size={16} onClick={editBtnClickFn}>
         <title>Edit</title>
       </Pencil>
-
-      <Info size={16} className="cursor-pointer">
-        <title>Info</title>
-      </Info>
-
-      <Eye size={16} className="cursor-pointer">
-        <title>View</title>
-      </Eye>
 
       <Trash2 size={16} className="cursor-pointer" onClick={handleDelete}>
         <title>Delete</title>
@@ -63,12 +60,12 @@ function DatasetListTableActions({
 
 export default function DatasetListPage() {
   // States
-  const [openModal, setOpenModal] = useState(false);
-  const [columns, setColumns] = useState([]);
+  const [openModal, setOpenModal] = useState({ type: '', state: false });
   const [editDatasetData, setEditDatasetData] = useState({});
+  const [deleteDatasetData, setDeleteDatasetData] = useState({});
 
   // Selector State
-  const rows = useSelector((state) => state.datasets.datasets);
+  const rows = useSelector((state) => state.datasets.datas);
 
   const actionsColumn = {
     title: 'Action',
@@ -79,24 +76,30 @@ export default function DatasetListPage() {
           record={record}
           setOpenModal={setOpenModal}
           setEditDatasetData={setEditDatasetData}
+          setDeleteDatasetData={setDeleteDatasetData}
         />
       );
     },
   };
 
-  useEffect(() => {
-    setColumns([...DATASET_LIST_TABLE_HEADER, actionsColumn]);
-  }, []);
+  const columns = [...DATASET_LIST_TABLE_HEADER, actionsColumn];
   return (
     <div className="page-content">
       <Header setOpenModal={setOpenModal} />
-      <DatasetsTable rows={rows} columns={columns} />
+      <DataTable rows={rows} columns={columns} applyOnlyTableBorder={true} />
 
       <DatasetCreateEditModal
         openModal={openModal}
         setOpenModal={setOpenModal}
         editDatasetData={editDatasetData}
         setEditDatasetData={setEditDatasetData}
+      />
+
+      <DatasetDeleteModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        deleteDatasetData={deleteDatasetData}
+        setDeleteDatasetData={setDeleteDatasetData}
       />
     </div>
   );
