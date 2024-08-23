@@ -1,5 +1,5 @@
 // Components
-import DataTable from '../../components/antd/table/DataTable';
+import DataTable from '../../../components/antd/table/DataTable';
 
 const rows = [
   {

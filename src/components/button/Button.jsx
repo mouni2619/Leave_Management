@@ -1,5 +1,5 @@
-function constructClassname(disabled, loading, className) {
-  const modifierClassName = disabled || loading ? 'opacity-25' : 'd-flex';
+function constructClassName(disabled, loading, className) {
+  const modifierClassName = disabled || loading ? 'opacity-25' : '';
   return `btn ${className} ${modifierClassName}`;
 }
 
@@ -18,13 +18,13 @@ export default function Button({
   icon = '',
   children,
 }) {
-  const btnClassName = constructClassname(disabled, loading, className);
+  const btnClassName = constructClassName(disabled, loading, className);
   return (
     <button className={btnClassName} disabled={disabled} onClick={onClick}>
-      {!loading && icon}
+      {!loading && icon && <span className="pe-1">{icon}</span>}
       {loading && (
         <span
-          className="spinner-border spinner-border-sm ms-2"
+          className="spinner-border spinner-border-sm mx-1"
           role="status"
           aria-hidden="true"
         />

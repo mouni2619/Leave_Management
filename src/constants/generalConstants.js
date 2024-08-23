@@ -20,3 +20,9 @@ export const ToastPositions = {
   bottomCenter: 'bottom-center',
   bottomRight: 'bottom-right',
 };
+
+// FileTypes
+export const FileTypes = {
+  XLSX: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  CSV: 'text/csv',
+};
