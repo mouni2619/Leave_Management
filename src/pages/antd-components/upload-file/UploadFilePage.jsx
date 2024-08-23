@@ -30,7 +30,7 @@ function UploadActions({ handleReset = () => {}, handleUpload = () => {} }) {
   );
 }
 
-function UploadSelectedBody() {
+function UploadSelectBody() {
   return (
     <>
       <UploadIcon />
@@ -47,7 +47,7 @@ function UploadDraggerBody({ isFileSelected = false, file = {} }) {
   const { name } = file;
 
   if (!isFileSelected) {
-    return <UploadSelectedBody />;
+    return <UploadSelectBody />;
   }
   return (
     <>
