@@ -1,4 +1,14 @@
 // URLs
+import {
+  Blocks,
+  ChartColumn,
+  Database,
+  HandHeart,
+  Map,
+  ShoppingCart,
+  TramFront,
+  UsersRound,
+} from 'lucide-react';
 import PageUrls from './pageUrls';
 
 /**
@@ -138,7 +148,7 @@ export const SidebarDefaultData = [
   {
     id: 1,
     title: 'Charts',
-    iconName: 'fa-chart-simple',
+    icon: <ChartColumn size={26} />,
     isSelected: false,
     subItems: [
       { label: 'Line', id: 'a', link: PageUrls.LineChartsPage },
@@ -151,35 +161,30 @@ export const SidebarDefaultData = [
   {
     id: 2,
     title: 'AntD Components',
-    iconName: 'fa-square',
+    icon: <Blocks size={26} />,
     isSelected: false,
     subItems: [
-      { label: 'Table', id: 'a', link: PageUrls.TableComponentPage },
-      { label: 'Upload File', id: 'b', link: PageUrls.UploadFileComponentPage },
-      { label: 'Form Modal', id: 'c', link: PageUrls.FormModalComponentPage },
+      { label: 'Table', id: 'f', link: PageUrls.TableComponentPage },
+      { label: 'Upload File', id: 'g', link: PageUrls.UploadFileComponentPage },
+      { label: 'Form Modal', id: 'h', link: PageUrls.FormModalComponentPage },
     ],
   },
   {
     id: 3,
     title: 'Maps',
-    iconName: 'fa-map',
+    icon: <Map size={26} />,
     isSelected: false,
     subItems: [
-      { label: 'Normal', id: 'g', link: PageUrls.NormalMapPage },
+      { label: 'Normal', id: 'i', link: PageUrls.NormalMapPage },
       {
         label: 'Multiple Points',
-        id: 'h',
+        id: 'j',
         link: PageUrls.MultiplePointsMapPage,
       },
-      { label: 'Heat Map', id: 'i', link: PageUrls.HeatMapPage },
-      { label: 'Boundaries', id: 'j', link: PageUrls.BoundaryMapPage },
-      { label: 'Vector Layers', id: 'k', link: PageUrls.VectorMapPage },
+      { label: 'Heat Map', id: 'k', link: PageUrls.HeatMapPage },
+      { label: 'Boundaries', id: 'l', link: PageUrls.BoundaryMapPage },
+      { label: 'Vector Layers', id: 'm', link: PageUrls.VectorMapPage },
     ],
-  },
-  {
-    id: 4,
-    title: 'Item 4',
-    iconName: 'fa-user-group',
   },
 ];
 
@@ -196,29 +201,44 @@ export const SidePanelPositions = {
 export const SidePanelData = [
   {
     id: 0,
-    icon: 'fa-user-group',
-    label: 'Users',
+    icon: (
+      <UsersRound>
+        <title>Users</title>
+      </UsersRound>
+    ),
     link: PageUrls.UserManagementPage,
   },
   {
     id: 1,
-    icon: 'fa-database',
-    label: 'Database',
+    icon: (
+      <Database>
+        <title>Database</title>
+      </Database>
+    ),
     link: PageUrls.DatasetManagementPage,
   },
   {
     id: 2,
-    icon: 'fa-cart-shopping',
-    label: 'Shopping',
+    icon: (
+      <ShoppingCart>
+        <title>Shopping</title>
+      </ShoppingCart>
+    ),
   },
   {
     id: 3,
-    icon: 'fa-train-subway',
-    label: 'Travel',
+    icon: (
+      <TramFront>
+        <title>Travel</title>
+      </TramFront>
+    ),
   },
   {
     id: 4,
-    icon: 'fa-hand-holding-heart',
-    label: 'Donate',
+    icon: (
+      <HandHeart>
+        <title>Donate</title>
+      </HandHeart>
+    ),
   },
 ];

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 // Constants
 import { SidebarDefaultData } from '../../constants/layoutConstants';
 
 // Sub item
 function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
+  const navigate = useNavigate();
+
   // Data
   const { label, id, link } = subItem;
 
@@ -15,6 +18,7 @@ function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
   // handle selected subItem
   function handleSelectSubItem() {
     setSelectedSubItemId(id);
+    navigate(link);
   }
 
   return (
@@ -22,16 +26,18 @@ function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
       className={`sub-item ${isSubItemSelected ? 'selected' : ''}`}
       onClick={handleSelectSubItem}
     >
-      <Link to={link}>{label}</Link>
+      {label}
     </li>
   );
 }
 
 /**
  * {
- *   label: "Some text",
+ *   title: "Some text",
  *   id: "1",
- *   subItem: []
+ *   icon: <></>,
+ *   isSelected: false,
+ *   subItems: []
  * }
  */
 function MenuItem({
@@ -40,12 +46,16 @@ function MenuItem({
   isSidebarCollapsed,
   menuList = [],
   setMenuList,
+  selectedSubItemId = '',
+  setSelectedSubItemId = () => {},
 }) {
-  // State
-  const [selectedSubItemId, setSelectedSubItemId] = useState('');
-
   // data
-  const { title = '', iconName, isSelected, subItems = [] } = menuGroup || {};
+  const {
+    title = '',
+    icon = <></>,
+    isSelected = false,
+    subItems = [],
+  } = menuGroup || {};
 
   // checking any subItems present or not
   const isSubItemsPresent = subItems.length > 0;
@@ -74,7 +84,7 @@ function MenuItem({
   }
 
   // toggle arrow style
-  const toggleArrowName = isSelected ? 'fa-chevron-up' : 'fa-chevron-down';
+  const toggleArrowName = isSelected ? <ChevronUp /> : <ChevronDown />;
 
   // checking to show subItems or not
   const isShowSubItems = isSubItemsPresent && isSelected && !isSidebarCollapsed;
@@ -88,23 +98,17 @@ function MenuItem({
           onClick={handleSelectItem}
         >
           <div className="d-flex align-items-center">
-            <i className={`fa fa-lg nav-item-icon ${iconName}`} />
+            {icon}
             <h5 className="mx-2 mb-0">{title}</h5>
           </div>
 
           {/* arrow : open / close menu */}
-          {isSubItemsPresent && <i className={`fa ${toggleArrowName}`} />}
+          {isSubItemsPresent && toggleArrowName}
         </div>
       )}
 
       {/* only icon : collapsed state */}
-      {isSidebarCollapsed && (
-        <i
-          className={`fa fa-xl ${iconName}`}
-          title={title}
-          onClick={handleSelectItem}
-        />
-      )}
+      {isSidebarCollapsed && icon}
 
       {/* Sub Items */}
       {isShowSubItems && (
@@ -134,6 +138,8 @@ export default function SidebarMenu({
 }) {
   // menu List
   const [menuList, setMenuList] = useState([]);
+  // State
+  const [selectedSubItemId, setSelectedSubItemId] = useState('');
 
   // useEffect to initial update of menu list
   useEffect(() => {
@@ -158,6 +164,8 @@ export default function SidebarMenu({
             isSidebarCollapsed={!isSidebarOpen}
             menuList={menuList}
             setMenuList={setMenuList}
+            selectedSubItemId={selectedSubItemId}
+            setSelectedSubItemId={setSelectedSubItemId}
           />
         );
       })}
