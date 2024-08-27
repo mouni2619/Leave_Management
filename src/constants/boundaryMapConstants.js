@@ -1,4 +1,4 @@
-export const BoundaryPoints = {
+export const BOUNDARY_POINTS = {
   type: 'FeatureCollection',
   name: 'GCP_Boundaries',
   crs: { type: 'name', properties: { name: 'urn:ogc:def:crs:OGC:1.3:CRS84' } },

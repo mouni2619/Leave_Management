@@ -1,8 +1,12 @@
+import { useEffect } from 'react';
 import { Icon } from 'leaflet';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Constants
 import { MAP_POINTER, MAP_ZOOM } from '../../constants/mapConstants';
-import { MULTIPLE_POINTS } from '../../constants/pointsMapConstant';
+
+// Actions
+import { MapActions } from '../../store/redux-slices/mapSlice';
 
 // Components
 import MandarkMultiplePointsMap from '../../components/maps/multiple-points-map/MandarkMultiplePointsMap';
@@ -13,7 +17,11 @@ const LONGITUDE = 80.2438303535238;
 const zoomLevel = MAP_ZOOM.zoomLevel13;
 
 export default function MultiplePointsMapPage() {
+  const dispatch = useDispatch();
+
   const center = [LATITUDE, LONGITUDE];
+
+  const markers = useSelector((state) => state.maps.multiplePoints);
 
   // custom icon for the pointer marker
   const customIcon = new Icon({
@@ -21,7 +29,9 @@ export default function MultiplePointsMapPage() {
     iconSize: MAP_POINTER.iconSize,
   });
 
-  const markers = MULTIPLE_POINTS;
+  useEffect(() => {
+    dispatch(MapActions.getMultiplePoints());
+  }, []);
   return (
     <div className="page-content">
       <MandarkMultiplePointsMap

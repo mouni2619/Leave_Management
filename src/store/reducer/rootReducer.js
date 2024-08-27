@@ -12,6 +12,9 @@ import { UserReducer } from '../redux-slices/userSlice';
 // Dataset Reducer
 import { DatasetReducer } from '../redux-slices/datasetSlice';
 
+// Map Reducer
+import { MapReducer } from '../redux-slices/mapSlice';
+
 // Root Reducer definition
 export const RootReducer = combineReducers({
   // App specific reducers go here..
@@ -27,4 +30,7 @@ export const RootReducer = combineReducers({
 
   // Dataset Reducer
   datasets: DatasetReducer,
+
+  // Map Reducer
+  maps: MapReducer,
 });
