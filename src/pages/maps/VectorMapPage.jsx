@@ -2,7 +2,7 @@
 import { MAP_ZOOM } from '../../constants/mapConstants';
 
 // Components
-import LLVectorLayersMap from '../../components/maps/vector-layer-map/LLVectorLayersMap';
+import MandarkVectorLayersMap from '../../components/maps/vector-layer-map/MandarkVectorLayersMap';
 
 // Page Constants
 const LATITUDE = 51.505;
@@ -14,7 +14,7 @@ export default function VectorMapPage() {
 
   return (
     <div className="page-content">
-      <LLVectorLayersMap center={center} zoomLevel={zoomLevel} />
+      <MandarkVectorLayersMap center={center} zoomLevel={zoomLevel} />
     </div>
   );
 }

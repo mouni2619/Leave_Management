@@ -5,7 +5,7 @@ import { MAP_POINTER, MAP_ZOOM } from '../../constants/mapConstants';
 import { MULTIPLE_POINTS } from '../../constants/pointsMapConstant';
 
 // Components
-import LLMultiplePointsMap from '../../components/maps/multiple-points-map/LLMultiplePointsMap';
+import MandarkMultiplePointsMap from '../../components/maps/multiple-points-map/MandarkMultiplePointsMap';
 
 // Page Constants
 const LATITUDE = 12.992176277063903;
@@ -24,7 +24,7 @@ export default function MultiplePointsMapPage() {
   const markers = MULTIPLE_POINTS;
   return (
     <div className="page-content">
-      <LLMultiplePointsMap
+      <MandarkMultiplePointsMap
         center={center}
         zoomLevel={zoomLevel}
         markers={markers}

@@ -3,7 +3,7 @@ import { MAP_ZOOM } from '../../constants/mapConstants';
 import { BoundaryPoints } from '../../constants/boundaryMapConstants';
 
 // Components
-import LLBoundaryMap from '../../components/maps/boundary-map/LLBoundaryMap';
+import MandarkBoundaryMap from '../../components/maps/boundary-map/MandarkBoundaryMap';
 
 const LATITUDE = 13.082254666802685;
 const LONGITUDE = 80.28040794212028;
@@ -16,7 +16,7 @@ export default function BoundaryMapPage() {
   const geoJSONData = BoundaryPoints;
   return (
     <div className="page-content">
-      <LLBoundaryMap
+      <MandarkBoundaryMap
         center={center}
         zoomLevel={zoomLevel}
         geoJSONData={geoJSONData}

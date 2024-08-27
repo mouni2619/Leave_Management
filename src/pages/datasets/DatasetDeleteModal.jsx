@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Input, Modal, Space } from 'antd';
+import { Form, Input, Modal } from 'antd';
 
 // Constants
 import { DATASET_MODAL_TYPES } from '../../constants/datasetConstants';
@@ -9,23 +9,7 @@ import { DATASET_MODAL_TYPES } from '../../constants/datasetConstants';
 import { DatasetActions } from '../../store/redux-slices/datasetSlice';
 
 // Components
-import Button from '../../components/button/Button';
-
-function FormActions({ handleSubmit = () => {}, btnLoading = false }) {
-  return (
-    <Form.Item className="d-flex flex-row justify-content-end align-items-center mb-0">
-      <Space>
-        <Button
-          className="btn-primary"
-          onClick={handleSubmit}
-          loading={btnLoading}
-        >
-          Confirm
-        </Button>
-      </Space>
-    </Form.Item>
-  );
-}
+import FormActions from './components/FormActions';
 
 /**
  * Dataset Delete Modal
@@ -70,7 +54,12 @@ export default function DatasetDeleteModal({
       title="Confirm Delete"
       onCancel={handleCancel}
       width={600}
-      footer={() => <FormActions handleSubmit={handleSubmit} />}
+      footer={() => (
+        <FormActions
+          handleSubmit={handleSubmit}
+          type={DATASET_MODAL_TYPES.DELETE}
+        />
+      )}
       forceRender
     >
       <Form layout="vertical" className="my-4" form={form} disabled>

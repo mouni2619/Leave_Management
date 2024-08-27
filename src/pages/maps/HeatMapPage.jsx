@@ -6,7 +6,7 @@ import { HeatMapPoints } from '../../constants/heatMapConstants';
 import { MAP_ZOOM } from '../../constants/mapConstants';
 
 // Components
-import LLHeatMap from '../../components/maps/heat-map/LLHeatMap';
+import MandarkHeatMap from '../../components/maps/heat-map/MandarkHeatMap';
 
 const LATITUDE = -37.87;
 const LONGITUDE = 175.475;
@@ -20,7 +20,11 @@ export default function HeatMapPage() {
 
   return (
     <div className="page-content">
-      <LLHeatMap position={position} zoomLevel={zoomLevel} points={points} />
+      <MandarkHeatMap
+        position={position}
+        zoomLevel={zoomLevel}
+        points={points}
+      />
     </div>
   );
 }

@@ -12,7 +12,7 @@ import 'leaflet.heat';
  * @param {*} props Component properties
  * @returns
  */
-export default function LLHeatLayer({ points }) {
+export default function MandarkHeatLayer({ points }) {
   // Get Map
   const _map = useMap();
 

@@ -1,8 +1,23 @@
 import { useState } from 'react';
-import { Alert, Form, Input, Modal, Space } from 'antd';
+import { Alert, Form, Modal, Space } from 'antd';
 
 // Components
 import Button from '../../button/Button';
+
+function FormItem({ data = {} }) {
+  const { label, name, className, input, rules, help } = data;
+  return (
+    <Form.Item
+      label={label}
+      name={name}
+      className={className}
+      rules={rules}
+      help={help}
+    >
+      {input}
+    </Form.Item>
+  );
+}
 
 // Form Action Function
 function FormActions({
@@ -34,6 +49,8 @@ function FormActions({
 export default function AntDFormModal({
   openModal = false,
   setOpenModal = () => {},
+  formLayout = 'vertical',
+  formInput = [],
 }) {
   // Form
   const [form] = Form.useForm();
@@ -86,27 +103,11 @@ export default function AntDFormModal({
       {/** Error Alert */}
       {showError && <Alert message={validationError} type="error" />}
 
-      <Form layout="vertical" className="my-4" form={form}>
-        <Form.Item
-          label="Name :"
-          name="name"
-          className="fw-semibold"
-          rules={[
-            {
-              required: true,
-              message: 'Please enter Name!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          label="Description :"
-          name="description"
-          className="fw-semibold"
-        >
-          <Input.TextArea rows={4} />
-        </Form.Item>
+      <Form layout={formLayout} className="my-4" form={form}>
+        {formInput.map((data) => {
+          const { id = '' } = data;
+          return <FormItem key={id} data={data} />;
+        })}
       </Form>
     </Modal>
   );

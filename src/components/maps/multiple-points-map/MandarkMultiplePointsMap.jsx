@@ -1,16 +1,16 @@
 import { Marker, Popup } from 'react-leaflet';
 
 // Components
-import LLMap from '../LLMap';
+import MandarkMap from '../MandarkMap';
 
-export default function LLMultiplePointsMap({
+export default function MandarkMultiplePointsMap({
   center = [],
   zoomLevel,
   markers = [],
   customIcon,
 }) {
   return (
-    <LLMap center={center} zoom={zoomLevel}>
+    <MandarkMap center={center} zoom={zoomLevel}>
       {markers.map((mark, i) => {
         const { geocode, popUp } = mark;
         return (
@@ -19,6 +19,6 @@ export default function LLMultiplePointsMap({
           </Marker>
         );
       })}
-    </LLMap>
+    </MandarkMap>
   );
 }

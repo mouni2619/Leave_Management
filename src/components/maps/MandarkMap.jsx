@@ -24,7 +24,7 @@ function LLChangeView({ center, zoom }) {
 /**
  * Custom Leaflet Map with utility functions
  */
-export default function LLMap({
+export default function MandarkMap({
   center,
   zoom = DEFAULT_ZOOM,
   scrollWheelZoom = true,

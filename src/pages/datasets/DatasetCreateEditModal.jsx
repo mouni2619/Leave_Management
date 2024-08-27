@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Alert, Form, Input, Modal, Space } from 'antd';
+import { Alert, Form, Input, Modal } from 'antd';
 
 // Constants
 import { DATASET_MODAL_TYPES } from '../../constants/datasetConstants';
@@ -9,33 +9,7 @@ import { DATASET_MODAL_TYPES } from '../../constants/datasetConstants';
 import { DatasetActions } from '../../store/redux-slices/datasetSlice';
 
 // Components
-import Button from '../../components/button/Button';
-
-function FormActions({
-  handleReset = () => {},
-  handleSubmit = () => {},
-  btnLoading = false,
-}) {
-  return (
-    <Form.Item className="d-flex flex-row justify-content-end align-items-center">
-      <Space>
-        <Button
-          className="btn-outline-dark btn-outline-custom"
-          onClick={handleReset}
-        >
-          Reset
-        </Button>
-        <Button
-          className="btn-primary"
-          onClick={handleSubmit}
-          loading={btnLoading}
-        >
-          Submit
-        </Button>
-      </Space>
-    </Form.Item>
-  );
-}
+import FormActions from './components/FormActions';
 
 /**
  * Dataset Create / Edit Modal
@@ -118,7 +92,11 @@ export default function DatasetCreateEditModal({
       onCancel={handleCancel}
       width={600}
       footer={() => (
-        <FormActions handleReset={handleReset} handleSubmit={handleSubmit} />
+        <FormActions
+          handleReset={handleReset}
+          handleSubmit={handleSubmit}
+          type={DATASET_MODAL_TYPES.DATA}
+        />
       )}
       afterClose={handleReset}
       forceRender

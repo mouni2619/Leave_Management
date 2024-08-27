@@ -16,7 +16,7 @@ import {
   RECTANGLE,
 } from '../../../constants/vectorMapConstants';
 
-export default function LLVectorLayers({ center }) {
+export default function MandarkVectorLayers({ center }) {
   // Vectors Data
   const polyline = POLYLINE;
   const multiPolyline = MULTI_POLYLINE;

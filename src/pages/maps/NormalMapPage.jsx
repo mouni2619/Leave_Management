@@ -4,7 +4,7 @@ import { Icon } from 'leaflet';
 import { MAP_POINTER, MAP_ZOOM } from '../../constants/mapConstants';
 
 // Components
-import LLNormalMap from '../../components/maps/normal-map/LLNormalMap';
+import MandarkNormalMap from '../../components/maps/normal-map/MandarkNormalMap';
 
 // Page Constants
 const LATITUDE = 12.992176277063903;
@@ -23,7 +23,7 @@ export default function NormalMapPage() {
 
   return (
     <div className="page-content">
-      <LLNormalMap
+      <MandarkNormalMap
         center={center}
         zoomLevel={zoomLevel}
         customIcon={customIcon}

@@ -25,8 +25,8 @@ export default function PinDropLocationAndZoom({
 
     // Click event
     click(e) {
-      // "onClick" only we set the final ZoomLevel" to the LLMap.
-      // to prevent re-render of LLMap.
+      // "onClick" only we set the final ZoomLevel" to the MandarkMap.
+      // to prevent re-render of MandarkMap.
       setMapZoom(pinDropZoom);
 
       // this returns the selected "LatLng"
