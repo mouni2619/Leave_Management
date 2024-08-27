@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { LogOut, Settings, User, UserRound } from 'lucide-react';
 
 // Hooks
 import { useToggleMenu } from '../../hooks/useToggleMenu';
@@ -12,17 +13,17 @@ const profileMenuOptions = [
   {
     label: 'Profile',
     onClick: () => {},
-    iconName: 'fa-user',
+    iconName: <User />,
   },
   {
     label: 'Settings',
     onClick: () => {},
-    iconName: 'fa-gear',
+    iconName: <Settings />,
   },
   {
     label: 'Logout',
     onClick: () => {},
-    iconName: 'fa-arrow-right-from-bracket',
+    iconName: <LogOut />,
   },
 ];
 
@@ -34,7 +35,7 @@ function UserProfile() {
   return (
     <div ref={menuRef} className="user-profile" onClick={toggleMenu}>
       {/* icon */}
-      <i className="fa fa-user fa-xl" />
+      <UserRound />
 
       {/* Menu items */}
       {showMenu && (
@@ -44,11 +45,10 @@ function UserProfile() {
             return (
               <li
                 key={i}
-                title={label}
-                className={`d-flex align-items-center py-2 px-4 cursor-pointer`}
+                className={`d-flex align-items-center py-2 px-3 gap-2 cursor-pointer`}
                 onClick={onClick}
               >
-                <i className={`fa ${iconName} me-2`} />
+                {iconName}
                 <span>{label}</span>
               </li>
             );

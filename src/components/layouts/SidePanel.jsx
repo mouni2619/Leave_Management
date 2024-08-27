@@ -1,7 +1,11 @@
 import { cloneElement } from 'react';
+import { Menu } from 'lucide-react';
 
 // Constants
 import { SidePanelPositions } from '../../constants/layoutConstants';
+
+// Page Constant
+const primaryColor = '#3B71CA';
 
 /**
  * Side Panel
@@ -25,7 +29,7 @@ export default function SidePanel({
   const collapseButtonTitle = isSidebarOpen ? 'Hide Menu' : 'Show Menu';
 
   // className
-  const iconClassName = isSidebarPresent && isSidebarOpen ? 'text-primary' : '';
+  const iconColor = isSidebarPresent && isSidebarOpen ? primaryColor : 'black';
 
   // function
   function handleToggle() {
@@ -45,7 +49,7 @@ export default function SidePanel({
         className="burger-cont"
         onClick={handleToggle}
       >
-        <i className={`fa fa-bars fa-xl ${iconClassName}`} />
+        <Menu color={iconColor} />
       </div>
 
       {/* Menu Component */}
