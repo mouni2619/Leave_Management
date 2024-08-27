@@ -50,8 +50,8 @@ export default function SkeletonTable({ columnCount, rowCount }) {
     <Table
       rowKey={KEY}
       pagination={false}
-      dataSource={() => constructDataSource(rowCount)}
-      columns={() => constructColumns(columnCount)}
+      dataSource={constructDataSource(rowCount)}
+      columns={constructColumns(columnCount)}
     />
   );
 }
