@@ -20,7 +20,7 @@ export default function BoundaryMapPage() {
   // lat and lng coordinates for center
   const center = [LATITUDE, LONGITUDE];
 
-  const geoJSONData = useSelector((state) => state.maps.BoundaryPoints);
+  const geoJSONData = useSelector((state) => state.maps.boundaryPoints);
 
   useEffect(() => {
     dispatch(MapActions.getBoundaryPoints());
