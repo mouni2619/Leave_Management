@@ -17,7 +17,7 @@ export default function SidePanelMenu({ menuItems = [] }) {
   const navigate = useNavigate();
 
   // state
-  const [selected, setSelected] = useState(1);
+  const [selected, setSelected] = useState('');
 
   // side panel menu items
   const sidePanelMenuItems = menuItems.length > 0 ? menuItems : SidePanelData;
@@ -30,7 +30,7 @@ export default function SidePanelMenu({ menuItems = [] }) {
   return (
     <div className="panel-menu">
       {sidePanelMenuItems.map((info) => {
-        const { id, label, icon, link } = info;
+        const { id, icon, link } = info;
         const isSelectedOption = selected === id;
         const selectedCLassName = isSelectedOption ? 'selected' : '';
 
@@ -40,7 +40,7 @@ export default function SidePanelMenu({ menuItems = [] }) {
             className={`panel-item ${selectedCLassName}`}
             onClick={() => handleSelect(id, link)}
           >
-            <i title={label} className={`fa ${icon} fa-xl`} />
+            {icon}
           </div>
         );
       })}
