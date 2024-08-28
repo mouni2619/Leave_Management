@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { CircleX } from 'lucide-react';
 
 // Components
 import Logo from '../../components/logo/Logo';
@@ -16,8 +17,8 @@ function LoginError() {
   // TODO: If needed please use the loginError to display customized error messages..
   return (
     <div className="card bg-secondary-subtle">
-      <div className="card-body text-center text-danger">
-        <i className="fa-solid fa-circle-xmark me-2"></i>
+      <div className="card-body text-danger d-flex justify-content-center align-items-center gap-1">
+        <CircleX size={16} />
         Username/Password is incorrect
       </div>
     </div>

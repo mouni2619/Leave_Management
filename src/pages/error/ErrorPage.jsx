@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { Settings } from 'lucide-react';
 
 // Images
 import error404Image from '../../assets/images/error-page/error-img.png';
@@ -36,7 +37,7 @@ export default function ErrorPage() {
       <div className="text-center mb-5">
         <h1 className="display-2 fw-medium">
           {errorCode[0]}
-          <i className="fa-solid fa-gear fa-spin text-primary"></i>
+          <Settings />
           {errorCode[2]}
         </h1>
         <h4 className="text-uppercase">{errorMessage}</h4>

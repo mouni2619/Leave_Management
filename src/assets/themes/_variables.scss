@@ -4,7 +4,9 @@
 $white: #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
+$gray-250: #f0f0f0 !default;
 $gray-300: #dee2e6 !default;
+$gray-350: #d9d9d9 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;
@@ -34,6 +36,7 @@ $footer-color: #262b3c;
 $scrollbar-bg-color: #f5f5f5;
 $scrollbar-box-shadow-color: rgba(0, 0, 0, 0.3);
 $page-header-shadow-color: rgba(25, 104, 252, 0.2);
+$ultramarine-blue: #3b76f6;
 
 // Body :: Font
 $font-family-base: 'Mulish', 'Roboto', 'Helvetica', sans-serif,
@@ -61,6 +64,12 @@ $grid-gutter-width: 2rem !default;
 
 // Breadcrumb
 $breadcrumb-divider: quote('>');
+
+// Button variables..
+//-----------------------------------------------------------------------------
+$btn-border-radius: 4px;
+$btn-label-font-size: 14px;
+$btn-transition: all 0.3s ease 0s;
 
 // Additional Variables
 // ----------------------------------------------------------------------------

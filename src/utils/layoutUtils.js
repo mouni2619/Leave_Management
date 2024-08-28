@@ -1,3 +1,5 @@
+import { MoveLeft, MoveRight } from 'lucide-react';
+
 // Constants
 import {
   MainContentClassNames,
@@ -212,14 +214,14 @@ function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
 
 // get Footer Collapsible IconName
 // ---------------------------------------------------------------------------------
-function getFooterCollapsibleIconName(isSidebarOpen, sidebarPosition) {
+function getFooterCollapsibleIcon(isSidebarOpen, sidebarPosition) {
   // if sidebar position is "left"
   if (sidebarPosition === SidebarPositions.LEFT) {
-    return isSidebarOpen ? 'fa-arrow-left-long' : 'fa-arrow-right-long';
+    return isSidebarOpen ? <MoveLeft /> : <MoveRight />;
   }
 
   // if sidebar position is "right"
-  return isSidebarOpen ? 'fa-arrow-right-long' : 'fa-arrow-left-long';
+  return isSidebarOpen ? <MoveRight /> : <MoveLeft />;
 }
 
 // Layout Utils -------------------------------------------
@@ -228,7 +230,7 @@ const LayoutUtils = {
   constructPageLayoutClassName,
   constructMainContentClassName,
   constructSidebarClassName,
-  getFooterCollapsibleIconName,
+  getFooterCollapsibleIcon,
 };
 
 // export default

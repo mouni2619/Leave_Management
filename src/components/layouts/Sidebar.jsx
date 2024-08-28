@@ -1,4 +1,5 @@
 import { cloneElement } from 'react';
+import { Menu } from 'lucide-react';
 
 // Components
 import NavBranding from './NavBranding';
@@ -87,7 +88,7 @@ export default function Sidebar({
 
   // iconName and Title
   const footerCollapsibleIconTitle = isSidebarOpen ? 'Collapse' : 'Expand';
-  const footerCollapsibleIconName = LayoutUtils.getFooterCollapsibleIconName(
+  const footerCollapsibleIcon = LayoutUtils.getFooterCollapsibleIcon(
     isSidebarOpen,
     sidebarPosition,
   );
@@ -100,7 +101,7 @@ export default function Sidebar({
           className="bg-black rounded-circle burger-style"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
-          <i className="fa fa-fw fa-bars text-white" />
+          <Menu color="white" />
         </button>
       )}
 
@@ -124,7 +125,7 @@ export default function Sidebar({
           className="sidebar-footer"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
-          <i className={`fa fa-lg ${footerCollapsibleIconName}`} />
+          {footerCollapsibleIcon}
         </footer>
       )}
     </nav>
