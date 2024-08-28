@@ -30,6 +30,9 @@ $alice-blue: #f8f9fa !default;
 
 // Additional Colors
 $primary: #3b76f6;
+$shade-lightness: 0.9; // adjust this value to change the shade
+
+$primary-color-shade: hsl(hue($primary), saturation($primary), $shade-lightness * 100%);
 $light-blue: #d4daf9;
 $topbar-color: #f5f5f5;
 $footer-color: #262b3c;
