@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import 'leaflet.heat';
 import { useDispatch, useSelector } from 'react-redux';
