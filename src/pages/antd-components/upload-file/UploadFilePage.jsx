@@ -103,7 +103,7 @@ export default function UploadFilePage() {
       {/** Error Alert */}
       {showError && <Alert message={validationError} type="error" />}
 
-      <div className="my-4">
+      <div className="mb-4">
         <Upload.Dragger
           disabled={isFileSelected}
           showUploadList={false}

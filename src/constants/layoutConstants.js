@@ -3,10 +3,8 @@ import {
   Blocks,
   ChartColumn,
   Database,
-  HandHeart,
   Map,
-  ShoppingCart,
-  TramFront,
+  Settings,
   UsersRound,
 } from 'lucide-react';
 import PageUrls from './pageUrls';
@@ -220,25 +218,56 @@ export const SidePanelData = [
   {
     id: 2,
     icon: (
-      <ShoppingCart>
-        <title>Shopping</title>
-      </ShoppingCart>
+      <ChartColumn>
+        <title>Charts</title>
+      </ChartColumn>
     ),
+    subItems: [
+      { label: 'Line', id: 1, link: PageUrls.LineChartsPage },
+      { label: 'Bar', id: 2, link: PageUrls.BarChartsPage },
+      { label: 'Box Plot', id: 3, link: PageUrls.BoxplotChartsPage },
+      { label: 'Pie', id: 4, link: PageUrls.PieChartsPage },
+      { label: 'Heat Map', id: 5, link: PageUrls.HeatMapsPage },
+    ],
   },
   {
     id: 3,
     icon: (
-      <TramFront>
-        <title>Travel</title>
-      </TramFront>
+      <Blocks>
+        <title>AntD Components</title>
+      </Blocks>
     ),
+    subItems: [
+      { label: 'Table', id: 1, link: PageUrls.TableComponentPage },
+      { label: 'Upload File', id: 2, link: PageUrls.UploadFileComponentPage },
+      { label: 'Form Modal', id: 3, link: PageUrls.FormModalComponentPage },
+    ],
   },
   {
     id: 4,
     icon: (
-      <HandHeart>
-        <title>Donate</title>
-      </HandHeart>
+      <Map>
+        <title>Map</title>
+      </Map>
+    ),
+    subItems: [
+      { label: 'Normal', id: 1, link: PageUrls.NormalMapPage },
+      {
+        label: 'Multiple Points',
+        id: 2,
+        link: PageUrls.MultiplePointsMapPage,
+      },
+      { label: 'Heat Map', id: 3, link: PageUrls.HeatMapPage },
+      { label: 'Boundaries', id: 4, link: PageUrls.BoundaryMapPage },
+      { label: 'Vector Layers', id: 5, link: PageUrls.VectorMapPage },
+    ],
+  },
+  {
+    id: 5,
+    icon: (
+      <Settings>
+        <title>Settings</title>
+      </Settings>
     ),
   },
 ];

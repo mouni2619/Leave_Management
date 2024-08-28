@@ -99,7 +99,7 @@ export default function TopnavMenu({
   return (
     <div className="page-header">
       {/* items */}
-      <ul className="nav-links">
+      <ul className="nav-links invisible">
         {menuItems.map((item) => (
           <TopnavMenuItem
             key={item.id}

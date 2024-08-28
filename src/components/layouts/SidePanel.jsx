@@ -21,6 +21,7 @@ export default function SidePanel({
   isSidebarOpen,
   setIsSidebarOpen,
   panelPosition = SidePanelPositions.LEFT,
+  setLeftSidebarMenu = () => {},
 }) {
   // Panel configuration
   const { containerClassName = '', menuComponent = <></> } = sidePanelConfig;
@@ -46,7 +47,7 @@ export default function SidePanel({
       {/* Collapse Button */}
       <div
         title={isSidebarPresent ? collapseButtonTitle : ''}
-        className="burger-cont"
+        className="burger-cont d-none"
         onClick={handleToggle}
       >
         <Menu color={iconColor} />
@@ -54,7 +55,11 @@ export default function SidePanel({
 
       {/* Menu Component */}
       {menuComponent &&
-        cloneElement(menuComponent, { isSidebarOpen, setIsSidebarOpen })}
+        cloneElement(menuComponent, {
+          isSidebarOpen,
+          setIsSidebarOpen,
+          setLeftSidebarMenu,
+        })}
     </div>
   );
 }

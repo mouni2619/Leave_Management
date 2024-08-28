@@ -25,8 +25,9 @@ export default function Layout({
   outletProps = [],
 }) {
   // Sidebar States for open/close
-  const [isLeftSideOpen, setIsLeftSideOpen] = useState(true);
+  const [isLeftSideOpen, setIsLeftSideOpen] = useState(false);
   const [isRightSideOpen, setIsRightSideOpen] = useState(false);
+  const [leftSidebarMenu, setLeftSidebarMenu] = useState([]);
 
   // Checking whether topbar and sidebar is present or not
   const isTopbarPresent = Object.keys(topbarConfig).length !== 0;
@@ -70,6 +71,7 @@ export default function Layout({
           isSidebarPresent={isLeftSidebarPresent}
           isSidebarOpen={isLeftSideOpen}
           setIsSidebarOpen={setIsLeftSideOpen}
+          setLeftSidebarMenu={setLeftSidebarMenu}
         />
       )}
 
@@ -91,6 +93,7 @@ export default function Layout({
           setIsSidebarOpen={setIsLeftSideOpen}
           isLeftPanelPresent={isLeftPanelPresent}
           isTopbarPresent={isTopbarPresent}
+          leftSidebarMenu={leftSidebarMenu}
         />
       )}
 

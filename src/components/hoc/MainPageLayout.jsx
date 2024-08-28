@@ -12,6 +12,7 @@ import URL_IMG_LOGO_SHORT from '../../assets/images/brand/admavin-short-logo.png
 import SidebarMenu from '../layouts/SidebarMenu';
 import TopnavMenu from '../layouts/TopnavMenu';
 import SidePanelMenu from '../layouts/SidePanelMenu';
+import LeftSidebarMenu from '../layouts/LeftSidebarMenu';
 
 /**
  * Main Page Layout
@@ -38,7 +39,7 @@ export default function MainPageLayout() {
     isSidebarCollapsible: true,
     showHeaderCollapsibleButton: true,
     showFooterCollapsibleButton: true,
-    menuComponent: <SidebarMenu />,
+    menuComponent: <LeftSidebarMenu />,
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
     redirectURL: PageUrls.DashboardPage,

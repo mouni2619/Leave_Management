@@ -65,6 +65,7 @@ export default function Sidebar({
   sidebarPosition = SidebarPositions.LEFT,
   isLeftPanelPresent = false,
   isTopbarPresent = false,
+  leftSidebarMenu = [],
 }) {
   const {
     menuComponent = <></>,
@@ -115,7 +116,8 @@ export default function Sidebar({
 
       {/* Menu Component */}
       <div className="sidebar-content">
-        {menuComponent && cloneElement(menuComponent, { isSidebarOpen })}
+        {menuComponent &&
+          cloneElement(menuComponent, { isSidebarOpen, leftSidebarMenu })}
       </div>
 
       {/* bottom close/open sidebar button */}

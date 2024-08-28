@@ -13,7 +13,11 @@ import { SidePanelData } from '../../constants/layoutConstants';
  * @param {*} isSidebarOpen : sidebar state (open/close)
  * @param {*} setIsSidebarOpen : set function to change sidebar state
  */
-export default function SidePanelMenu({ menuItems = [] }) {
+export default function SidePanelMenu({
+  menuItems = [],
+  setIsSidebarOpen = () => {},
+  setLeftSidebarMenu = () => {},
+}) {
   const navigate = useNavigate();
 
   // state
@@ -22,15 +26,24 @@ export default function SidePanelMenu({ menuItems = [] }) {
   // side panel menu items
   const sidePanelMenuItems = menuItems.length > 0 ? menuItems : SidePanelData;
 
-  function handleSelect(id, link) {
+  function handleSelect(id, link, subItems) {
     setSelected(id);
+
+    const isSubItemsPresent = subItems.length > 0;
+    if (isSubItemsPresent) {
+      setLeftSidebarMenu(subItems);
+      setIsSidebarOpen(true);
+      navigate(subItems[0].link);
+      return;
+    }
+    setIsSidebarOpen(false);
     navigate(link);
   }
 
   return (
     <div className="panel-menu">
       {sidePanelMenuItems.map((info) => {
-        const { id, icon, link } = info;
+        const { id = '', icon = <></>, link = '', subItems = [] } = info;
         const isSelectedOption = selected === id;
         const selectedCLassName = isSelectedOption ? 'selected' : '';
 
@@ -38,7 +51,7 @@ export default function SidePanelMenu({ menuItems = [] }) {
           <div
             key={id}
             className={`panel-item ${selectedCLassName}`}
-            onClick={() => handleSelect(id, link)}
+            onClick={() => handleSelect(id, link, subItems)}
           >
             {icon}
           </div>

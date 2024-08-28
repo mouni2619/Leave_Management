@@ -42,9 +42,9 @@ html.scroll-smooth {
     position: fixed;
     top: 0;
     right: 0;
-    left: 0;
+    left: 0 - $side-panel-width;
     transition: all 0.5s ease;
-    // z-index: $topbar-zindex; // Uncomment if needed
+    z-index: $topbar-zindex;
     height: $topbar-height;
     border-bottom: 1px solid $gray-300;
     box-shadow: $box-shadow;
@@ -112,6 +112,7 @@ html.scroll-smooth {
     width: $side-panel-width;
     height: 100%;
     border-right: 1px solid $gray-300;
+    margin-top: $topbar-height;
 
     .burger-cont {
       width: 100%;
@@ -120,7 +121,6 @@ html.scroll-smooth {
       align-content: center;
       background-color: $topbar-color;
       cursor: pointer;
-      border-bottom: 1px solid $gray-300;
     }
 
     .panel-menu {
@@ -134,6 +134,10 @@ html.scroll-smooth {
         padding: 15px 10px;
         border-radius: 5px;
         cursor: pointer;
+
+        &:first-child {
+          margin-top: 40px;
+        }
 
         &:hover {
           background-color: $alice-blue;
@@ -187,6 +191,30 @@ html.scroll-smooth {
       flex-direction: column;
       row-gap: 8px;
 
+      .sub-item-left {
+        &:first-child {
+          margin-top: 34px;
+        }
+      }
+
+      .sub-item,
+      .sub-item-left {
+        padding: 8px 10px;
+
+        &.selected,
+        &:hover {
+          color: $primary;
+          font-weight: 800;
+          background-color: $alice-blue;
+          border-radius: 4px;
+        }
+
+        a {
+          color: unset;
+          text-decoration: none;
+        }
+      }
+
       .nav-item {
         cursor: pointer;
         padding: 0.5rem;
@@ -207,22 +235,6 @@ html.scroll-smooth {
           padding-left: 35px;
           display: flex;
           flex-direction: column;
-
-          .sub-item {
-            padding-top: 8px;
-            padding-bottom: 8px;
-
-            &.selected,
-            &:hover {
-              color: $primary;
-              font-weight: 800;
-            }
-
-            a {
-              color: unset;
-              text-decoration: none;
-            }
-          }
         }
       }
 
@@ -481,5 +493,6 @@ html.scroll-smooth {
 
   .page-content {
     padding: 24px #{$grid-gutter-width};
+    margin-top: 26px;
   }
 }
