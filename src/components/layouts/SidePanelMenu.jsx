@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'antd';
 
 // Constants
 import { SidePanelData } from '../../constants/layoutConstants';
@@ -43,18 +44,25 @@ export default function SidePanelMenu({
   return (
     <div className="panel-menu">
       {sidePanelMenuItems.map((info) => {
-        const { id = '', icon = <></>, link = '', subItems = [] } = info;
+        const {
+          id = '',
+          icon = <></>,
+          link = '',
+          subItems = [],
+          title = '',
+        } = info;
         const isSelectedOption = selected === id;
         const selectedCLassName = isSelectedOption ? 'selected' : '';
 
         return (
-          <div
-            key={id}
-            className={`panel-item ${selectedCLassName}`}
-            onClick={() => handleSelect(id, link, subItems)}
-          >
-            {icon}
-          </div>
+          <Tooltip key={id} placement="right" title={title}>
+            <div
+              className={`panel-item ${selectedCLassName}`}
+              onClick={() => handleSelect(id, link, subItems)}
+            >
+              {icon}
+            </div>
+          </Tooltip>
         );
       })}
     </div>

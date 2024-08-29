@@ -199,29 +199,20 @@ export const SidePanelPositions = {
 export const SidePanelData = [
   {
     id: 0,
-    icon: (
-      <UsersRound>
-        <title>Users</title>
-      </UsersRound>
-    ),
+    icon: <UsersRound />,
+    title: 'Users',
     link: PageUrls.UserManagementPage,
   },
   {
     id: 1,
-    icon: (
-      <Database>
-        <title>Database</title>
-      </Database>
-    ),
+    icon: <Database />,
+    title: 'Datasets',
     link: PageUrls.DatasetManagementPage,
   },
   {
     id: 2,
-    icon: (
-      <ChartColumn>
-        <title>Charts</title>
-      </ChartColumn>
-    ),
+    icon: <ChartColumn />,
+    title: 'Charts',
     subItems: [
       { label: 'Line', id: 1, link: PageUrls.LineChartsPage },
       { label: 'Bar', id: 2, link: PageUrls.BarChartsPage },
@@ -232,11 +223,8 @@ export const SidePanelData = [
   },
   {
     id: 3,
-    icon: (
-      <Blocks>
-        <title>AntD Components</title>
-      </Blocks>
-    ),
+    icon: <Blocks />,
+    title: 'AntD Components',
     subItems: [
       { label: 'Table', id: 1, link: PageUrls.TableComponentPage },
       { label: 'Upload File', id: 2, link: PageUrls.UploadFileComponentPage },
@@ -245,11 +233,8 @@ export const SidePanelData = [
   },
   {
     id: 4,
-    icon: (
-      <Map>
-        <title>Map</title>
-      </Map>
-    ),
+    icon: <Map />,
+    title: 'Maps',
     subItems: [
       { label: 'Normal', id: 1, link: PageUrls.NormalMapPage },
       {
@@ -264,10 +249,7 @@ export const SidePanelData = [
   },
   {
     id: 5,
-    icon: (
-      <Settings>
-        <title>Settings</title>
-      </Settings>
-    ),
+    icon: <Settings />,
+    title: 'Settings',
   },
 ];
