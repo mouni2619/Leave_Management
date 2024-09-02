@@ -10,15 +10,16 @@ import LayoutUtils from '../../utils/layoutUtils';
 import TopNav from './TopNav';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
-import SidePanel from './SidePanel';
+import LeftSidebar from './LeftSidebar';
+import LeftSidebarContent from './LeftSidebarContent';
 
 /**
  * Layout Component
  */
 export default function Layout({
-  leftPanelConfig = {},
   topbarConfig = {},
   leftSidebarConfig = {},
+  leftSidebarContentConfig = {},
   rightSidebarConfig = {},
   themeId = '',
   // array of props (can be used to set custom header for specific page under a Route)
@@ -26,24 +27,28 @@ export default function Layout({
 }) {
   // Sidebar States for open/close
   const [isLeftSideOpen, setIsLeftSideOpen] = useState(false);
+  const [isLeftSidebarContentOpen, setIsLeftSidebarContentOpen] =
+    useState(false);
   const [isRightSideOpen, setIsRightSideOpen] = useState(false);
   const [leftSidebarMenu, setLeftSidebarMenu] = useState([]);
 
   // Checking whether topbar and sidebar is present or not
   const isTopbarPresent = Object.keys(topbarConfig).length !== 0;
   const isLeftSidebarPresent = Object.keys(leftSidebarConfig).length !== 0;
+  const isLeftSidebarContentPresent =
+    Object.keys(leftSidebarContentConfig).length !== 0 && isLeftSidebarPresent;
   const isRightSidebarPresent = Object.keys(rightSidebarConfig).length !== 0;
-  const isLeftPanelPresent = Object.keys(leftPanelConfig).length !== 0;
 
   // condition to show "Topnav Branding Logo"
-  const isShowTopnavBranding = isLeftPanelPresent || !isLeftSidebarPresent;
+  const isShowTopnavBranding = !isLeftSidebarPresent;
 
   // page Layout ClassName (with topbar and sidebar)
   const pageLayoutClassName = LayoutUtils.constructPageLayoutClassName(
     isTopbarPresent,
     isLeftSidebarPresent,
+    isLeftSidebarContentPresent,
+    isLeftSidebarContentOpen,
     isRightSidebarPresent,
-    isLeftPanelPresent,
   );
 
   // construct className for topnav
@@ -59,39 +64,37 @@ export default function Layout({
     isLeftSideOpen,
     isRightSideOpen,
     isLeftSidebarPresent,
+    isLeftSidebarContentPresent,
     isRightSidebarPresent,
   );
 
   return (
     <div data-theme={themeId} className={pageLayoutClassName}>
-      {/* Left Panel */}
-      {isLeftPanelPresent && (
-        <SidePanel
-          sidePanelConfig={leftPanelConfig}
-          isSidebarPresent={isLeftSidebarPresent}
-          isSidebarOpen={isLeftSideOpen}
-          setIsSidebarOpen={setIsLeftSideOpen}
-          setLeftSidebarMenu={setLeftSidebarMenu}
-        />
-      )}
-
       {/* Topbar */}
       {isTopbarPresent && (
         <TopNav
           topbarConfig={topbarConfig}
           topNavClassName={topNavClassName}
-          isLeftPanelPresent={isLeftPanelPresent}
           isShowTopnavBranding={isShowTopnavBranding}
         />
       )}
 
       {/* Left Sidebar */}
       {isLeftSidebarPresent && (
-        <Sidebar
+        <LeftSidebar
           sidebarConfig={leftSidebarConfig}
           isSidebarOpen={isLeftSideOpen}
           setIsSidebarOpen={setIsLeftSideOpen}
-          isLeftPanelPresent={isLeftPanelPresent}
+          isTopbarPresent={isTopbarPresent}
+          setLeftSidebarMenu={setLeftSidebarMenu}
+          isLeftSidebarContentPresent={isLeftSidebarContentPresent}
+          setIsLeftSidebarContentOpen={setIsLeftSidebarContentOpen}
+        />
+      )}
+
+      {isLeftSidebarContentPresent && (
+        <LeftSidebarContent
+          sidebarConfig={leftSidebarContentConfig}
           isTopbarPresent={isTopbarPresent}
           leftSidebarMenu={leftSidebarMenu}
         />
@@ -110,7 +113,6 @@ export default function Layout({
           sidebarConfig={rightSidebarConfig}
           isSidebarOpen={isRightSideOpen}
           setIsSidebarOpen={setIsRightSideOpen}
-          isLeftPanelPresent={isLeftPanelPresent}
         />
       )}
     </div>

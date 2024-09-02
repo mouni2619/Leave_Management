@@ -1,29 +1,64 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Tooltip } from 'antd';
+
+// Constants
+import { LeftSidebarDefaultData } from '../../constants/layoutConstants';
 
 // Sub item
-function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
+function SubItem({
+  subItem = {},
+  selectedSubItemId,
+  setSelectedSubItemId,
+  isSidebarOpen = false,
+  setLeftSidebarMenu = () => {},
+  setIsLeftSidebarContentOpen = () => {},
+}) {
   const navigate = useNavigate();
 
   // Data
-  const { label, id, link } = subItem;
+  const {
+    id = '',
+    icon = <></>,
+    title = '',
+    subItems = [],
+    link = '',
+  } = subItem;
 
   // is subItem selected
   const isSubItemSelected = selectedSubItemId === id;
 
+  const isSubItemsPresent = subItems.length > 0;
+
   // handle selected subItem
   function handleSelectSubItem() {
     setSelectedSubItemId(id);
+    if (isSubItemsPresent) {
+      navigate(subItems[0].link);
+      setLeftSidebarMenu(subItems);
+      setIsLeftSidebarContentOpen(true);
+      return;
+    }
+    setIsLeftSidebarContentOpen(false);
+    setLeftSidebarMenu([]);
     navigate(link);
   }
 
   return (
     <li
-      className={`sub-item-left cursor-pointer ${isSubItemSelected ? 'selected' : ''}`}
+      className={`sub-item-left d-flex ${isSidebarOpen ? '' : 'justify-content-center'} cursor-pointer ${isSubItemSelected ? 'selected' : ''}`}
       onClick={handleSelectSubItem}
     >
-      <h5 className="mx-2 mb-0">{label}</h5>
+      {/* Show Tooltip only when only icon in collapsed sidebar */}
+      {!isSidebarOpen && (
+        <Tooltip placement="right" title={title}>
+          {icon}
+        </Tooltip>
+      )}
+
+      {isSidebarOpen && icon}
+      {isSidebarOpen ? <h5 className="mx-2 mb-0">{title}</h5> : null}
     </li>
   );
 }
@@ -36,7 +71,8 @@ function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
 export default function LeftSidebarMenu({
   isSidebarOpen = false,
   sidebarMenuList = [],
-  leftSidebarMenu = [],
+  setLeftSidebarMenu = () => {},
+  setIsLeftSidebarContentOpen = () => {},
 }) {
   // menu List
   const [menuList, setMenuList] = useState([]);
@@ -45,15 +81,12 @@ export default function LeftSidebarMenu({
 
   // useEffect to initial update of menu list
   useEffect(() => {
-    const initialSelectedMenuId = leftSidebarMenu[0]?.id || '';
-    setSelectedSubItemId(initialSelectedMenuId);
-
     const initialMenuList =
-      sidebarMenuList.length > 0 ? sidebarMenuList : leftSidebarMenu;
+      sidebarMenuList.length > 0 ? sidebarMenuList : LeftSidebarDefaultData;
 
     // update state
     setMenuList(initialMenuList);
-  }, [leftSidebarMenu]);
+  }, []);
 
   return (
     <ul
@@ -66,6 +99,9 @@ export default function LeftSidebarMenu({
             subItem={menu}
             selectedSubItemId={selectedSubItemId}
             setSelectedSubItemId={setSelectedSubItemId}
+            isSidebarOpen={isSidebarOpen}
+            setLeftSidebarMenu={setLeftSidebarMenu}
+            setIsLeftSidebarContentOpen={setIsLeftSidebarContentOpen}
           />
         );
       })}

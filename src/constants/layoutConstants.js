@@ -17,21 +17,17 @@ export const PageLayoutClassNames = {
   // Only Page --------------------------
   ONLY_PAGE: 'page',
 
-  // Only Page with SidePanel --------------------------
-  ONLY_PAGE_WITH_SIDE_PANEL: 'page with-panel',
-
   // Combination styles ----------------------
   // Only Topbar Layout
   ONLY_TOPBAR_LAYOUT: 'page layout-topbar',
 
-  // Only Topbar with SidePanel Layout
-  ONLY_TOPBAR_WITH_SIDE_PANEL_LAYOUT: 'page layout-topbar with-panel',
+  // Only Topbar with Sidebar Layout
+  ONLY_TOPBAR_WITH_SIDEBARS: 'page layout-sidebar',
 
-  // Top With Sidebar layout
-  TOP_WITH_SIDEBAR_LAYOUT: 'page layout-sidebar',
-
-  // Top With Sidebar and SidePanel layout
-  TOP_WITH_SIDEBAR_AND_PANEL_LAYOUT: 'page layout-sidebar with-panel',
+  // Topbar with Left Sidebar Layout with Left Content
+  TOP_WITH_SIDEBARS_AND_LEFT_CONT: 'page layout-sidebar left-cont',
+  TOP_WITH_SIDEBARS_AND_LEFT_CONT_COLLAPSED:
+    'page layout-sidebar left-cont-collapsed',
 };
 
 /**
@@ -43,50 +39,25 @@ export const TopNavClassNames = {
   ONLY_TOPNAV: 'topbar',
 
   // Combination styles --------------------------
-  // Only Left Side Bar
-  ONLY_LEFT_SIDE_BAR: 'topbar with-left-sidebar',
-  ONLY_LEFT_SIDE_BAR_AND_COLLAPSED: 'topbar with-left-sidebar left-collapsed',
+  // Only Left Sidebar
+  ONLY_LEFT_SIDEBAR: 'topbar with-left-sidebar',
+  ONLY_LEFT_SIDEBAR_AND_COLLAPSED: 'topbar with-left-sidebar left-collapsed',
 
-  // Only Right Side Bar
-  ONLY_RIGHT_SIDE_BAR: 'topbar with-right-sidebar',
-  ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED:
-    'topbar with-right-sidebar right-collapsed',
+  // Only Right Sidebar
+  ONLY_RIGHT_SIDEBAR: 'topbar with-right-sidebar',
+  ONLY_RIGHT_SIDEBAR_AND_COLLAPSED: 'topbar with-right-sidebar right-collapsed',
 
-  // Both Left and Right Side Bars
-  LEFT_AND_RIGHT_SIDE_BARS: 'topbar with-left-sidebar with-right-sidebar',
-  LEFT_AND_RIGHT_SIDE_BARS_COLLAPSED:
+  // Both Left and Right Sidebars
+  LEFT_AND_RIGHT_SIDEBARS: 'topbar with-left-sidebar with-right-sidebar',
+  LEFT_AND_RIGHT_SIDEBARS_COLLAPSED:
     'topbar with-left-sidebar left-collapsed with-right-sidebar right-collapsed',
 
-  // One Collapsed And Other Not
-  LEFT_SIDE_BAR_COLLAPSED_AND_RIGHT_SIDE_BAR_NOT_COLLAPSED:
+  // One Sidebar Collapsed And Other Not
+  LEFT_SIDEBAR_COLLAPSED_AND_RIGHT_SIDEBAR_NOT_COLLAPSED:
     'topbar with-left-sidebar left-collapsed with-right-sidebar',
-  RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED:
+  RIGHT_SIDEBAR_COLLAPSED_AND_LEFT_SIDEBAR_NOT_COLLAPSED:
     'topbar with-left-sidebar with-right-sidebar right-collapsed',
 };
-
-// Topnav Data
-export const TopnavData = [
-  {
-    id: 1,
-    title: 'Home',
-    link: '',
-  },
-  {
-    id: 2,
-    title: 'Features',
-    link: '',
-  },
-  {
-    id: 3,
-    title: 'Contacts',
-    link: '',
-  },
-  {
-    id: 4,
-    title: 'Settings',
-    link: '',
-  },
-];
 
 /**
  * Main Content ClassNames
@@ -97,24 +68,34 @@ export const MainContentClassNames = {
   ONLY_MAIN_CONTENT: 'main-cont',
 
   // Combination Styles -------------------------
-  // Only Left Side Bar
-  ONLY_LEFT_SIDE_BAR: 'main-cont left',
-  ONLY_LEFT_SIDE_BAR_AND_COLLAPSED: 'main-cont left left-collapsed',
+  // Only Left Sidebar
+  ONLY_LEFT_SIDEBAR: 'main-cont left',
+  ONLY_LEFT_SIDEBAR_AND_COLLAPSED: 'main-cont left left-collapsed',
 
-  // Only Right Side Bar
-  ONLY_RIGHT_SIDE_BAR: 'main-cont right ',
-  ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED: 'main-cont right right-collapsed',
+  // Only Right Sidebar
+  ONLY_RIGHT_SIDEBAR: 'main-cont right',
+  ONLY_RIGHT_SIDEBAR_AND_COLLAPSED: 'main-cont right right-collapsed',
 
-  // Both Left and Right Side Bars
-  LEFT_AND_RIGHT_SIDE_BARS: 'main-cont left right',
-  LEFT_AND_RIGHT_SIDE_BARS_COLLAPSED:
+  // Both Left and Right Sidebars
+  LEFT_AND_RIGHT_SIDEBARS: 'main-cont left right',
+  LEFT_AND_RIGHT_SIDEBARS_COLLAPSED:
     'main-cont left left-collapsed right right-collapsed',
 
-  // One Collapsed And Other Not
-  LEFT_SIDE_BAR_COLLAPSED_AND_RIGHT_SIDE_BAR_NOT_COLLAPSED:
+  // One Collapsed and Other Not
+  LEFT_SIDEBAR_COLLAPSED_AND_RIGHT_SIDEBAR_NOT_COLLAPSED:
     'main-cont left left-collapsed right',
-  RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED:
+  RIGHT_SIDEBAR_COLLAPSED_AND_LEFT_SIDEBAR_NOT_COLLAPSED:
     'main-cont left right right-collapsed',
+
+  // Left Sidebar with Left Content
+  LEFT_SIDEBAR_COLLAPSED_WITH_LEFT_CONT:
+    'main-cont left left-collapsed with-left-cont',
+
+  // Both Sidebars with Left Content
+  LEFT_SIDEBAR_COLLAPSED_WITH_LEFT_CONT_AND_RIGHT_SIDEBAR_NOT_COLLAPSED:
+    'main-cont left left-collapsed with-left-cont right',
+  LEFT_SIDEBAR_COLLAPSED_WITH_LEFT_CONT_AND_RIGHT_SIDEBAR_COLLAPSED:
+    'main-cont left left-collapsed with-left-cont right right-collapsed',
 };
 
 /**
@@ -132,17 +113,20 @@ export const SidebarPositions = {
  */
 export const SidebarClassNames = {
   // Combination Styles -------------------------
-  // Left Side Bar
-  ONLY_LEFT_SIDE_BAR: 'sidebar left',
-  ONLY_LEFT_SIDE_BAR_AND_COLLAPSED: 'sidebar left left-collapsed',
+  // Left Sidebar
+  ONLY_LEFT_SIDEBAR: 'sidebar left',
+  ONLY_LEFT_SIDEBAR_AND_COLLAPSED: 'sidebar left left-collapsed',
 
-  // Right Side Bar
-  ONLY_RIGHT_SIDE_BAR: 'sidebar right',
-  ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED: 'sidebar right right-collapsed',
+  // Right Sidebar
+  ONLY_RIGHT_SIDEBAR: 'sidebar right',
+  ONLY_RIGHT_SIDEBAR_AND_COLLAPSED: 'sidebar right right-collapsed',
+
+  // Only Left Content
+  ONLY_LEFT_CONT: 'sidebar left-cont',
 };
 
-// Sidebar Data
-export const SidebarDefaultData = [
+// Right Sidebar Data
+export const RightSidebarDefaultData = [
   {
     id: 1,
     title: 'Charts',
@@ -186,17 +170,8 @@ export const SidebarDefaultData = [
   },
 ];
 
-/**
- * Side Panel Positions
- * ----------------------------------------------------------------------
- */
-export const SidePanelPositions = {
-  LEFT: 'left',
-  RIGHT: 'right',
-};
-
-// Side Panel Data
-export const SidePanelData = [
+// Left Sidebar Data
+export const LeftSidebarDefaultData = [
   {
     id: 0,
     icon: <UsersRound />,

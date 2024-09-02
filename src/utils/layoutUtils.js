@@ -31,34 +31,34 @@ function constructTopnavClassName(
   if (onlyLeftSidebarPresent) {
     // with collapsed
     if (!isLeftSideOpen) {
-      return TopNavClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
+      return TopNavClassNames.ONLY_LEFT_SIDEBAR_AND_COLLAPSED;
     }
 
     // without collapsed
-    return TopNavClassNames.ONLY_LEFT_SIDE_BAR;
+    return TopNavClassNames.ONLY_LEFT_SIDEBAR;
   }
 
   // Case 2: "Only Right Sidebar" Present (with or without collapsed)
   if (onlyRightSidebarPresent) {
     // with collapsed
     if (!isRightSideOpen) {
-      return TopNavClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
+      return TopNavClassNames.ONLY_RIGHT_SIDEBAR_AND_COLLAPSED;
     }
 
     // without collapsed
-    return TopNavClassNames.ONLY_RIGHT_SIDE_BAR;
+    return TopNavClassNames.ONLY_RIGHT_SIDEBAR;
   }
 
   // Case 3: Both Left and Right Side Bars Present
   if (bothSidebarsPresent) {
     // with both collapsed
     if (bothSidebarsCollapsed) {
-      return TopNavClassNames.LEFT_AND_RIGHT_SIDE_BARS_COLLAPSED;
+      return TopNavClassNames.LEFT_AND_RIGHT_SIDEBARS_COLLAPSED;
     }
 
     // without both collapsed
     if (bothSidebarsOpen) {
-      return TopNavClassNames.LEFT_AND_RIGHT_SIDE_BARS;
+      return TopNavClassNames.LEFT_AND_RIGHT_SIDEBARS;
     }
   }
 
@@ -66,12 +66,12 @@ function constructTopnavClassName(
   if (bothSidebarsPresent) {
     // if Left Collapsed and Not Right
     if (leftCollapsedAndRightOpen) {
-      return TopNavClassNames.LEFT_SIDE_BAR_COLLAPSED_AND_RIGHT_SIDE_BAR_NOT_COLLAPSED;
+      return TopNavClassNames.LEFT_SIDEBAR_COLLAPSED_AND_RIGHT_SIDEBAR_NOT_COLLAPSED;
     }
 
     // if Right Collapsed And Left Not
     if (rightCollapsedAndLeftOpen) {
-      return TopNavClassNames.RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED;
+      return TopNavClassNames.RIGHT_SIDEBAR_COLLAPSED_AND_LEFT_SIDEBAR_NOT_COLLAPSED;
     }
   }
 
@@ -84,41 +84,36 @@ function constructTopnavClassName(
 function constructPageLayoutClassName(
   isTopbarPresent,
   isLeftSidebarPresent,
+  isLeftSidebarContentPresent,
+  isLeftSidebarContentOpen,
   isRightSidebarPresent,
-  isLeftPanelPresent,
 ) {
   // Conditions
   const onlyTopbarLayout =
     isTopbarPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
   const topWithSidebarLayout = isLeftSidebarPresent || isRightSidebarPresent;
-  const onlyPageWithSidePanelLayout =
-    isLeftPanelPresent && !isLeftSidebarPresent && !isRightSidebarPresent;
+  const leftSidebarWithSidebarContent =
+    isLeftSidebarPresent && isLeftSidebarContentPresent;
 
   // Case 1: Only Topbar Layout
   if (onlyTopbarLayout) {
-    // with side panel
-    if (isLeftPanelPresent) {
-      return PageLayoutClassNames.ONLY_TOPBAR_WITH_SIDE_PANEL_LAYOUT;
-    }
-
-    // without side-panel
     return PageLayoutClassNames.ONLY_TOPBAR_LAYOUT;
   }
 
-  // Case 2: Top with Sidebar Layout
   if (topWithSidebarLayout) {
-    // with side panel
-    if (isLeftPanelPresent) {
-      return PageLayoutClassNames.TOP_WITH_SIDEBAR_AND_PANEL_LAYOUT;
+    if (!isLeftSidebarContentOpen) {
+      return PageLayoutClassNames.TOP_WITH_SIDEBARS_AND_LEFT_CONT_COLLAPSED;
     }
 
-    // without side pane;
-    return PageLayoutClassNames.TOP_WITH_SIDEBAR_LAYOUT;
+    if (isLeftSidebarContentPresent) {
+      return PageLayoutClassNames.TOP_WITH_SIDEBARS_AND_LEFT_CONT;
+    }
+
+    return PageLayoutClassNames.ONLY_TOPBAR_WITH_SIDEBARS;
   }
 
-  // Case 3: Only Page WIth Side Panel
-  if (onlyPageWithSidePanelLayout) {
-    return PageLayoutClassNames.ONLY_PAGE_WITH_SIDE_PANEL;
+  if (leftSidebarWithSidebarContent) {
+    return PageLayoutClassNames.TOP_WITH_SIDEBARS_AND_LEFT_CONT;
   }
 
   // DEFAULT : Only Page
@@ -131,40 +126,41 @@ function constructMainContentClassName(
   isLeftSideOpen,
   isRightSideOpen,
   isLeftSidebarPresent,
+  isLeftSidebarContentPresent,
   isRightSidebarPresent,
 ) {
-  // Case 1: "Only Left Side" Bar Present (with or without collapsed)
+  // Case 1: "Only Left Sidebar" Present (with or without collapsed)
   if (isLeftSidebarPresent && !isRightSidebarPresent) {
     // with collapsed
     if (!isLeftSideOpen) {
-      return MainContentClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
+      return MainContentClassNames.ONLY_LEFT_SIDEBAR_AND_COLLAPSED;
     }
 
     // without collapsed
-    return MainContentClassNames.ONLY_LEFT_SIDE_BAR;
+    return MainContentClassNames.ONLY_LEFT_SIDEBAR;
   }
 
-  // Case 2: "Only Right Side" Bar Present (with or without collapsed)
+  // Case 2: "Only Right Sidebar" Present (with or without collapsed)
   if (isRightSidebarPresent && !isLeftSidebarPresent) {
     // with collapsed
     if (!isRightSideOpen) {
-      return MainContentClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
+      return MainContentClassNames.ONLY_RIGHT_SIDEBAR_AND_COLLAPSED;
     }
 
     // without collapsed
-    return MainContentClassNames.ONLY_RIGHT_SIDE_BAR;
+    return MainContentClassNames.ONLY_RIGHT_SIDEBAR;
   }
 
   // Case 3: Both Left and Right Side Bars Present
   if (isLeftSidebarPresent && isRightSidebarPresent) {
     // with both collapsed
     if (!isLeftSideOpen && !isRightSideOpen) {
-      return MainContentClassNames.LEFT_AND_RIGHT_SIDE_BARS_COLLAPSED;
+      return MainContentClassNames.LEFT_AND_RIGHT_SIDEBARS_COLLAPSED;
     }
 
     // without both collapsed
     if (isLeftSideOpen && isRightSideOpen) {
-      return MainContentClassNames.LEFT_AND_RIGHT_SIDE_BARS;
+      return MainContentClassNames.LEFT_AND_RIGHT_SIDEBARS;
     }
   }
 
@@ -172,13 +168,27 @@ function constructMainContentClassName(
   if (isLeftSidebarPresent && isRightSidebarPresent) {
     // if Left Collapsed and Not Right
     if (!isLeftSideOpen && isRightSideOpen) {
-      return MainContentClassNames.LEFT_SIDE_BAR_COLLAPSED_AND_RIGHT_SIDE_BAR_NOT_COLLAPSED;
+      return MainContentClassNames.LEFT_SIDEBAR_COLLAPSED_AND_RIGHT_SIDEBAR_NOT_COLLAPSED;
     }
 
     // if Right Collapsed And Left Not
     if (!isRightSideOpen && isLeftSideOpen) {
-      return MainContentClassNames.RIGHT_SIDE_BAR_COLLAPSED_AND_LEFT_SIDE_BAR_NOT_COLLAPSED;
+      return MainContentClassNames.RIGHT_SIDEBAR_COLLAPSED_AND_LEFT_SIDEBAR_NOT_COLLAPSED;
     }
+  }
+
+  // Case 5: Left Sidebars present with left sidebar content
+  if (isLeftSidebarContentPresent) {
+    // both present with left sidebar content with left collapsed and not right
+    if (!isLeftSideOpen && isRightSideOpen) {
+      return MainContentClassNames.LEFT_SIDEBAR_COLLAPSED_WITH_LEFT_CONT_AND_RIGHT_SIDEBAR_NOT_COLLAPSED;
+    }
+
+    // both present with left sidebar content and both collapsed
+    if (!isLeftSideOpen && !isRightSideOpen) {
+      return MainContentClassNames.LEFT_SIDEBAR_COLLAPSED_WITH_LEFT_CONT_AND_RIGHT_SIDEBAR_COLLAPSED;
+    }
+    return MainContentClassNames.LEFT_SIDEBAR_WITH_LEFT_CONT;
   }
 
   // default "only Main Cont" : No Side Bars
@@ -195,21 +205,21 @@ function constructSidebarClassName(sidebarPosition, isSidebarOpen) {
   if (isSidebarPositionRight) {
     // with collapsed
     if (!isSidebarOpen) {
-      return SidebarClassNames.ONLY_RIGHT_SIDE_BAR_AND_COLLAPSED;
+      return SidebarClassNames.ONLY_RIGHT_SIDEBAR_AND_COLLAPSED;
     }
 
     // without collapsed
-    return SidebarClassNames.ONLY_RIGHT_SIDE_BAR;
+    return SidebarClassNames.ONLY_RIGHT_SIDEBAR;
   }
 
   // DEFAULT :: Position = "left"
   // with collapsed
   if (!isSidebarOpen) {
-    return SidebarClassNames.ONLY_LEFT_SIDE_BAR_AND_COLLAPSED;
+    return SidebarClassNames.ONLY_LEFT_SIDEBAR_AND_COLLAPSED;
   }
 
   // without collapsed
-  return SidebarClassNames.ONLY_LEFT_SIDE_BAR;
+  return SidebarClassNames.ONLY_LEFT_SIDEBAR;
 }
 
 // get Footer Collapsible IconName

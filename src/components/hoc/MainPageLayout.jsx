@@ -11,19 +11,13 @@ import URL_IMG_LOGO_SHORT from '../../assets/images/brand/admavin-short-logo.png
 // Components
 import SidebarMenu from '../layouts/SidebarMenu';
 import TopnavMenu from '../layouts/TopnavMenu';
-import SidePanelMenu from '../layouts/SidePanelMenu';
 import LeftSidebarMenu from '../layouts/LeftSidebarMenu';
+import LeftSidebarContentMenu from '../layouts/LeftSidebarContentMenu';
 
 /**
  * Main Page Layout
  */
 export default function MainPageLayout() {
-  // left panel config
-  const leftPanelConfig = {
-    menuComponent: <SidePanelMenu />,
-    containerClassName: '',
-  };
-
   // Top bar Config
   // default header component will be added here for all same RoutePages
   // custom header can be added from page itself using hook : useOutletContext
@@ -36,13 +30,16 @@ export default function MainPageLayout() {
 
   // Left Sidebar Config
   const leftSidebarConfig = {
-    isSidebarCollapsible: true,
-    showHeaderCollapsibleButton: true,
     showFooterCollapsibleButton: true,
     menuComponent: <LeftSidebarMenu />,
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
     redirectURL: PageUrls.DashboardPage,
+  };
+
+  // Left Sidebar Content Config
+  const leftSidebarContentConfig = {
+    menuComponent: <LeftSidebarContentMenu />,
   };
 
   // Right Sidebar Config
@@ -59,8 +56,8 @@ export default function MainPageLayout() {
   return (
     <Layout
       topbarConfig={topbarConfig}
-      leftPanelConfig={leftPanelConfig}
       leftSidebarConfig={leftSidebarConfig}
+      leftSidebarContentConfig={leftSidebarContentConfig}
       rightSidebarConfig={rightSidebarConfig}
     />
   );
