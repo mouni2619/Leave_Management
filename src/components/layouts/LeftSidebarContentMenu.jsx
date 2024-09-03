@@ -3,14 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Sub item
-function SubItem({
-  subItem = {},
-  selectedSubItemId,
-  setSelectedSubItemId,
-  isSidebarOpen = false,
-  setLeftSidebarMenu = () => {},
-  setIsLeftSidebarContentOpen = () => {},
-}) {
+function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
   const navigate = useNavigate();
 
   // Data

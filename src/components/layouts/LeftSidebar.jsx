@@ -63,15 +63,12 @@ export default function LeftSidebar({
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
   sidebarPosition = SidebarPositions.LEFT,
-  isLeftPanelPresent = false,
-  isTopbarPresent = false,
   setLeftSidebarMenu = () => {},
   isLeftSidebarContentPresent = false,
   setIsLeftSidebarContentOpen = () => {},
 }) {
   const {
     menuComponent = <></>,
-    isSidebarCollapsible = isLeftSidebarContentPresent ? false : true,
     showHeaderCollapsibleButton = false,
     showFooterCollapsibleButton = false,
   } = sidebarConfig;
@@ -80,8 +77,10 @@ export default function LeftSidebar({
   const isLeftSidebar = sidebarPosition === SidebarPositions.LEFT;
 
   // checking condition to show Sidebar Branding
-  const isShowSidebarBranding =
-    isLeftSidebar && (!isLeftPanelPresent || !isTopbarPresent);
+  const isShowSidebarBranding = isLeftSidebar;
+
+  // is sidebarCollapsible or not
+  const isSidebarCollapsible = isLeftSidebarContentPresent ? false : true;
 
   // sidebar ClassName
   const sidebarClassName = LayoutUtils.constructSidebarClassName(
