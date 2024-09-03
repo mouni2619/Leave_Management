@@ -7,7 +7,9 @@ export default function LeftSidebarContent({
 }) {
   const { menuComponent = <></> } = sidebarConfig;
   return (
-    <nav className={`sidebar-cont ${isTopbarPresent ? 'with-top' : ''}`}>
+    <nav
+      className={`left-sidebar-content ${isTopbarPresent ? 'with-top' : ''}`}
+    >
       {menuComponent && cloneElement(menuComponent, { leftSidebarMenu })}
     </nav>
   );

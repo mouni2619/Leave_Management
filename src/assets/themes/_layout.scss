@@ -107,7 +107,7 @@ html.scroll-smooth {
     align-items: center;
   }
 
-  .sidebar-cont {
+  .left-sidebar-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -388,12 +388,12 @@ html.scroll-smooth {
       }
     }
 
-    .sidebar-cont {
+    .left-sidebar-content {
       margin-left: $sidebar-left-width;
     }
 
     &.left-cont {
-      .sidebar-cont {
+      .left-sidebar-content {
         margin-top: 0;
         margin-left: $sidebar-left-width-collapse;
         width: $sidebar-left-width;
@@ -541,6 +541,6 @@ html.scroll-smooth {
   transition: all 0.5s ease;
 
   .page-content {
-    padding: 3rem 50px;
+    padding: 3rem $grid-gutter-width;
   }
 }
