@@ -35,7 +35,7 @@ const columns = [
 ];
 
 function Header() {
-  return <h3 className="my-4">AntD Table Component</h3>;
+  return <h3 className="mb-4">AntD Table Component</h3>;
 }
 
 export default function AntdTablePage() {

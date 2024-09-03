@@ -227,7 +227,7 @@ input[type='number'] {
 .list-table-hover {
   tr:hover {
     svg {
-      stroke: $ultramarine-blue;
+      stroke: $primary;
     }
   }
   svg {
@@ -247,12 +247,12 @@ input[type='number'] {
 }
 
 .btn-outline-custom:hover {
-  color: $blue;
+  color: $primary;
   background-color: $white;
-  border-color: $blue;
+  border-color: $primary;
 }
 
 // Map Styles
 .leaflet-container {
-  height: 800px;
+  height: 760px;
 }

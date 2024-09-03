@@ -24,7 +24,7 @@ import DataTable from '../../components/antd/table/DataTable';
 
 function Header({ setOpenModal = () => {} }) {
   return (
-    <div className="w-100 d-flex justify-content-between my-4">
+    <div className="w-100 d-flex justify-content-between mb-4">
       <h2>{`Users List`}</h2>
       <Button
         className="btn-primary"

@@ -9,11 +9,11 @@ import ChartTypes from '../../components/chart/ChartTypes';
  */
 export default function BoxPlotCharts() {
   return (
-    <>
-      <h3 className="text-center mt-3 fw-bold">Box Plot Charts</h3>
+    <div className="page-content">
+      <h3 className="text-center fw-bold">Box Plot Charts</h3>
 
       {/* Chart Types */}
       <ChartTypes data={BOX_PLOTS_CHARTS_DATA} />
-    </>
+    </div>
   );
 }

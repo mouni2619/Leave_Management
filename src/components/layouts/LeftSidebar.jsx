@@ -58,18 +58,17 @@ function SidebarBranding({ isSidebarOpen, sidebarConfig }) {
  * @param {*} setShowSideBar : Boolean Value
  * @param {*} sidebarPosition : "left / right"
  */
-export default function Sidebar({
+export default function LeftSidebar({
   sidebarConfig = {},
   isSidebarOpen = false,
   setIsSidebarOpen = () => {},
   sidebarPosition = SidebarPositions.LEFT,
-  isLeftPanelPresent = false,
-  isTopbarPresent = false,
-  leftSidebarMenu = [],
+  setLeftSidebarMenu = () => {},
+  isLeftSidebarContentPresent = false,
+  setIsLeftSidebarContentOpen = () => {},
 }) {
   const {
     menuComponent = <></>,
-    isSidebarCollapsible = true,
     showHeaderCollapsibleButton = false,
     showFooterCollapsibleButton = false,
   } = sidebarConfig;
@@ -78,8 +77,10 @@ export default function Sidebar({
   const isLeftSidebar = sidebarPosition === SidebarPositions.LEFT;
 
   // checking condition to show Sidebar Branding
-  const isShowSidebarBranding =
-    isLeftSidebar && (!isLeftPanelPresent || !isTopbarPresent);
+  const isShowSidebarBranding = isLeftSidebar;
+
+  // is sidebarCollapsible or not
+  const isSidebarCollapsible = isLeftSidebarContentPresent ? false : true;
 
   // sidebar ClassName
   const sidebarClassName = LayoutUtils.constructSidebarClassName(
@@ -117,7 +118,12 @@ export default function Sidebar({
       {/* Menu Component */}
       <div className="sidebar-content">
         {menuComponent &&
-          cloneElement(menuComponent, { isSidebarOpen, leftSidebarMenu })}
+          cloneElement(menuComponent, {
+            isSidebarOpen,
+            setIsSidebarOpen,
+            setLeftSidebarMenu,
+            setIsLeftSidebarContentOpen,
+          })}
       </div>
 
       {/* bottom close/open sidebar button */}

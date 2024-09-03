@@ -99,11 +99,11 @@ export default function UploadFilePage() {
     // Dispatch the action
   }
   return (
-    <div className="page-content w-50">
+    <div className="page-content w-100">
       {/** Error Alert */}
       {showError && <Alert message={validationError} type="error" />}
 
-      <div className="my-4">
+      <div className="mb-4">
         <Upload.Dragger
           disabled={isFileSelected}
           showUploadList={false}

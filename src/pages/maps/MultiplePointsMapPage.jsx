@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import { Icon } from 'leaflet';
 import { useDispatch, useSelector } from 'react-redux';

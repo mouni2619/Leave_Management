@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 // Constants
-import { SidebarDefaultData } from '../../constants/layoutConstants';
+import { RightSidebarDefaultData } from '../../constants/layoutConstants';
 
 // Sub item
 function SubItem({ subItem = {}, selectedSubItemId, setSelectedSubItemId }) {
@@ -144,7 +145,7 @@ export default function SidebarMenu({
   // useEffect to initial update of menu list
   useEffect(() => {
     const initialMenuList =
-      sidebarMenuList.length > 0 ? sidebarMenuList : SidebarDefaultData;
+      sidebarMenuList.length > 0 ? sidebarMenuList : RightSidebarDefaultData;
 
     // update state
     setMenuList(initialMenuList);

@@ -5,9 +5,6 @@ import { LogOut, Settings, User, UserRound } from 'lucide-react';
 // Hooks
 import { useToggleMenu } from '../../hooks/useToggleMenu';
 
-// Constants
-import { TopnavData } from '../../constants/layoutConstants';
-
 // profile menu constants
 const profileMenuOptions = [
   {
@@ -88,18 +85,18 @@ function TopnavMenuItem({
  */
 export default function TopnavMenu({
   topnavItems = [],
-  defaultSelectedId = 2,
+  defaultSelectedId = 1,
 }) {
   // state
   const [selectedItemId, setSelectedItemId] = useState(defaultSelectedId);
 
   // topnav menu items
-  const menuItems = topnavItems.length > 0 ? topnavItems : TopnavData;
+  const menuItems = topnavItems;
 
   return (
     <div className="page-header">
       {/* items */}
-      <ul className="nav-links">
+      <ul className="nav-links invisible">
         {menuItems.map((item) => (
           <TopnavMenuItem
             key={item.id}

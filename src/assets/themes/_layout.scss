@@ -44,7 +44,7 @@ html.scroll-smooth {
     right: 0;
     left: 0;
     transition: all 0.5s ease;
-    // z-index: $topbar-zindex; // Uncomment if needed
+    z-index: $topbar-zindex;
     height: $topbar-height;
     border-bottom: 1px solid $gray-300;
     box-shadow: $box-shadow;
@@ -85,7 +85,7 @@ html.scroll-smooth {
 
         &.selected {
           font-weight: 800;
-          background-color: $light-blue;
+          background-color: $primary-color-shade;
           border-bottom: 2px solid;
           border-color: $primary;
           color: $primary;
@@ -107,42 +107,74 @@ html.scroll-smooth {
     align-items: center;
   }
 
-  // Side Panel --------------------------------------------
-  .side-panel {
-    width: $side-panel-width;
-    height: 100%;
-    border-right: 1px solid $gray-300;
+  .left-sidebar-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: none 0.5s ease;
+    overflow-y: auto;
+    height: 100vh;
+    width: 0;
 
-    .burger-cont {
-      width: 100%;
-      height: $topbar-height;
-      text-align: center;
-      align-content: center;
-      background-color: $topbar-color;
-      cursor: pointer;
-      border-bottom: 1px solid $gray-300;
-    }
+    // sidebar nav links
+    .nav-links {
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
 
-    .panel-menu {
-      text-align: center;
-      align-content: center;
-      margin-top: 10px;
+      .sub-item-left {
+        &:first-child {
+          margin-top: 30px;
+        }
+      }
 
-      .panel-item {
-        margin: 13px;
-        margin-bottom: 10px;
-        padding: 15px 10px;
-        border-radius: 5px;
+      .sub-item,
+      .sub-item-left {
+        padding: 8px 10px;
+
+        &.selected,
+        &:hover {
+          color: $primary;
+          font-weight: 800;
+          background-color: $alice-blue;
+          border-radius: 4px;
+        }
+
+        a {
+          color: unset;
+          text-decoration: none;
+        }
+      }
+
+      .nav-item {
         cursor: pointer;
+        padding: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
 
+        .nav-item-icon {
+          min-width: 30px;
+        }
+
+        &.selected,
         &:hover {
           background-color: $alice-blue;
+          border-radius: 5px;
         }
 
-        &.selected {
-          background-color: $alice-blue;
-          color: $primary;
+        .menu-items {
+          padding-left: 35px;
+          display: flex;
+          flex-direction: column;
         }
+      }
+
+      li {
+        position: relative;
+        list-style: none;
+        transition: all 0.4s ease;
       }
     }
   }
@@ -187,6 +219,30 @@ html.scroll-smooth {
       flex-direction: column;
       row-gap: 8px;
 
+      .sub-item-left {
+        &:first-child {
+          margin-top: 28px;
+        }
+      }
+
+      .sub-item,
+      .sub-item-left {
+        padding: 8px 10px;
+
+        &.selected,
+        &:hover {
+          color: $primary;
+          font-weight: 800;
+          background-color: $alice-blue;
+          border-radius: 4px;
+        }
+
+        a {
+          color: unset;
+          text-decoration: none;
+        }
+      }
+
       .nav-item {
         cursor: pointer;
         padding: 0.5rem;
@@ -207,22 +263,6 @@ html.scroll-smooth {
           padding-left: 35px;
           display: flex;
           flex-direction: column;
-
-          .sub-item {
-            padding-top: 8px;
-            padding-bottom: 8px;
-
-            &.selected,
-            &:hover {
-              color: $primary;
-              font-weight: 800;
-            }
-
-            a {
-              color: unset;
-              text-decoration: none;
-            }
-          }
         }
       }
 
@@ -345,6 +385,27 @@ html.scroll-smooth {
       ~ .sidebar.right {
         top: $topbar-height;
         height: calc(100vh - 4rem) !important; // topbar-height
+      }
+    }
+
+    .left-sidebar-content {
+      margin-left: $sidebar-left-width;
+    }
+
+    &.left-cont {
+      .left-sidebar-content {
+        margin-top: 0;
+        margin-left: $sidebar-left-width-collapse;
+        width: $sidebar-left-width;
+        border-right: 1px solid $gray-300;
+
+        &.with-top {
+          margin-top: $topbar-height;
+        }
+      }
+
+      .main-cont {
+        margin-left: $sidebar-left-width;
       }
     }
 
@@ -480,6 +541,6 @@ html.scroll-smooth {
   transition: all 0.5s ease;
 
   .page-content {
-    padding: 24px #{$grid-gutter-width};
+    padding: 3rem $grid-gutter-width;
   }
 }
