@@ -298,75 +298,12 @@ html.scroll-smooth {
     height: $footer-height;
   }
 
-  // page with panel only -----------------------------------------
-  &.with-panel {
-    .main-cont {
-      left: $side-panel-width !important;
-    }
-  }
-
   // Topbar Only (without sidebar) ----------------------------------
   &.layout-topbar {
     // remove sidebar placeholder
     .sidebar {
       width: 0;
       display: none;
-    }
-  }
-
-  // Topbar Only (without sidebar) ----------------------------------
-  &.layout-topbar.with-panel {
-    .topbar {
-      margin-left: $side-panel-width;
-    }
-
-    .main-cont {
-      left: $side-panel-width;
-    }
-  }
-
-  // layout sidebar with panel css -----------------------------------
-  &.layout-sidebar.with-panel {
-    .sidebar.left {
-      margin-left: $side-panel-width;
-
-      // remove burger icon (open/close) and sidebar footer
-      .burger-style,
-      .sidebar-footer {
-        display: none !important;
-      }
-
-      // if side-panel is present then remove sidebar on collapse
-      &.left-collapsed {
-        display: none !important;
-      }
-
-      ~ .main-cont {
-        left: $side-panel-width + $sidebar-left-width !important;
-      }
-    }
-
-    // only when topbar present
-    .topbar ~ .sidebar.left {
-      top: $topbar-height;
-      height: calc(100vh - 4rem) !important; // topbar-height
-    }
-
-    .topbar {
-      margin-left: $side-panel-width !important;
-
-      &.left-collapsed {
-        margin-left: $side-panel-width !important;
-      }
-    }
-
-    // main container with-side-panel css
-    .main-cont {
-      left: $side-panel-width !important;
-
-      &.left.left-collapsed {
-        left: $side-panel-width !important;
-      }
     }
   }
 
@@ -436,7 +373,6 @@ html.scroll-smooth {
         position: fixed;
         width: 40px;
         height: 40px;
-        z-index: 3000 !important;
         margin-top: 10px !important;
         transition: all 0.5s ease;
       }
