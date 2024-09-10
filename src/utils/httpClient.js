@@ -188,7 +188,7 @@ class HttpClient {
       url,
       method: HttpMethods.GET,
       params,
-      reqHeaders,
+      headers: reqHeaders,
       responseType,
     });
 
