@@ -45,6 +45,7 @@
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
     "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc.json"
   },
+  "proxy": "http://0.0.0.0:5000",
   "eslintConfig": {
     "extends": [
       "react-app",

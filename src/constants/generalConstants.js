@@ -4,11 +4,11 @@
 
 // Local Storage Keys
 export const LocalStorageKeys = {
-  AUTH_USER: 'AUTH_USER',
-  AUTH_USER_PRIVILEGES: 'AUTH_USER_PRIVILEGES',
+  USER_ID: 'USER_ID',
   AUTH_ORG: 'AUTH_ORG',
-  AUTH_ORG_TYPE: 'AUTH_ORG_TYPE',
   TOKEN: 'TOKEN',
+  FIRST_NAME: 'FIRST_NAME',
+  LAST_NAME: 'LAST_NAME',
 };
 
 // Toast Positions
