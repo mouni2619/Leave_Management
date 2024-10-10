@@ -30,7 +30,7 @@ function getToken() {
 }
 
 function isUserAuthenticated() {
-  const token = LocalStorage.get(LocalStorageKeys.TOKEN);
+  const token = getToken();
 
   const isUserAuthenticated = token && !isTokenExpired(token);
   return isUserAuthenticated;
