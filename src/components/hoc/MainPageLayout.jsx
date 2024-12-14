@@ -25,7 +25,7 @@ export default function MainPageLayout() {
     menuComponent: <TopnavMenu />,
     containerClassName: '',
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
-    redirectURL: PageUrls.DashboardPage,
+    redirectURL: PageUrls.DashboardListPage,
   };
 
   // Left Sidebar Config
@@ -34,7 +34,7 @@ export default function MainPageLayout() {
     menuComponent: <LeftSidebarMenu />,
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
-    redirectURL: PageUrls.DashboardPage,
+    redirectURL: PageUrls.DashboardListPage,
   };
 
   // Left Sidebar Content Config
@@ -50,7 +50,7 @@ export default function MainPageLayout() {
     menuComponent: <SidebarMenu />,
     headerLogo: { height: 40, logoURL: URL_IMG_LOGO },
     collapsedHeaderLogo: { height: 40, logoURL: URL_IMG_LOGO_SHORT },
-    redirectURL: PageUrls.DashboardPage,
+    redirectURL: PageUrls.DashboardListPage,
   };
 
   return (

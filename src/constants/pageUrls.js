@@ -17,7 +17,7 @@ const PageUrls = {
   ForgotPasswordPage: `${PagePaths.Auth}/forgot-password`,
 
   // Home Page
-  DashboardPage: '/',
+  DashboardListPage: '/',
 
   // Charts Page
   LineChartsPage: `${PagePaths.Charts}/line-charts`,

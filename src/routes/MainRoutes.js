@@ -9,7 +9,7 @@ import MainPageLayout from '../components/hoc/MainPageLayout';
 import PageUrls from '../constants/pageUrls';
 
 // Pages :: Dashboard
-import DashboardPage from '../pages/dashboard/DashboardPage';
+import DashboardListPage from '../pages/dashboard-list/DashboardListPage';
 
 // Pages :: Charts
 import LineChartsPage from '../pages/line-charts/LineChartsPage';
@@ -38,7 +38,7 @@ import VectorMapPage from '../pages/maps/VectorMapPage';
 
 // Main Pages and Layouts
 export const MainPageRoutes = {
-  path: PageUrls.DashboardPage,
+  path: PageUrls.DashboardListPage,
   element: (
     // ErrorHandler
     <ErrorHandler>
@@ -51,8 +51,8 @@ export const MainPageRoutes = {
   ),
   children: [
     {
-      path: PageUrls.DashboardPage,
-      element: <DashboardPage />,
+      path: PageUrls.DashboardListPage,
+      element: <DashboardListPage />,
     },
 
     // Charts

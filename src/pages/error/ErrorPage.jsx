@@ -43,7 +43,7 @@ export default function ErrorPage() {
         <h4 className="text-uppercase">{errorMessage}</h4>
         <div className="mt-5 text-center">
           <Link
-            to={PageURL.DashboardPage}
+            to={PageURL.DashboardListPage}
             className="btn btn-primary waves-effect waves-light"
           >
             Back to Dashboard

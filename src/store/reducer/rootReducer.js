@@ -6,6 +6,9 @@ import { AuthReducer } from '../redux-slices/authSlice';
 // Error Reducer
 import { ErrorReducer } from '../redux-slices/errorSlice';
 
+// Dashboard Reducer
+import { DashboardReducer } from '../redux-slices/dashboardSlice';
+
 // User Reducer
 import { UserReducer } from '../redux-slices/userSlice';
 
@@ -24,6 +27,9 @@ export const RootReducer = combineReducers({
 
   // Error Reducer
   error: ErrorReducer,
+
+  // Dashboard Reducer
+  dashboard: DashboardReducer,
 
   // User Reducer
   users: UserReducer,

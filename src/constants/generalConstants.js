@@ -26,3 +26,16 @@ export const FileTypes = {
   XLSX: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
   CSV: 'text/csv',
 };
+
+// Status
+export const STATUS = {
+  ACTIVE: 'Active',
+  IN_ACTIVE: 'InActive',
+  IS_ACTIVE: 'isActive',
+};
+
+// Tag Color
+export const TAG_COLOR = {
+  GREEN: 'green',
+  RED: 'red',
+};
