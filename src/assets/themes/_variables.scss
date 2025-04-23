@@ -1,101 +1,163 @@
 // Bootstrap Overrides
 
-// Colors :: Gray
-$white: #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-250: #f0f0f0 !default;
-$gray-300: #dee2e6 !default;
-$gray-350: #d9d9d9 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #36454f !default;
-$black: #000 !default;
+// Check and Remove if noe needed
+$body-bg-alt: #f3f7ff;
+$color-border: #dee2e6;
+
+// Main Theme
+$primary: #1650cf !default;
+$secondary: #e9ebf1  !default;
+$primary-subtle: #eff8ff;
 
 // Colors :: Theme
-$blue: #0d6efd !default;
-$indigo: #6610f2 !default;
-$purple: #6f42c1 !default;
-$pink: #d63384 !default;
-$red: #dc3545 !default;
-$orange: #fd7e14 !default;
-$yellow: #ffc107 !default;
-$green: #198754 !default;
-$teal: #20c997 !default;
-$cyan: #0dcaf0 !default;
-$alice-blue: #f8f9fa !default;
+$box-shadow-color: #adb5bd !default;
+$white: #ffffff !default;
+$black: #18181c !default;
+$active: $primary !default;
+$hover: $primary !default;
+$danger: #e73f3f !default;
+$success: #52a86e !default;
+$input-selected: #2f68f5;
+$error: #fceaea;
+$warning: #e49614 !default;
+
+//
+$gray-100: #e5e5e5 !default;
+$gray-200: #a7a7a7 !default;
+$gray-300: #848c93 !default;
 
 // Additional Colors
-$primary: #3b76f6;
 $shade-lightness: 0.9; // adjust this value to change the shade
 
-$primary-color-shade: hsl(
-  hue($primary),
-  saturation($primary),
-  $shade-lightness * 100%
-);
-$light-blue: #d4daf9;
-$topbar-color: #f5f5f5;
-$footer-color: #262b3c;
+$primary-color-shade: hsl(hue($primary), saturation($primary), $shade-lightness * 100%);
 $scrollbar-bg-color: #f5f5f5;
 $scrollbar-box-shadow-color: rgba(0, 0, 0, 0.3);
 $page-header-shadow-color: rgba(25, 104, 252, 0.2);
-$ultramarine-blue: #3b76f6;
 
 // Body :: Font
-$font-family-base: 'Mulish', 'Roboto', 'Helvetica', sans-serif,
-  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-$font-size-base: 0.875rem;
-$font-weight-medium: 500;
+$font-family-base: "Inter", serif;
+$font-size-base: 0.87rem;
+$font-size-sm: 0.75rem;
+
+// Body :: Font Weight
+$semi-bold: 600;
+$extra-bold: 800;
 
 // Body :: Box Shadow
-$box-shadow-lg: 0 0 2rem 0.5rem rgba($gray-500, 0.175);
-$box-shadow: 0 0 1rem 0.25rem rgba($gray-500, 0.15);
-$box-shadow-sm: 0 0 0.5rem 0.125rem rgba($gray-500, 0.075);
+$box-shadow: 0 0 1rem 0.25rem rgba($box-shadow-color, 0.15);
+$box-shadow-sm: 0 0 0.5rem 0.13rem rgba($box-shadow-color, 0.075);
+
+// Body :: Headings (font size)
+$h1-font-size: 2.5rem !default;
+$h2-font-size: 2rem !default;
+$h3-font-size: 1.5rem !default;
+$h4-font-size: 1rem !default;
+$h5-font-size: 0.75rem !default;
+$h6-font-size: $font-size-base !default;
 
 // Scrollbar
 $scrollbar-box-shadow: $scrollbar-box-shadow-color;
 $scrollbar-bg: $scrollbar-bg-color;
 
 // Form :: input
-$input-btn-padding-x: 2rem;
-$input-btn-padding-x-sm: 1.25rem;
-$input-btn-padding-x-lg: 2.5rem;
-$input-padding-x: 0.75rem;
-$input-padding-x-sm: 0.5rem;
-$input-padding-x-lg: 1rem;
-$grid-gutter-width: 2rem !default;
+$input-border: #d5d7da;
+$input-placeholder: #7f7f7f;
+$input-disabled: #fafafa;
+$grid-gutter-width: 1.25rem !default;
+$label-light: #989898;
 
 // Breadcrumb
-$breadcrumb-divider: quote('>');
+$breadcrumb-divider: quote(">");
 
 // Button variables..
 //-----------------------------------------------------------------------------
-$btn-border-radius: 4px;
-$btn-label-font-size: 14px;
-$btn-transition: all 0.3s ease 0s;
+$btn-width: 6.87rem;
+$btn-font-size: 0.75rem !default;
+$btn-border-radius: 0.5rem !default;
 
-// Additional Variables
+$btn-width-sm: 6.62rem;
+$btn-font-size-sm: 0.87rem !default;
+$btn-border-radius-sm: 0.5rem !default;
+
+$btn-width-lg: 7.81rem;
+$btn-font-size-lg: 1rem !default;
+$btn-border-radius-lg: 0.5rem !default;
+
+$btn-width-xs: 3rem;
+
+$btn-transition: all 0.3s ease 0s;
+$btn-disabled-opacity: 0.4 !default;
+
+// Table variables..
+//-----------------------------------------------------------------------------
+$table-header-color: #f5f7f9;
+$table-header-border-left-radius: 0.5rem;
+$table-header-border-right-radius: 0.5rem;
+$table-border: 0rem;
+$table-hover: #f4f4f4;
+
+// Page Content
+$content-wrapper-spacing: 1rem;
+$page-content-spacing: 3rem;
+$page-content-border-color: #eceef6;
+$page-content-border-radius: 12px;
+$page-content-background: #f4f4f4;
+
+// Topbar
 // ----------------------------------------------------------------------------
-$topbar-height: 4rem;
+// Topbar :: Common
 $topbar-zindex: 1000;
-$sidebar-left-width: 18rem;
-$sidebar-right-width: 18rem;
-$sidebar-left-width-collapse: 5.5rem;
+$topbar-height: 4.5rem;
+
+// Topbar :: Platform
+$topbar-platform-color: $white;
+
+// Topbar :: Audit
+$topbar-audit-color: $white;
+
+// Topbar :: Industry
+$topbar-industry-color: $white;
+
+// Sidebar
+// ----------------------------------------------------------------------------
+// Sidebar :: Common
+$sidebar-menu-height: 2.5rem;
+$sidebar-left-width: 17.5rem;
+$sidebar-right-width: 12.5rem;
+$sidebar-left-width-collapse: 4.5rem;
 $sidebar-right-width-collapse: 0rem;
-$side-panel-width: 5rem;
-$header-height: 70px;
-$footer-height: 60px;
-$collapse-margin-left: 5.5rem;
-$main-header-height: 4rem;
-$main-footer-height: 0rem;
-$zindex-main-header: 2000;
-$navbar-padding-x: #{$grid-gutter-width / 2};
-$navbar-padding-y: 0.25rem;
-$sidebar-width: 15rem;
-$content-padding-x: #{$grid-gutter-width / 2};
-$content-padding-y: 1.5rem;
+$header-height: 4.5rem;
+$footer-height: 0rem;
 $page-header-shadow: $page-header-shadow-color;
+
+// Sidebar :: Platform
+$sidebar-platform-color: #222124;
+$sidebar-platform-footer-color: #222124;
+$sidebar-platform-left-menu-hover: #444444;
+$sidebar-platform-text-color: #a7a7a7;
+$sidebar-platform-selected-text-color: #ffffff;
+$sidebar-platform-selected-bg-color: #444444;
+$sidebar-platform-selected-menu-border-color: $primary;
+
+// Sidebar :: Audit
+$sidebar-audit-color: #222124;
+$sidebar-audit-footer-color: #222124;
+$sidebar-audit-left-menu-hover: #444444;
+$sidebar-audit-text-color: #a7a7a7;
+$sidebar-audit-selected-text-color: #ffffff;
+$sidebar-audit-selected-bg-color: #444444;
+$sidebar-audit-selected-menu-border-color: $primary;
+
+// Sidebar :: Industry
+$sidebar-industry-color: #222124;
+$sidebar-industry-footer-color: #222124;
+$sidebar-industry-left-menu-hover: #444444;
+$sidebar-industry-text-color: #a7a7a7;
+$sidebar-industry-selected-text-color: #ffffff;
+$sidebar-industry-selected-bg-color: #444444;
+$sidebar-industry-selected-menu-border-color: $primary;
+
+// Antd Card
+$antd-card-content-spacing: 1rem;
+$antd-card-header-font-size: 1rem;
+$antd-card-border-radius: $page-content-border-radius;

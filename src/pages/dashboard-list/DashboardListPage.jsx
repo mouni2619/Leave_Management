@@ -1,46 +1,23 @@
-import { useState } from 'react';
+import { Tabs } from 'antd';
 
 // Components
-import Button from '../../components/button/Button';
-import PageHeader from '../../components/layouts/PageHeader';
+import MyAbsenceTabContent from './components/MyAbsenceTabContent';
 
-// Page Components
-import DashboardListTable from './components/DashboardListTable';
-import DashboardUpsertModal from './components/DashboardUpsertModal';
-
-function HeaderActions({ setOpenModal = () => {} }) {
-  return (
-    <Button className="btn-primary" onClick={() => setOpenModal(true)}>
-      Create
-    </Button>
-  );
-}
+const itemsintab = [
+  {
+    key: '1',
+    label: <span className="">My Absences</span>,
+    children: <MyAbsenceTabContent />,
+  },
+  {
+    key: '2',
+    label: 'Absences Calender',
+  },
+];
 
 /**
- * Dashboard Page
+ * Dashboard List Page
  */
 export default function DashboardListPage() {
-  // States
-  const [openModal, setOpenModal] = useState(false);
-  const [editDashboardData, setEditDashboardData] = useState('');
-  return (
-    <div className="page-content">
-      <PageHeader
-        title="List of Dashboards"
-        actions={<HeaderActions setOpenModal={setOpenModal} />}
-      />
-
-      <DashboardListTable
-        setOpenModal={setOpenModal}
-        setEditDashboardData={setEditDashboardData}
-      />
-
-      <DashboardUpsertModal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        editDashboardData={editDashboardData}
-        setEditDashboardData={setEditDashboardData}
-      />
-    </div>
-  );
+  return <Tabs defaultActiveKey="1" items={itemsintab} />;
 }

@@ -6,17 +6,8 @@ import { AuthReducer } from '../redux-slices/authSlice';
 // Error Reducer
 import { ErrorReducer } from '../redux-slices/errorSlice';
 
-// Dashboard Reducer
-import { DashboardReducer } from '../redux-slices/dashboardSlice';
-
-// User Reducer
-import { UserReducer } from '../redux-slices/userSlice';
-
-// Dataset Reducer
-import { DatasetReducer } from '../redux-slices/datasetSlice';
-
-// Map Reducer
-import { MapReducer } from '../redux-slices/mapSlice';
+// Absence Reducer
+import { AbsenceReducer } from '../redux-slices/absenceSlice';
 
 // Root Reducer definition
 export const RootReducer = combineReducers({
@@ -28,15 +19,6 @@ export const RootReducer = combineReducers({
   // Error Reducer
   error: ErrorReducer,
 
-  // Dashboard Reducer
-  dashboard: DashboardReducer,
-
-  // User Reducer
-  users: UserReducer,
-
-  // Dataset Reducer
-  datasets: DatasetReducer,
-
-  // Map Reducer
-  maps: MapReducer,
+  // Absence Reducer
+  absence: AbsenceReducer,
 });

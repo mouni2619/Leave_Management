@@ -12,10 +12,10 @@ import PageUrls from '../../constants/pageUrls';
  */
 function ProtectedRoute({ children, loginPageUrl = PageUrls.LoginPage }) {
   //If user is not authenticated
-  if (!AuthUtils.isUserAuthenticated()) {
-    localStorage.clear();
-    return <Navigate to={loginPageUrl} />;
-  }
+  // if (!AuthUtils.isUserAuthenticated()) {
+  //   localStorage.clear();
+  //   return <Navigate to={loginPageUrl} />;
+  // }
 
   //TODO : Add theme support
   return <div>{children}</div>;

@@ -13,8 +13,8 @@ const Router = createBrowserRouter([
   MainPageRoutes,
 
   {
-    path: PageUrls.LoginPage,
-    element: <LoginPage />,
+    // path: PageUrls.LoginPage,
+    // element: <LoginPage />,
   },
 ]);
 

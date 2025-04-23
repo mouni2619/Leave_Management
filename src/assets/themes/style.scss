@@ -5,49 +5,49 @@ body {
 }
 
 // Table ---------------------------------------------
-table {
-  $table-border: 1px solid
-    darken(
-      $color: $alice-blue,
-      $amount: 5%,
-    ) !important;
+// table {
+//   $table-border: 1px solid
+//     darken(
+//       $color: $primary,
+//       $amount: 5%,
+//     ) !important;
 
-  thead {
-    border: $table-border;
-  }
+//   thead {
+//     border: $table-border;
+//   }
 
-  tr {
-    border-left: $table-border;
-    border-right: $table-border;
+//   tr {
+//     border-left: $table-border;
+//     border-right: $table-border;
 
-    &:last-child {
-      border-bottom: $table-border;
-    }
-  }
+//     &:last-child {
+//       border-bottom: $table-border;
+//     }
+//   }
 
-  th {
-    background-color: $alice-blue !important;
-    font-weight: 600 !important;
-  }
+//   th {
+//     background-color: $primary !important;
+//     font-weight: 600 !important;
+//   }
 
-  td {
-    border-top: $table-border;
-  }
+//   td {
+//     border-top: $table-border;
+//   }
 
-  .sub-text {
-    font-size: 0.75rem;
-    color: $gray-600;
-    display: block;
-  }
+//   .sub-text {
+//     font-size: 0.75rem;
+//     color: $gray-600;
+//     display: block;
+//   }
 
-  .tr-sec-header {
-    font-weight: bold;
-    text-align: center;
-    td {
-      background-color: $gray-100 !important;
-    }
-  }
-}
+//   .tr-sec-header {
+//     font-weight: bold;
+//     text-align: center;
+//     td {
+//       background-color: $gray-100 !important;
+//     }
+//   }
+// }
 
 .table-truncate {
   max-width: 10rem;
@@ -68,6 +68,10 @@ table {
   .selected {
     border: 1px double $blue !important;
   }
+}
+
+.side-tab-selected {
+  background-color: $primary-subtle;
 }
 
 // Pagination -----------------------------------------------
@@ -105,87 +109,6 @@ input[type='number'] {
   }
 }
 
-// Forms (uncomment if needed) ------------------------------
-// .form-group {
-//   margin-bottom: 1rem;
-// }
-
-// .form-readonly {
-//   input,
-//   select,
-//   textarea {
-//     border: 1px solid transparent;
-//     background-color: transparent;
-//     padding-left: 0;
-//   }
-
-//   input[disabled],
-//   select[disabled],
-//   textarea[disabled] {
-//     background-color: transparent;
-//     resize: none;
-//   }
-// }
-
-// Card style (uncomment if needed) --------------------------------
-// .card.card-inline {
-//   display: inline-block;
-//   margin: 10px 10px;
-
-//   &:first-child {
-//     margin-left: 0px;
-//   }
-
-//   &:last-child {
-//     margin-right: 0px;
-//   }
-// }
-
-// Dropdown (uncomment if needed) -------------------------------
-// .dropdown {
-//   .menu {
-//     width: 100%;
-//     border-radius: 5px !important;
-//   }
-
-//   .button {
-//     display: flex;
-//     width: 100%;
-//     height: 100%;
-//     justify-content: space-between;
-//     align-items: center;
-//     background-color: $white;
-//   }
-
-//   .text {
-//     white-space: normal;
-//     color: $gray-900;
-//     margin-right: 5px;
-
-//     &.default {
-//       color: $gray-600;
-//     }
-//   }
-
-//   .dropdown-menu {
-//     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
-//     animation-name: DropDownSlide;
-//     animation-duration: 0.3s;
-//     animation-fill-mode: both;
-//     margin-top: 55px !important;
-//     position: absolute;
-//     z-index: 1000;
-//   }
-// }
-
-// @keyframes DropDownSlide {
-//   100% {
-//     transform: translateY(0);
-//   }
-//   0% {
-//     transform: translateY(10px);
-//   }
-// }
 
 // Utilities --------------------------------------------------------
 .cursor-pointer {
@@ -237,7 +160,7 @@ input[type='number'] {
 
 // Buttons and Button Container ------------------------------
 .btn-default {
-  font-size: $btn-label-font-size;
+  font-size: $font-size-base;
   border-radius: $btn-border-radius;
   transition: $btn-transition;
 }

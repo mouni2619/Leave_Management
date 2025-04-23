@@ -1,0 +1,37 @@
+:where(.css-dev-only-do-not-override-1v5z42l).ant-card .ant-card-body {
+  padding: 5px;
+}
+
+.ant-tabs {
+  &.ant-tabs-top {
+    height: 100% !important;
+
+    > .ant-tabs-nav {
+      margin: 0px !important;
+    }
+  }
+
+  .ant-tabs-content {
+    height: 100% !important;
+  }
+
+  .ant-tabs-content-holder {
+    height: 100% !important;
+  }
+
+  .ant-tabs-tabpane {
+    height: 100% !important;
+  }
+
+  .ant-tabs-nav-wrap {
+    padding: 0px $page-content-spacing !important;
+  }
+}
+
+// Dropdown
+.ant-dropdown-menu-item {
+  padding: 10px;
+  padding-right: 50px !important;
+  text-align: start !important;
+  font-size: medium !important;
+}

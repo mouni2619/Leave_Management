@@ -1,5 +1,6 @@
-@import '_variables.scss';
+@import "_variables.scss";
 
+// New Layout CSS----------------------------------------------------------------
 //
 // Core: Layout -------------------------------------------------
 //
@@ -29,7 +30,7 @@ html.scroll-smooth {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px $scrollbar-box-shadow;
-  background-color: $gray-500;
+  background-color: $scrollbar-bg;
 }
 
 // Page Setup -------------------------------------------------------------
@@ -46,25 +47,19 @@ html.scroll-smooth {
     transition: all 0.5s ease;
     z-index: $topbar-zindex;
     height: $topbar-height;
-    border-bottom: 1px solid $gray-300;
-    box-shadow: $box-shadow;
+    // box-shadow: $box-shadow;
     display: flex;
     align-items: center;
-    background-color: $topbar-color !important;
+    border:1px solid $gray-100;
+    border-left: 0px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    // padding-left: $page-content-spacing;
+    // padding-right: $page-content-spacing;
 
     // adding "top" to main-container if "topbar" exist
     ~ .main-cont {
       top: $topbar-height;
-    }
-
-    .topbar-profile {
-      color: $gray-900;
-    }
-
-    // topbar navBranding
-    .navbar-branding {
-      padding-left: 32px;
-      padding-right: 10px;
     }
 
     // topbar nav-links
@@ -80,19 +75,16 @@ html.scroll-smooth {
 
       .nav-item {
         list-style: none;
-        font-size: 14px;
+        font-size: $font-size-base;
         height: 100%;
         align-content: center;
         padding: 10px;
-        font-weight: 600;
+        font-weight: $semi-bold;
         cursor: pointer;
 
         &.selected {
-          font-weight: 800;
-          background-color: $primary-color-shade;
+          font-weight: $extra-bold;
           border-bottom: 2px solid;
-          border-color: $primary;
-          color: $primary;
         }
       }
 
@@ -112,7 +104,6 @@ html.scroll-smooth {
   }
 
   .left-sidebar-content {
-    position: absolute;
     top: 0;
     left: 0;
     transition: none 0.5s ease;
@@ -140,23 +131,16 @@ html.scroll-smooth {
 
         &.selected,
         &:hover {
-          color: $primary;
           font-weight: 800;
-          background-color: $alice-blue;
           border-radius: 4px;
-        }
-
-        a {
-          color: unset;
-          text-decoration: none;
         }
       }
 
       .nav-item {
         cursor: pointer;
-        padding: 0.5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
 
         .nav-item-icon {
           min-width: 30px;
@@ -164,7 +148,6 @@ html.scroll-smooth {
 
         &.selected,
         &:hover {
-          background-color: $alice-blue;
           border-radius: 5px;
         }
 
@@ -192,17 +175,33 @@ html.scroll-smooth {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: $white;
+    border:1px solid $gray-100;
 
     // Sidebar Header
     .navbar-branding {
       text-align: center;
       align-content: center;
-      height: 4rem;
+      height: 64px;
       padding: 12px;
     }
 
     .sidebar-content {
+      padding-top: 50px;
       height: 100%;
+
+      ul {
+        padding: 0 !important;
+
+        li{
+          margin-top: 30px;
+          padding-top: 10px;
+
+          &.selected{
+            border-right: 5px solid $primary;
+          }
+        }
+      }
     }
 
     .sidebar-footer {
@@ -211,56 +210,33 @@ html.scroll-smooth {
       cursor: pointer;
       width: 100%;
       padding: 10px 20px;
-      background-color: $footer-color;
-      color: $white;
     }
 
     // sidebar nav links
     .nav-links {
-      padding: 15px;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      row-gap: 8px;
-
-      .sub-item-left {
-        &:first-child {
-          margin-top: 28px;
-        }
-      }
 
       .sub-item,
       .sub-item-left {
-        padding: 8px 10px;
+        height: $sidebar-menu-height;
 
-        &.selected,
-        &:hover {
-          color: $primary;
-          font-weight: 800;
-          background-color: $alice-blue;
-          border-radius: 4px;
-        }
-
-        a {
-          color: unset;
-          text-decoration: none;
+        .menu-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 15px;
+          border-radius: 8px;
         }
       }
 
       .nav-item {
         cursor: pointer;
-        padding: 0.5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 8px 16px;
 
         .nav-item-icon {
           min-width: 30px;
-        }
-
-        &.selected,
-        &:hover {
-          background-color: $alice-blue;
-          border-radius: 5px;
         }
 
         .menu-items {
@@ -296,19 +272,8 @@ html.scroll-smooth {
     padding: 20px calc(#{$grid-gutter-width} * 0.75);
     position: absolute;
     right: 0;
-    color: $footer-color;
     left: 0;
-    margin-left: 250px;
     height: $footer-height;
-  }
-
-  // Topbar Only (without sidebar) ----------------------------------
-  &.layout-topbar {
-    // remove sidebar placeholder
-    .sidebar {
-      width: 0;
-      display: none;
-    }
   }
 
   // Topbar and Sidebar (with or without collapsible) ----------------------------------
@@ -338,7 +303,6 @@ html.scroll-smooth {
         margin-top: 0;
         margin-left: $sidebar-left-width-collapse;
         width: $sidebar-left-width;
-        border-right: 1px solid $gray-300;
 
         &.with-top {
           margin-top: $topbar-height;
@@ -355,7 +319,6 @@ html.scroll-smooth {
       &.left {
         left: 0;
         width: $sidebar-left-width;
-        border-right: 1px solid $gray-300;
 
         .burger-style {
           margin-left: $sidebar-left-width - 1.25rem;
@@ -365,7 +328,6 @@ html.scroll-smooth {
       &.right {
         right: 0;
         width: $sidebar-right-width;
-        border-left: 1px solid $gray-300;
 
         .burger-style {
           margin-left: -1.25rem;
@@ -393,7 +355,7 @@ html.scroll-smooth {
         width: $sidebar-right-width-collapse;
 
         .burger-style {
-          margin-left: -1.25rem;
+          margin-left: $sidebar-left-width-collapse - 1.25rem;
         }
       }
     }
@@ -419,67 +381,26 @@ html.scroll-smooth {
   }
 }
 
-// Page Header ----------------------------------------------------
+// Page Header
 .page-header {
-  height: 100%;
-  width: 100%;
-  display: flex !important;
-  justify-content: space-between !important;
-  -webkit-justify-content: space-between !important;
-  -ms-flex-pack: justify !important;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-
-  &.border {
-    border: 0 !important;
-    border-bottom: 1px solid $gray-300 !important;
-  }
-
-  &.shadow {
-    box-shadow: 0px 0px 15px 0px $page-header-shadow !important;
-  }
-
-  // topnav profile menu
-  .user-profile {
-    position: relative;
-    height: 40px;
-    width: 40px;
-    align-content: center;
-    text-align: center;
-    border: 1px solid $gray-600;
-    border-radius: 50%;
-    cursor: pointer;
-    margin-right: 10px;
-    background-color: $white;
-
-    i {
-      color: $gray-700;
-    }
-
-    ul {
-      position: absolute;
-      top: 45px;
-      right: 0;
-      margin-bottom: 0;
-      min-width: 170px;
-      border: 1px solid $gray-200;
-
-      li:hover {
-        background-color: $alice-blue;
-        border-radius: 5px;
-        font-weight: 700;
-      }
-    }
-  }
 }
 
 // Main Content Setup --------------------------------------------
 .content-wrapper {
   position: relative;
   margin: 0;
-  padding: 0;
+  height: 100%;
   transition: all 0.5s ease;
+}
 
-  .page-content {
-    padding: 3rem $grid-gutter-width;
-  }
+.page-content {
+  padding: $page-content-spacing;
+  min-height: 100%;
+}
+
+.page-content-margin {
+  margin: $page-content-spacing;
 }

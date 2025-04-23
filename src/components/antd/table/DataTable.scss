@@ -1,7 +1,7 @@
 @import '../../../assets/themes/variables';
 
 .custom-table-wrapper {
-  border: 1px solid $gray-350;
+  border: 1px solid $gray-200;
   border-radius: 8px;
   max-height: 75vh;
   overflow: auto;
@@ -13,7 +13,7 @@
 
 .custom-table-wrapper .ant-table-thead > tr > th,
 .custom-table-wrapper .ant-table-tbody > tr > td {
-  border-top: 1px solid $gray-250;
+  border-top: 1px solid $gray-200;
   border-right: none;
 }
 

@@ -58,7 +58,7 @@ export default function MainPageLayout() {
       topbarConfig={topbarConfig}
       leftSidebarConfig={leftSidebarConfig}
       leftSidebarContentConfig={leftSidebarContentConfig}
-      rightSidebarConfig={rightSidebarConfig}
+      // rightSidebarConfig={rightSidebarConfig}
     />
   );
 }
