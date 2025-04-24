@@ -2,16 +2,16 @@ import { DatePicker, Form, Input, Modal, Select } from 'antd';
 import { useDispatch } from 'react-redux';
 
 // Actions
-import { AbsenceActions } from '../../../store/redux-slices/absenceSlice';
+import { AbsenceActions } from '../../store/redux-slices/absenceSlice';
 
 // Constants
 import {
-    LeaveStatusConfigMap,
+  LeaveStatusConfigMap,
   LeaveTypeOptions,
-} from '../../../constants/myAbsenceConstant';
+} from '../../constants/myAbsenceConstant';
 
 // Components
-import Button from '../../../components/button/Button';
+import Button from '../button/Button';
 
 // Antd
 const { RangePicker } = DatePicker;
@@ -23,10 +23,10 @@ const { TextArea } = Input;
 export default function UpsertAbsenceModal({
   form,
   selectedRow = {},
-  setSelectedRow,
+  setSelectedRow = () => {},
   isModalOpen,
-  setIsModalOpen,
-  setShowToast,
+  setIsModalOpen = () => {},
+  setShowToast = () => {},
 }) {
   // Dispatch
   const dispatch = useDispatch();
@@ -42,10 +42,12 @@ export default function UpsertAbsenceModal({
   }
 
   function formSubmit(values) {
-    const { date = [], leaveType = '', reason = '' } = values;
+    const { date = [], leaveType = '', reason = '', name = '' } = values;
+
     const [startDate, endDate] = date;
 
     const absenceData = {
+      name,
       leaveType,
       reason,
       startTimestamp: Date.parse(startDate),
@@ -62,7 +64,7 @@ export default function UpsertAbsenceModal({
 
     handleCancel();
 
-    setShowToast(true)
+    setShowToast(true);
   }
 
   return (
@@ -80,6 +82,14 @@ export default function UpsertAbsenceModal({
         layout="vertical"
         onFinish={formSubmit}
       >
+        <Form.Item
+          label={'Name'}
+          name="name"
+          rules={[{ required: true, message: 'Select Name !!' }]}
+        >
+          <Input placeholder="Enter Name" />
+        </Form.Item>
+
         <Form.Item
           label={'Date'}
           name="date"

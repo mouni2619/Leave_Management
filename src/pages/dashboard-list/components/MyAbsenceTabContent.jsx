@@ -1,18 +1,28 @@
-import { Breadcrumb, Form } from 'antd';
 import dayjs from 'dayjs';
+import { Breadcrumb, Form } from 'antd';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+// Actions
+import { AbsenceActions } from '../../../store/redux-slices/absenceSlice';
+
+// Helpers
+import AbsenceHelper from '../../../helpers/absence/absenceHelper';
+
+// Constants
+import {
+  MenuOptionItems,
+  MyAbsenceBreadcrumbItems,
+} from '../../../constants/myAbsenceConstant';
 
 // Components
 import Button from '../../../components/button/Button';
-
-// Constants
-import { MyAbsenceBreadcrumbItems } from '../../../constants/myAbsenceConstant';
+import UpcomingAbsenceTable from '../../../components/absence/UpcomingAbsenceTable';
+import UpsertAbsenceModal from '../../../components/absence/UpsertAbsenceModal';
+import ViewAbsenceDataModal from '../../../components/absence/ViewAbsenceDataModal';
 
 // Section
 import LeaveCards from './LeaveCards';
-import UpcomingAbsenceTable from './UpcomingAbsenceTable';
-import ViewAbsenceDataModal from './ViewAbsenceDataModal';
-import UpsertAbsenceModal from './UpsertAbsenceModal';
 import Toaster from './Toaster';
 
 // Page Components
@@ -29,16 +39,23 @@ function PageHeader({ setIsModalOpen, setSelectedRow }) {
         <Breadcrumb items={MyAbsenceBreadcrumbItems} />
       </div>
 
-      <Button className="btn-primary fs-4 rounded-3" onClick={openAbsenceModal}>
+      <Button
+        className="btn-primary fs-4 rounded-3 px-4"
+        onClick={openAbsenceModal}
+      >
         Request Absence
       </Button>
     </div>
   );
 }
+
 /**
  * My Absence Tab Content
  */
 export default function MyAbsenceTabContent() {
+  // Dispatch
+  const dispatch = useDispatch();
+
   // State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
@@ -47,6 +64,27 @@ export default function MyAbsenceTabContent() {
 
   // Form
   const [form] = Form.useForm();
+
+  const title = 'Upcoming Absence';
+
+  // Functions
+  function handleMenuClick({ key = '' }, record = {}) {
+    const { id = '' } = record;
+
+    if (key === '1') {
+      setIsViewModalOpen(true);
+      setSelectedRow(record);
+    }
+
+    if (key === '2') {
+      setIsModalOpen(true);
+      setSelectedRow(record);
+    }
+
+    if (key === '3') {
+      dispatch(AbsenceActions.deleteAbsence({ id }));
+    }
+  }
 
   // useEffect
   useEffect(() => {
@@ -73,9 +111,11 @@ export default function MyAbsenceTabContent() {
       <LeaveCards />
 
       <UpcomingAbsenceTable
-        setIsModalOpen={setIsModalOpen}
-        setIsViewModalOpen={setIsViewModalOpen}
-        setSelectedRow={setSelectedRow}
+        title={title}
+        columns={AbsenceHelper.getAbsenceColumns(
+          handleMenuClick,
+          MenuOptionItems,
+        )}
       />
 
       <UpsertAbsenceModal
@@ -94,7 +134,7 @@ export default function MyAbsenceTabContent() {
         setSelectedRow={setSelectedRow}
       />
 
-      <Toaster showToast={showToast} setShowToast={setShowToast}/>
+      <Toaster showToast={showToast} setShowToast={setShowToast} />
     </div>
   );
 }

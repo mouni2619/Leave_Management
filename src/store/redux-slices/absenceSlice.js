@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// initial state
+// Constants
+import { LeaveStatusConfigMap } from '../../constants/myAbsenceConstant';
+
+// Initial state
 const initialState = {
   absenceListMap: {},
 };
@@ -26,6 +29,19 @@ const absenceSlice = createSlice({
     deleteAbsence: (state, action) => {
       const { id = '' } = action.payload;
       delete state.absenceListMap[id];
+    },
+
+    // Approve Leave Request
+    approveLeaveRequest: (state, action) => {
+      const { id = '' } = action.payload;
+      state.absenceListMap[id].status = LeaveStatusConfigMap.approved.key;
+    },
+
+    // Reject Leave Request
+    rejectLeaveRequest: (state, action) => {
+      const { id = '', rejectReason = '' } = action.payload;
+      state.absenceListMap[id].status = LeaveStatusConfigMap.rejected.key;
+      state.absenceListMap[id].rejectReason = rejectReason;
     },
   },
 });

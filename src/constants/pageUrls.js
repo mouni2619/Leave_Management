@@ -19,7 +19,8 @@ const PageUrls = {
   // Home Page
   DashboardListPage: '/',
 
-  
+  // Absence Request
+  AbsenceRequestListPage: '/absence-request',
 };
 
 export default PageUrls;

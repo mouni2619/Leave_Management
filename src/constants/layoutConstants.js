@@ -3,6 +3,7 @@ import {
   Blocks,
   ChartColumn,
   Database,
+  Mails,
   Map,
   Settings,
   UsersRound,
@@ -227,4 +228,11 @@ export const LeftSidebarDefaultData = [
     icon: <Settings />,
     title: 'Settings',
   },
+  {
+    id:6,
+    icon: <Mails/>,
+    title:'AbsenceRequest',
+    link: PageUrls.AbsenceRequestListPage,
+
+  }
 ];

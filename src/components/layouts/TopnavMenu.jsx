@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Input, Avatar, Badge, Button } from 'antd';
+import { Input, Avatar, Badge } from 'antd';
 import {
   ApartmentOutlined,
   CalendarOutlined,
@@ -9,35 +9,41 @@ import {
   SearchOutlined,
 } from '@ant-design/icons';
 
+// Images
+import Profile from '../../assets/images/avatar/profile.png';
+
+/**
+ * TopNav Menu
+ */
 export default function TopNavMenu() {
   // State
-  const [selectedMenu,setSelectedMenu] = useState(4);
+  const [selectedMenu, setSelectedMenu] = useState(1);
 
   const menus = [
     {
-      key:1,
+      key: 1,
       icon: <ApartmentOutlined />,
       name: 'Organization chart',
     },
     {
-      key:2,
+      key: 2,
       icon: <CalendarOutlined />,
       name: 'Calendar',
     },
     {
-      key:3,
+      key: 3,
       icon: <TeamOutlined />,
       name: 'Employees',
     },
     {
-      key:4,
+      key: 4,
       icon: <StopOutlined />,
       name: 'Absence & Leave',
     },
   ];
 
-  function menuClick(key){
-    setSelectedMenu(key)
+  function menuClick(key) {
+    setSelectedMenu(key);
   }
 
   return (
@@ -45,14 +51,20 @@ export default function TopNavMenu() {
       <div className="d-flex justify-content-between align-items-center">
         <div className="d-flex align-items-center gap-4 ps-4">
           {menus.map((menu) => {
-            const {key="", name = '', icon = '' } = menu;
+            const { key = '', name = '', icon = '' } = menu;
 
-            const className = key === selectedMenu ? "side-tab-selected text-primary" : "text-muted"
+            const className =
+              key === selectedMenu
+                ? 'side-tab-selected text-primary'
+                : 'text-muted';
 
             return (
-              <div className={`fw-semibold fs-6 p-2 cursor-pointer ${className}`} onClick={()=>menuClick(key)}>
+              <div
+                className={`fw-semibold fs-6 p-2 cursor-pointer ${className}`}
+                onClick={() => menuClick(key)}
+              >
                 {icon}
-                <span className='ms-2'>{name}</span>
+                <span className="ms-2">{name}</span>
               </div>
             );
           })}
@@ -61,19 +73,15 @@ export default function TopNavMenu() {
         <div className="d-flex align-items-center gap-3 pe-4">
           <Input
             placeholder="Search"
-            size='large'
+            size="large"
             prefix={<SearchOutlined />}
             suffix={<span className="text-muted">⌘ + /</span>}
-            className="rounded px-2"
-            style={{ width: 250, backgroundColor: '#f9f9f9' }}
+            className="rounded px-2 bg-secondary"
           />
           <Badge dot>
-            <BellOutlined style={{ fontSize: '18px' }} />
+            <BellOutlined className="fs-3" />
           </Badge>
-          <Avatar
-            src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg?semt=ais_hybrid&w=740"
-            size="large"
-          />
+          <Avatar shape="square" src={Profile} size="large" />
         </div>
       </div>
     </div>

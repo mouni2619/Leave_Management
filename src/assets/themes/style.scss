@@ -4,72 +4,6 @@ body {
   font-weight: $font-weight-normal;
 }
 
-// Table ---------------------------------------------
-// table {
-//   $table-border: 1px solid
-//     darken(
-//       $color: $primary,
-//       $amount: 5%,
-//     ) !important;
-
-//   thead {
-//     border: $table-border;
-//   }
-
-//   tr {
-//     border-left: $table-border;
-//     border-right: $table-border;
-
-//     &:last-child {
-//       border-bottom: $table-border;
-//     }
-//   }
-
-//   th {
-//     background-color: $primary !important;
-//     font-weight: 600 !important;
-//   }
-
-//   td {
-//     border-top: $table-border;
-//   }
-
-//   .sub-text {
-//     font-size: 0.75rem;
-//     color: $gray-600;
-//     display: block;
-//   }
-
-//   .tr-sec-header {
-//     font-weight: bold;
-//     text-align: center;
-//     td {
-//       background-color: $gray-100 !important;
-//     }
-//   }
-// }
-
-.table-truncate {
-  max-width: 10rem;
-}
-
-.table-compact {
-  th {
-    padding: 4px;
-  }
-  td {
-    padding: 0px;
-  }
-
-  .form-error {
-    border: 1px double $red !important;
-  }
-
-  .selected {
-    border: 1px double $blue !important;
-  }
-}
-
 .side-tab-selected {
   background-color: $primary-subtle;
 }
@@ -97,18 +31,6 @@ input[type='number'] {
 .btn-primary {
   color: white !important;
 }
-
-.btn-cont {
-  button,
-  .btn {
-    margin: 2px 4px;
-
-    &:first-child {
-      margin-left: 0px;
-    }
-  }
-}
-
 
 // Utilities --------------------------------------------------------
 .cursor-pointer {
@@ -156,26 +78,4 @@ input[type='number'] {
   svg {
     stroke: $gray-700;
   }
-}
-
-// Buttons and Button Container ------------------------------
-.btn-default {
-  font-size: $font-size-base;
-  border-radius: $btn-border-radius;
-  transition: $btn-transition;
-}
-
-.btn-outline-custom {
-  @extend .btn-default;
-}
-
-.btn-outline-custom:hover {
-  color: $primary;
-  background-color: $white;
-  border-color: $primary;
-}
-
-// Map Styles
-.leaflet-container {
-  height: 760px;
 }

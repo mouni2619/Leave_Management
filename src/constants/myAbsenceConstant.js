@@ -1,10 +1,7 @@
 import {
   CheckCircleFilled,
-  CheckCircleOutlined,
   ClockCircleFilled,
-  ClockCircleOutlined,
   CloseCircleFilled,
-  CloseCircleOutlined,
   DeleteOutlined,
   EditOutlined,
   EyeOutlined,
@@ -127,6 +124,52 @@ export const MenuOptionItems = [
   },
   {
     key: 3,
+    danger: true,
+    label: (
+      <>
+        <DeleteOutlined /> Delete
+      </>
+    ),
+  },
+];
+
+
+export const AbsenceRequestMenuOptions = [
+  {
+    key: 1,
+    label: (
+      <>
+        <CheckCircleFilled /> Approve
+      </>
+    ),
+  },
+  {
+    key: 2,
+    danger: true,
+    label: (
+      <>
+        <CloseCircleFilled /> Reject
+      </>
+    ),
+  },
+  {
+    key: 3,
+    label: (
+      <>
+        <EyeOutlined /> View
+      </>
+    ),
+  },
+  {
+    key: 4,
+    label: (
+      <>
+        <EditOutlined /> Edit
+      </>
+    ),
+  },
+  {
+    key: 5,
     danger: true,
     label: (
       <>

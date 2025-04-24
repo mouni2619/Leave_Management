@@ -2,6 +2,7 @@
   padding: 5px;
 }
 
+// Tabs
 .ant-tabs {
   &.ant-tabs-top {
     height: 100% !important;
@@ -34,4 +35,11 @@
   padding-right: 50px !important;
   text-align: start !important;
   font-size: medium !important;
+}
+
+// Avatar
+.ant-avatar{
+  border-top-right-radius: 80px !important;
+  border-bottom-right-radius: 80px !important;
+  border-bottom-left-radius: 80px !important;
 }

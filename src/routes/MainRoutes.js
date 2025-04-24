@@ -11,6 +11,9 @@ import PageUrls from '../constants/pageUrls';
 // Pages :: Dashboard
 import DashboardListPage from '../pages/dashboard-list/DashboardListPage';
 
+// Pages :: Absence Request
+import AbsenceRequestListPage from '../pages/absence-request/AbsenceRequestListPage';
+
 // Main Pages and Layouts
 export const MainPageRoutes = {
   path: PageUrls.DashboardListPage,
@@ -29,5 +32,9 @@ export const MainPageRoutes = {
       path: PageUrls.DashboardListPage,
       element: <DashboardListPage />,
     },
+    {
+      path: PageUrls.AbsenceRequestListPage,
+      element: <AbsenceRequestListPage/>
+    }
   ],
 };

@@ -1,58 +1,64 @@
 import { Ellipsis } from 'lucide-react';
 import { Dropdown, Tag } from 'antd';
+import { Avatar } from 'antd';
 import dayjs from 'dayjs';
 
 // Constants
 import {
   LeaveStatusConfigMap,
   LeaveTypeConfig,
-  MenuOptionItems,
 } from '../../constants/myAbsenceConstant';
 
 // Components
 import Button from '../../components/button/Button';
 
-
-function getColumns(handleMenuClick) {
+function getAbsenceColumns(handleMenuClick,menuOptionItems) {
   return [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      render: (text) => (
+        <span style={{ display: 'flex', alignItems: 'center' }}>
+          <Avatar
+            className="bg-primary"
+          >
+            {text.charAt(0).toUpperCase()}
+          </Avatar>
+          {text}
+        </span>
+      ),
+    },
     {
       title: 'DURATION',
       dataIndex: 'duration',
       render: (_, record) => {
         const { startTimestamp, endTimestamp } = record;
-
         const startDate = dayjs(startTimestamp).format('MMM D');
         const endDate = dayjs(endTimestamp).format('MMM D, YYYY');
-
-        if (startTimestamp === endTimestamp) {
-          return endDate;
-        }
-
-        return `${startDate} -- ${endDate}`;
+        return startTimestamp === endTimestamp
+          ? endDate
+          : `${startDate} -- ${endDate}`;
       },
     },
     {
       title: '# OF DAYS',
       dataIndex: 'daysOff',
       render: (_, record) => {
-        const { startTimestamp, endTimestamp } = record;
-
-        const dayDiff = dayjs(endTimestamp).diff(startTimestamp, 'day') + 1;
-
-        if (dayDiff <= 1) {
-          return `${dayDiff} Day`;
-        }
-
-        return `${dayDiff} Days`;
+        const dayDiff =
+          dayjs(record.endTimestamp).diff(record.startTimestamp, 'day') + 1;
+        return `${dayDiff} ${dayDiff === 1 ? 'Day' : 'Days'}`;
       },
     },
-
     {
       title: 'TYPE',
       dataIndex: 'leaveType',
       render: (type) => {
-        const { icon = '', className = '', name = '' } = LeaveTypeConfig[type];
-
+        const {
+          icon = '',
+          className = '',
+          name = '',
+        } = LeaveTypeConfig[type] || {};
         return (
           <Tag className={`rounded-pill ${className}`} bordered={false}>
             {icon} <span className="text-dark">{name}</span>
@@ -65,17 +71,13 @@ function getColumns(handleMenuClick) {
       dataIndex: 'status',
       render: (status) => {
         const {
-          name = '',
           icon = '',
+          name = '',
           color = '',
         } = LeaveStatusConfigMap[status] || {};
-
-        console.log(status);
-
         return (
           <span className="fs-6">
-            {icon}
-            <span className={`text-${color}`}>{name}</span>
+            {icon} <span className={`text-${color}`}>{name}</span>
           </span>
         );
       },
@@ -83,15 +85,14 @@ function getColumns(handleMenuClick) {
     {
       title: 'PAID',
       dataIndex: 'paid',
-    },
-    {
+    }, {
       title: '',
       key: 'action',
       render: (_, record) => (
         <Dropdown
           menu={{
-            items: MenuOptionItems,
-            onClick: ({ key: menuKey }) => handleMenuClick(menuKey, record),
+            items: menuOptionItems,
+            onClick: (menuObj) => handleMenuClick(menuObj, record),
           }}
           placement="bottomRight"
           trigger={['click']}
@@ -100,11 +101,11 @@ function getColumns(handleMenuClick) {
         </Dropdown>
       ),
     },
-  ];
+  ]
 }
 
 const AbsenceHelper = {
-  getColumns,
+  getAbsenceColumns,
 };
 
 export default AbsenceHelper;
